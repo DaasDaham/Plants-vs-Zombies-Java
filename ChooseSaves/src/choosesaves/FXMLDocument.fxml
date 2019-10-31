@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="441.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="choosesaves.FXMLDocumentController">
+  <children>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="440.0" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ListView prefHeight="266.0" prefWidth="440.0000999999975" style=".list-view .list-cell:even {&#10;-fx-background-color: blue;&#10;-fx-text-fill: black;&#10;}&#10;.list-view .list-cell:odd {&#10;-fx-background-color: blue;&#10;-fx-text-fill: black;&#10;}" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
+      </children>
+    </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="123.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="266.0">
+      <children>
+        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="139.0" style="#shiny-orange {&#10;    -fx-background-color: &#10;        linear-gradient(#ffd65b, #e68400),&#10;        linear-gradient(#ffef84, #f2ba44),&#10;        linear-gradient(#ffea6a, #efaa22),&#10;        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),&#10;        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));&#10;    -fx-background-radius: 30;&#10;    -fx-background-insets: 0,1,2,3,0;&#10;    -fx-text-fill: #654b00;&#10;    -fx-font-weight: bold;&#10;    -fx-font-size: 14px;&#10;    -fx-padding: 10 20 10 20;&#10;}" text="Continue" AnchorPane.bottomAnchor="54.5" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="36.5" />
+        <Button minHeight="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="139.0" style="#shiny-orange {&#10;    -fx-background-color: &#10;        linear-gradient(#ffd65b, #e68400),&#10;        linear-gradient(#ffef84, #f2ba44),&#10;        linear-gradient(#ffea6a, #efaa22),&#10;        linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),&#10;        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));&#10;    -fx-background-radius: 30;&#10;    -fx-background-insets: 0,1,2,3,0;&#10;    -fx-text-fill: #654b00;&#10;    -fx-font-weight: bold;&#10;    -fx-font-size: 14px;&#10;    -fx-padding: 10 20 10 20;&#10;}" text="Delete Save" AnchorPane.bottomAnchor="54.5" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="36.5" />
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>
