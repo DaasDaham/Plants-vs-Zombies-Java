@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
@@ -45,10 +46,9 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(3));
+        tt.setDuration(Duration.seconds(1.55));
         tt.setToX(1000);
         tt.setNode(pea1);
-        tt.setToX(-600);
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
 
