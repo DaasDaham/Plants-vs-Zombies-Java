@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PlayaArea">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PlayaArea/dist/PlayaArea.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
