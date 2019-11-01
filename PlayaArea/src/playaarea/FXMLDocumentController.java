@@ -26,6 +26,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private ImageView z1;
+
+    @FXML
+    private ImageView pea1;
     
     @FXML
     private ImageView lm1;
@@ -42,7 +45,13 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         TranslateTransition tt = new TranslateTransition();
-        
+        tt.setDuration(Duration.seconds(3));
+        tt.setToX(1000);
+        tt.setNode(pea1);
+        tt.setToX(-600);
+        tt.setCycleCount( Timeline.INDEFINITE );
+        tt.play();
+
         lm1.setOnMouseClicked(new EventHandler<MouseEvent>(){
  
             @Override
