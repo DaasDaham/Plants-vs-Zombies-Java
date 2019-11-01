@@ -9,63 +9,55 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.animation.TranslateTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 /**
  *
  * @author saad
  */
 public class FXMLDocumentController implements Initializable {
-
+    
     @FXML
-    private Label label;
+    private ImageView z1;
+    
     @FXML
-    private Label lawnmover1;
+    private ImageView lm1;
+    
     @FXML
-    private Label lawnmover2;
+    private ImageView lm2;
     @FXML
-    private Label lawnmover3;
+    private ImageView lm3;
     @FXML
-    private Label lawnmover4;
+    private ImageView lm4;
     @FXML
-    private Label lawnmover5;
-
-    @FXML
-    private void handleButtonAction1(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World1!");
-        lawnmover1.setTranslateX(1000);
-    }
-    @FXML
-    private void handleButtonAction2(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World2!");
-        lawnmover2.setTranslateX(1000);
-    }
-    @FXML
-    private void handleButtonAction3(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World3!");
-        lawnmover3.setTranslateX(1000);
-    }
-    @FXML
-    private void handleButtonAction4(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World4!");
-        lawnmover4.setTranslateX(1000);
-    }
-    @FXML
-    private void handleButtonAction5(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World5!");
-        lawnmover5.setTranslateX(1000);
-    }
-
+    private ImageView lm5;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
+        TranslateTransition tt = new TranslateTransition();
+        tt.setDuration(Duration.seconds(100));
+        tt.setToX(-750);
+        tt.setNode(z1);
+        tt.play();
+        
+        lm1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+ 
+            @Override
+            public void handle(MouseEvent event) {
+                TranslateTransition tt2 = new TranslateTransition();
+                tt2.setDuration(Duration.seconds(15));
+                tt2.setToX(1000);
+                tt2.setNode(lm1);
+                tt2.play();
+            }
+        });
+    }    
+    
 }

@@ -1,81 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="playaarea.FXMLDocumentController">
+<AnchorPane id="AnchorPane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="playaarea.FXMLDocumentController">
   <children>
-    <ImageView fitHeight="597.6112670933837" fitWidth="977.5621948242188" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <ImageView fitHeight="598.0" fitWidth="1108.5846810014098" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
-        <Image url="@images/Background1.jpg" />
+        <Image url="@images/backyard.jpg" />
       </image>
     </ImageView>
-    <GridPane layoutX="115.0" layoutY="78.0" prefHeight="497.0" prefWidth="584.0">
+    <GridPane layoutX="280.0" layoutY="34.0" prefHeight="541.0" prefWidth="794.0">
+      <children>
+        <ImageView id="zimg" fx:id="z1" fitHeight="73.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="false" translateX="0.0" GridPane.columnIndex="11" GridPane.rowIndex="0">
+          <image>
+            <Image url="@images/fin.gif" />
+          </image>
+        </ImageView>
+      </children>
       <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="290.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="85.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="85.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="92.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="89.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="154.0" minHeight="0.0" prefHeight="88.0" vgrow="SOMETIMES" />
       </rowConstraints>
-         <children>
-            <ImageView fx:id="lawnmover1" fitHeight="597.6112670933837" fitWidth="977.5621948242188" onMouseClicked="#handleButtonAction1" pickOnBounds="true" preserveRatio="true" scaleX="0.1" scaleY="0.1" translateX="-400.0">
-               <image>
-                  <Image url="@images/Lawn_mower_2.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lawnmover2" fitHeight="597.6112670933837" fitWidth="977.5621948242188" layoutX="10.0" layoutY="-241.0" onMouseClicked="#handleButtonAction2" pickOnBounds="true" preserveRatio="true" scaleX="0.1" scaleY="0.1" translateX="-400.0" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@images/Lawn_mower_2.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lawnmover3" fitHeight="597.6112670933837" fitWidth="977.5621948242188" onMouseClicked="#handleButtonAction3" pickOnBounds="true" preserveRatio="true" scaleX="0.1" scaleY="0.1" translateX="-400.0" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@images/Lawn_mower_2.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lawnmover4" fitHeight="597.6112670933837" fitWidth="977.5621948242188" onMouseClicked="#handleButtonAction4" pickOnBounds="true" preserveRatio="true" scaleX="0.1" scaleY="0.1" translateX="-400.0" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@images/Lawn_mower_2.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lawnmover5" fitHeight="597.6112670933837" fitWidth="977.5621948242188" onMouseClicked="#handleButtonAction5" pickOnBounds="true" preserveRatio="true" scaleX="0.1" scaleY="0.1" translateX="-400.0" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@images/Lawn_mower_2.PNG.png" />
-               </image>
-            </ImageView>
-         </children>
     </GridPane>
-    <VBox layoutX="0.0" layoutY="-5.0" prefHeight="602.6112670898438" prefWidth="127.0">
+    <AnchorPane layoutX="-1.0" layoutY="0.0" minWidth="101.0" prefHeight="598.0" prefWidth="101.0">
       <children>
-        <GridPane prefHeight="597.6112670898438" prefWidth="136.0">
+        <GridPane layoutX="0.0" layoutY="0.0" prefHeight="598.0" prefWidth="101.0">
           <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -83,13 +58,43 @@
           <rowConstraints>
             <RowConstraints maxHeight="178.0" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="101.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="97.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="104.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="181.0" minHeight="0.0" prefHeight="106.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="110.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
           </rowConstraints>
         </GridPane>
+        <ImageView fitHeight="598.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="false" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@images/Solid_black.png" />
+          </image>
+        </ImageView>
       </children>
-    </VBox>
+    </AnchorPane>
+    <ImageView fx:id="lm1" fitHeight="94.5" fitWidth="126.0" layoutX="185.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm2" fitHeight="94.5" fitWidth="126.0" layoutX="185.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm3" fitHeight="94.5" fitWidth="126.0" layoutX="177.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm4" fitHeight="94.5" fitWidth="126.0" layoutX="139.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm5" fitHeight="94.5" fitWidth="126.0" layoutX="139.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
   </children>
 </AnchorPane>
