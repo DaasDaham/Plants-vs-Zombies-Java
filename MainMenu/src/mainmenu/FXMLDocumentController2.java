@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package mainmenu;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Random;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.animation.Timeline;
@@ -19,13 +23,18 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.io.FileInputStream;
 
 /**
  *
  * @author saad
  */
 public class FXMLDocumentController2 implements Initializable {
+    int count=0;
+    @FXML
+    private Label sunCount;
 
     @FXML
     private ImageView z1;
@@ -35,7 +44,9 @@ public class FXMLDocumentController2 implements Initializable {
     
     @FXML
     private ImageView lm1;
-    
+
+    @FXML
+    private ImageView sun;
     @FXML
     private ImageView lm2;
     @FXML
@@ -54,17 +65,22 @@ public class FXMLDocumentController2 implements Initializable {
     private TranslateTransition tt;
     @FXML
     private TranslateTransition tt2;
+    @FXML
+    private TranslateTransition tt3;
     
 
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
         tt = new TranslateTransition();
         tt.setDuration(Duration.seconds(1.55));
         tt.setToX(1000);
         tt.setNode(pea1);
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
+
+        spawnSun();
+
 
         lm1.setOnMouseClicked(new EventHandler<MouseEvent>(){
  
@@ -132,6 +148,17 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
+        sun.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+            @Override
+            public void handle(MouseEvent event) {
+                sun.setY(-500);
+                count+=100;
+                sunCount.setText(""+count);
+
+            }
+        });
+
     }
 
     
@@ -147,6 +174,24 @@ public class FXMLDocumentController2 implements Initializable {
     private void handleIgmExit(ActionEvent event) {
         igm.toBack();
         tt2.play();
+        Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage1.close();
+
+    }
+    @FXML
+    private void spawnSun()
+    {
+        Random random = new Random();
+        int ranX = random.nextInt(11); // random value from 0 to width
+        int ranY = random.nextInt(7);
+        System.out.println(ranX+" "+ranY);
+
+        tt3 = new TranslateTransition();
+        tt3.setDuration(Duration.seconds(1.55));
+        tt3.setToY(500);
+        tt3.setNode(sun);
+        tt3.play();
+
     }
     
 }
