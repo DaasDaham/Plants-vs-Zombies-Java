@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainmenu.FXMLDocumentController2">
+  <children>
+    <AnchorPane fx:id="igm" layoutX="265.0" layoutY="104.0" opacity="1.0" prefHeight="438.0" prefWidth="582.0" style="-fx-background-size: 1200 900;&#10;-fx-background-radius: 30;&#10;-fx-border-radius: 30;&#10;-fx-border-width:5;&#10;-fx-border-color: #ccffcc;&#10;-fx-background-color: #ccffcc;">
+      <children>
+        <ImageView fitHeight="297.75" fitWidth="397.0" layoutX="294.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@Images/Plants-Vs-Zombies-PNG-Photo.png" />
+          </image>
+        </ImageView>
+        <Button layoutX="100.0" layoutY="349.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" style="#record-sales {&#10;    -fx-padding: 8 15 15 15;&#10;    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;&#10;    -fx-background-radius: 8;&#10;    -fx-background-color: &#10;        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),&#10;        #9d4024,&#10;        #d86e3a,&#10;        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);&#10;    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );&#10;    -fx-font-weight: bold;&#10;    -fx-font-size: 1.1em;&#10;}&#10;#record-sales:hover {&#10;    -fx-background-color: &#10;        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),&#10;        #9d4024,&#10;        #d86e3a,&#10;        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);&#10;}" text="Save Game" />
+        <Button fx:id="igmExitButton" layoutX="351.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleIgmExit" prefHeight="55.0" prefWidth="148.0" style="#record-sales {&#10;    -fx-padding: 8 15 15 15;&#10;    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;&#10;    -fx-background-radius: 8;&#10;    -fx-background-color: &#10;        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),&#10;        #9d4024,&#10;        #d86e3a,&#10;        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);&#10;    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );&#10;    -fx-font-weight: bold;&#10;    -fx-font-size: 1.1em;&#10;}&#10;#record-sales:hover {&#10;    -fx-background-color: &#10;        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),&#10;        #9d4024,&#10;        #d86e3a,&#10;        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);&#10;}" text="Quit" />
+        <ImageView fitHeight="232.0" fitWidth="309.3333333333333" layoutX="7.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@Images/Plants-Vs-Zombies-PNG-Free-Download.png" />
+          </image>
+        </ImageView>
+        <Label alignment="CENTER" layoutX="189.0" layoutY="14.0" prefHeight="41.0" prefWidth="189.0" text="Options" textFill="#666200">
+          <font>
+            <Font name="Chilanka Regular" size="40.0" />
+          </font>
+        </Label>
+      </children>
+    </AnchorPane>
+    <ImageView fitHeight="598.0" fitWidth="1108.5846810014098" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <image>
+        <Image url="@Images/backyard.jpg" />
+      </image>
+    </ImageView>
+    <GridPane layoutX="293.0" layoutY="36.0" prefHeight="541.0" prefWidth="794.0">
+      <children>
+        <ImageView id="zimg" fx:id="z11" fitHeight="73.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="false" scaleX="1.5" scaleY="1.5" translateX="10.0">
+          <image>
+            <Image url="@Images/plant_1.gif" />
+          </image>
+        </ImageView>
+        <ImageView fx:id="pea1" GridPane.columnIndex="1">
+          <image>
+            <Image url="@Images/ProjectilePea_1.png" />
+          </image>
+        </ImageView>
+        <ImageView id="zimg" fx:id="z1" fitHeight="73.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="false" scaleX="1.2" scaleY="1.4" translateX="0.0" translateY="-10.0" GridPane.columnIndex="11" GridPane.rowIndex="2">
+          <image>
+            <Image url="@Images/fin.gif" />
+          </image>
+        </ImageView>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="85.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="85.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="92.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="89.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="154.0" minHeight="0.0" prefHeight="88.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <ImageView fx:id="lm1" fitHeight="94.5" fitWidth="126.0" layoutX="185.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@Images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm2" fitHeight="94.5" fitWidth="126.0" layoutX="185.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@Images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm3" fitHeight="94.5" fitWidth="126.0" layoutX="177.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@Images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm4" fitHeight="94.5" fitWidth="126.0" layoutX="139.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true" translateX="27.0">
+      <image>
+        <Image url="@Images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <ImageView fx:id="lm5" fitHeight="94.5" fitWidth="126.0" layoutX="139.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" translateX="23.0">
+      <image>
+        <Image url="@Images/Lawn_mower_2.PNG.png" />
+      </image>
+    </ImageView>
+    <AnchorPane layoutX="0.0" layoutY="0.0" minWidth="101.0" prefHeight="598.0" prefWidth="101.0">
+      <children>
+        <ImageView fitHeight="598.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="false" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@Images/Solid_black.png" />
+          </image>
+        </ImageView>
+        <Label alignment="CENTER" layoutX="0.0" layoutY="6.0" prefHeight="30.0" prefWidth="101.0" text="SCORE">
+          <font>
+            <Font name="DejaVu Sans Mono Bold" size="23.0" fx:id="x1" />
+          </font>
+          <textFill>
+            <Color blue="0.400" green="0.976" red="1.000" fx:id="x2" />
+          </textFill>
+        </Label>
+        <GridPane layoutX="0.0" layoutY="0.0" prefHeight="598.0" prefWidth="101.0">
+          <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <ImageView id="source" fitHeight="101.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
+              <image>
+                <Image url="@Images/Sun_PvZ2.png" />
+              </image>
+            </ImageView>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="178.0" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="104.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="181.0" minHeight="0.0" prefHeight="106.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="0.0" layoutY="36.0" prefWidth="101.0" text="0" textFill="WHITE">
+          <font>
+            <Font name="DejaVu Sans Mono Bold" size="18.0" />
+          </font>
+        </Label>
+      </children>
+    </AnchorPane>
+    <ImageView id="sunCountBack" fitHeight="44.5" fitWidth="126.0" layoutX="109.0" layoutY="-1.0" opacity="0.57" pickOnBounds="true" preserveRatio="false" smooth="true" style="-fx-border-radius: 10 10 0 0;&#10;-fx-background-radius: 10 10 0 0;&#10;" visible="true">
+      <image>
+        <Image url="@Images/Solid_black.png" />
+      </image>
+    </ImageView>
+    <ImageView fitHeight="46.5" fitWidth="74.0" layoutX="109.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@Images/Sun_PvZ2.png" />
+      </image>
+    </ImageView>
+    <Label font="$x1" layoutX="162.0" layoutY="7.0" text="100" textFill="$x2" />
+    <Pane layoutX="1052.0" layoutY="-1.0" prefHeight="46.5" prefWidth="57.0">
+      <children>
+        <Button fx:id="pauseButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" onAction="#handlePauseButton" prefHeight="44.5" prefWidth="57.0" style="#green {&#10;    -fx-background-color:&#10;        linear-gradient(#f0ff35, #a9ff00),&#10;        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);&#10;    -fx-background-radius: 6, 5;&#10;    -fx-background-insets: 0, 1;&#10;    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );&#10;    -fx-text-fill: #395306;&#10;}" text="X" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

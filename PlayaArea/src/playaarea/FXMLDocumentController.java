@@ -46,7 +46,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(1.55));
+        tt.setDuration(Duration.seconds(3));
         tt.setToX(1000);
         tt.setNode(pea1);
         tt.setCycleCount( Timeline.INDEFINITE );

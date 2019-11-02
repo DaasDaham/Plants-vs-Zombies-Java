@@ -15,8 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.animation.Timeline;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 /**
@@ -42,10 +44,22 @@ public class FXMLDocumentController2 implements Initializable {
     private ImageView lm4;
     @FXML
     private ImageView lm5;
+    @FXML
+    private Button pauseButton;
+    @FXML
+    private AnchorPane igm;
+    @FXML
+    private Button igmExitButton;
+    @FXML
+    private TranslateTransition tt;
+    @FXML
+    private TranslateTransition tt2;
+    
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TranslateTransition tt = new TranslateTransition();
+        tt = new TranslateTransition();
         tt.setDuration(Duration.seconds(1.55));
         tt.setToX(1000);
         tt.setNode(pea1);
@@ -56,7 +70,7 @@ public class FXMLDocumentController2 implements Initializable {
  
             @Override
             public void handle(MouseEvent event) {
-                TranslateTransition tt2 = new TranslateTransition();
+                tt2 = new TranslateTransition();
                 tt2.setDuration(Duration.seconds(2));
                 tt2.setToX(1000);
                 tt2.setNode(lm1);
@@ -67,7 +81,7 @@ public class FXMLDocumentController2 implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                TranslateTransition tt2 = new TranslateTransition();
+                tt2 = new TranslateTransition();
                 tt2.setDuration(Duration.seconds(2));
                 tt2.setToX(1000);
                 tt2.setNode(lm2);
@@ -78,7 +92,7 @@ public class FXMLDocumentController2 implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                TranslateTransition tt2 = new TranslateTransition();
+                tt2 = new TranslateTransition();
                 tt2.setDuration(Duration.seconds(2));
                 tt2.setToX(1000);
                 tt2.setNode(lm3);
@@ -89,7 +103,7 @@ public class FXMLDocumentController2 implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                TranslateTransition tt2 = new TranslateTransition();
+                tt2 = new TranslateTransition();
                 tt2.setDuration(Duration.seconds(2));
                 tt2.setToX(1000);
                 tt2.setNode(lm4);
@@ -100,7 +114,7 @@ public class FXMLDocumentController2 implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                TranslateTransition tt2 = new TranslateTransition();
+                tt2 = new TranslateTransition();
                 tt2.setDuration(Duration.seconds(2));
                 tt2.setToX(1000);
                 tt2.setNode(lm5);
@@ -111,13 +125,28 @@ public class FXMLDocumentController2 implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                TranslateTransition tt2 = new TranslateTransition();
+                tt2 = new TranslateTransition();
                 tt2.setDuration(Duration.seconds(7));
                 tt2.setToX(-750);
                 tt2.setNode(z1);
                 tt2.play();
             }
         });
-    }    
+    }
+
+    
+    @FXML
+    private void handlePauseButton(ActionEvent event) {
+        System.out.println("sdglajgn");
+        igm.toFront();
+        tt2.pause();
+       
+    }
+
+    @FXML
+    private void handleIgmExit(ActionEvent event) {
+        igm.toBack();
+        tt2.play();
+    }
     
 }
