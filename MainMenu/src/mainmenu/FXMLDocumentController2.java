@@ -93,6 +93,8 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private ToggleButton cbButton;
     Timer timer;
+    @FXML
+    private Button igmCloseBut;
 
     @FXML
     private void handlessButton(ActionEvent event) {
@@ -123,6 +125,11 @@ public class FXMLDocumentController2 implements Initializable {
         fade.setNode(cornBreadSide);
         fade.play();
     }
+
+    @FXML
+    private void igmclose(ActionEvent event) {
+        igm.toBack();
+    }
     
     class Helper extends TimerTask 
     { 
@@ -131,9 +138,11 @@ public class FXMLDocumentController2 implements Initializable {
 	public void run() 
 	{ 
             ++i;
-            sunPlantSide.setOpacity(i/10.0);
-            peaPlantSide.setOpacity(i/10.0);
-            cornBreadSide.setOpacity(i/10.0);
+            if(i<=5){
+                sunPlantSide.setOpacity(i/5.0);
+                peaPlantSide.setOpacity(i/5.0);
+                cornBreadSide.setOpacity(i/5.0);
+            }
             progBar.setProgress(i/500.0);
             int prob = r.nextInt(10);
             if(prob==3){
@@ -234,6 +243,7 @@ public class FXMLDocumentController2 implements Initializable {
                 
             }
         });
+        //timer.cancel();
 
     }
 
@@ -255,6 +265,7 @@ public class FXMLDocumentController2 implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE,null,ex);
 
         }
+        timer.cancel();
         /*igm.toBack();
         Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage1.close();*/
