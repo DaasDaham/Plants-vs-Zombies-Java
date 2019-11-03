@@ -26,25 +26,39 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.FileInputStream;
+import java.util.logging.Level;
+import java.util.Timer; 
+import java.util.TimerTask; 
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  *
  * @author saad
  */
 public class FXMLDocumentController2 implements Initializable {
-    int count=0;
+    int count=50;
     @FXML
     private Label sunCount;
-
     @FXML
     private ImageView z1;
-
+    @FXML
+    private ImageView sunPlantSide;
+    @FXML
+    private ImageView peaPlantSide;
+    @FXML
+    private ImageView cornBreadSide;
     @FXML
     private ImageView pea1;
-    
     @FXML
     private ImageView lm1;
-
     @FXML
     private ImageView sun;
     @FXML
@@ -61,26 +75,88 @@ public class FXMLDocumentController2 implements Initializable {
     private AnchorPane igm;
     @FXML
     private Button igmExitButton;
-    @FXML
     private TranslateTransition tt;
-    @FXML
     private TranslateTransition tt2;
-    @FXML
     private TranslateTransition tt3;
+    @FXML
+    private ProgressBar progBar;
+    @FXML
+    private ImageView z11;
+    @FXML
+    private Color x2;
+    @FXML
+    private Font x1;
+    @FXML
+    private ToggleButton ssButton;
+    @FXML
+    private ToggleButton spButton;
+    @FXML
+    private ToggleButton cbButton;
+    Timer timer;
+
+    @FXML
+    private void handlessButton(ActionEvent event) {
+        FadeTransition fade = new FadeTransition();  
+        fade.setDuration(Duration.millis(10000)); 
+        fade.setFromValue(0.1);  
+        fade.setToValue(10);
+        fade.setNode(sunPlantSide);
+        fade.play();
+    }
+
+    @FXML
+    private void handlespButton(ActionEvent event) {
+        FadeTransition fade = new FadeTransition();  
+        fade.setDuration(Duration.millis(10000)); 
+        fade.setFromValue(0.1);  
+        fade.setToValue(10);
+        fade.setNode(peaPlantSide);
+        fade.play();
+    }
+
+    @FXML
+    private void handlecbButton(ActionEvent event) {
+        FadeTransition fade = new FadeTransition();  
+        fade.setDuration(Duration.millis(10000)); 
+        fade.setFromValue(0.1);  
+        fade.setToValue(10);
+        fade.setNode(cornBreadSide);
+        fade.play();
+    }
     
-
-
+    class Helper extends TimerTask 
+    { 
+        Random r = new Random();
+	public int i = 0; 
+	public void run() 
+	{ 
+            ++i;
+            sunPlantSide.setOpacity(i/10.0);
+            peaPlantSide.setOpacity(i/10.0);
+            cornBreadSide.setOpacity(i/10.0);
+            progBar.setProgress(i/500.0);
+            int prob = r.nextInt(10);
+            if(prob==3){
+                System.out.println("yoyo1");
+                spawnSun();
+            }
+	} 
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        igm.toBack();
+        sunCount.setText(""+count);
+        progBar.setProgress(0);
+        timer = new Timer(); 
+        TimerTask task = new Helper(); 	
+	timer.schedule(task, 0, 1000); 
         tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(1.55));
+        tt.setDuration(Duration.seconds(5));
         tt.setToX(1000);
         tt.setNode(pea1);
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
-
-        spawnSun();
-
 
         lm1.setOnMouseClicked(new EventHandler<MouseEvent>(){
  
@@ -142,7 +218,7 @@ public class FXMLDocumentController2 implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 tt2 = new TranslateTransition();
-                tt2.setDuration(Duration.seconds(7));
+                tt2.setDuration(Duration.seconds(60));
                 tt2.setToX(-750);
                 tt2.setNode(z1);
                 tt2.play();
@@ -152,46 +228,49 @@ public class FXMLDocumentController2 implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                sun.setY(-500);
-                count+=100;
+                count+=25;
                 sunCount.setText(""+count);
-
+                sun.setY(-500);
+                
             }
         });
 
     }
 
-    
     @FXML
     private void handlePauseButton(ActionEvent event) {
-        System.out.println("sdglajgn");
         igm.toFront();
-        tt2.pause();
-       
     }
 
     @FXML
     private void handleIgmExit(ActionEvent event) {
-        igm.toBack();
-        tt2.play();
+        try {
+
+            Parent startPageParent1 = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            Scene startPageScene1 = new Scene(startPageParent1);
+            Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage1.setScene(startPageScene1);
+            appStage1.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE,null,ex);
+
+        }
+        /*igm.toBack();
         Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage1.close();
+        appStage1.close();*/
 
     }
-    @FXML
     private void spawnSun()
     {
         Random random = new Random();
         int ranX = random.nextInt(11); // random value from 0 to width
         int ranY = random.nextInt(7);
-        System.out.println(ranX+" "+ranY);
-
+        System.out.println(sun.getX()+" "+sun.getY());
+        
         tt3 = new TranslateTransition();
-        tt3.setDuration(Duration.seconds(1.55));
+        tt3.setDuration(Duration.seconds(20));
         tt3.setToY(500);
         tt3.setNode(sun);
         tt3.play();
-
-    }
-    
+    }   
 }
