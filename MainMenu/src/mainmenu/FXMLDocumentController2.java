@@ -44,10 +44,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-/**
- *
- * @author saad
- */
 public class FXMLDocumentController2 implements Initializable {
     int count=50;
     @FXML
@@ -148,7 +144,6 @@ public class FXMLDocumentController2 implements Initializable {
             progBar.setProgress(i/500.0);
             int prob = r.nextInt(10);
             if(prob==3){
-                System.out.println("yoyo1");
                 spawnSun();
             }
 	} 
@@ -242,79 +237,46 @@ public class FXMLDocumentController2 implements Initializable {
         
         sunPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            //Drag was detected, start drap-and-drop gesture
-            //Allow any transfer node
             Dragboard db = sunPlantSide.startDragAndDrop(TransferMode.ANY);
-
-            //Put ImageView on dragboard
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(sunPlantSide.getImage());
-            //cbContent.put(DataFormat.)
             db.setContent(cbContent);
-            //sunPlantSide.setVisible(false);
             ssFade();
             event.consume();
         }
     });
     sunPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
-            //the drag and drop gesture has ended
-            //if the data was successfully moved, clear it
-            if(event.getTransferMode() == TransferMode.MOVE){
-                sunPlantSide.setVisible(false);
-            }
             event.consume();
         }
     });
     peaPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            //Drag was detected, start drap-and-drop gesture
-            //Allow any transfer node
             Dragboard db = peaPlantSide.startDragAndDrop(TransferMode.ANY);
-
-            //Put ImageView on dragboard
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(peaPlantSide.getImage());
-            //cbContent.put(DataFormat.)
             db.setContent(cbContent);
-            //sunPlantSide.setVisible(false);
             spFade();
             event.consume();
         }
     });
     peaPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
-            //the drag and drop gesture has ended
-            //if the data was successfully moved, clear it
-            if(event.getTransferMode() == TransferMode.MOVE){
-                peaPlantSide.setVisible(false);
-            }
             event.consume();
         }
     });
     cornBreadSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            //Drag was detected, start drap-and-drop gesture
-            //Allow any transfer node
             Dragboard db = cornBreadSide.startDragAndDrop(TransferMode.ANY);
-
-            //Put ImageView on dragboard
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(cornBreadSide.getImage());
-            //cbContent.put(DataFormat.)
             db.setContent(cbContent);
-            //sunPlantSide.setVisible(false);
             cbFade();
             event.consume();
         }
     });
     cornBreadSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
-            //the drag and drop gesture has ended
-            //if the data was successfully moved, clear it
-            if(event.getTransferMode() == TransferMode.MOVE){
-                cornBreadSide.setVisible(false);
-            }
             event.consume();
         }
     });
@@ -348,7 +310,7 @@ public class FXMLDocumentController2 implements Initializable {
     private void spawnSun()
     {
         Random random = new Random();
-        int ranX = random.nextInt(11); // random value from 0 to width
+        int ranX = random.nextInt(11); 
         int ranY = random.nextInt(7);
         System.out.println(sun.getX()+" "+sun.getY());
         
