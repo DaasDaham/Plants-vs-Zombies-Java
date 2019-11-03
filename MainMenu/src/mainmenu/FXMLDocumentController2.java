@@ -36,6 +36,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -86,18 +91,16 @@ public class FXMLDocumentController2 implements Initializable {
     private Color x2;
     @FXML
     private Font x1;
-    @FXML
-    private ToggleButton ssButton;
-    @FXML
-    private ToggleButton spButton;
-    @FXML
-    private ToggleButton cbButton;
+
     Timer timer;
     @FXML
     private Button igmCloseBut;
-
     @FXML
-    private void handlessButton(ActionEvent event) {
+    private GridPane mainGrid;
+
+    
+    @FXML
+    private void ssFade() {
         FadeTransition fade = new FadeTransition();  
         fade.setDuration(Duration.millis(10000)); 
         fade.setFromValue(0.1);  
@@ -107,7 +110,7 @@ public class FXMLDocumentController2 implements Initializable {
     }
 
     @FXML
-    private void handlespButton(ActionEvent event) {
+    private void spFade() {
         FadeTransition fade = new FadeTransition();  
         fade.setDuration(Duration.millis(10000)); 
         fade.setFromValue(0.1);  
@@ -117,7 +120,7 @@ public class FXMLDocumentController2 implements Initializable {
     }
 
     @FXML
-    private void handlecbButton(ActionEvent event) {
+    private void cbFade() {
         FadeTransition fade = new FadeTransition();  
         fade.setDuration(Duration.millis(10000)); 
         fade.setFromValue(0.1);  
@@ -139,7 +142,6 @@ public class FXMLDocumentController2 implements Initializable {
 	{ 
             ++i;
             if(i<=5){
-                sunPlantSide.setOpacity(i/5.0);
                 peaPlantSide.setOpacity(i/5.0);
                 cornBreadSide.setOpacity(i/5.0);
             }
@@ -166,6 +168,11 @@ public class FXMLDocumentController2 implements Initializable {
         tt.setNode(pea1);
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
+        tt2 = new TranslateTransition();
+        tt2.setDuration(Duration.seconds(60));
+        tt2.setToX(-750);
+        tt2.setNode(z1);
+        tt2.play();
 
         lm1.setOnMouseClicked(new EventHandler<MouseEvent>(){
  
@@ -222,17 +229,6 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
-        z1.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
-            @Override
-            public void handle(MouseEvent event) {
-                tt2 = new TranslateTransition();
-                tt2.setDuration(Duration.seconds(60));
-                tt2.setToX(-750);
-                tt2.setNode(z1);
-                tt2.play();
-            }
-        });
         sun.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -243,7 +239,85 @@ public class FXMLDocumentController2 implements Initializable {
                 
             }
         });
-        //timer.cancel();
+        
+        sunPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
+        public void handle(MouseEvent event) {
+            //Drag was detected, start drap-and-drop gesture
+            //Allow any transfer node
+            Dragboard db = sunPlantSide.startDragAndDrop(TransferMode.ANY);
+
+            //Put ImageView on dragboard
+            ClipboardContent cbContent = new ClipboardContent();
+            cbContent.putImage(sunPlantSide.getImage());
+            //cbContent.put(DataFormat.)
+            db.setContent(cbContent);
+            //sunPlantSide.setVisible(false);
+            ssFade();
+            event.consume();
+        }
+    });
+    sunPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            //the drag and drop gesture has ended
+            //if the data was successfully moved, clear it
+            if(event.getTransferMode() == TransferMode.MOVE){
+                sunPlantSide.setVisible(false);
+            }
+            event.consume();
+        }
+    });
+    peaPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
+        public void handle(MouseEvent event) {
+            //Drag was detected, start drap-and-drop gesture
+            //Allow any transfer node
+            Dragboard db = peaPlantSide.startDragAndDrop(TransferMode.ANY);
+
+            //Put ImageView on dragboard
+            ClipboardContent cbContent = new ClipboardContent();
+            cbContent.putImage(peaPlantSide.getImage());
+            //cbContent.put(DataFormat.)
+            db.setContent(cbContent);
+            //sunPlantSide.setVisible(false);
+            spFade();
+            event.consume();
+        }
+    });
+    peaPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            //the drag and drop gesture has ended
+            //if the data was successfully moved, clear it
+            if(event.getTransferMode() == TransferMode.MOVE){
+                peaPlantSide.setVisible(false);
+            }
+            event.consume();
+        }
+    });
+    cornBreadSide.setOnDragDetected(new EventHandler<MouseEvent>() {
+        public void handle(MouseEvent event) {
+            //Drag was detected, start drap-and-drop gesture
+            //Allow any transfer node
+            Dragboard db = cornBreadSide.startDragAndDrop(TransferMode.ANY);
+
+            //Put ImageView on dragboard
+            ClipboardContent cbContent = new ClipboardContent();
+            cbContent.putImage(cornBreadSide.getImage());
+            //cbContent.put(DataFormat.)
+            db.setContent(cbContent);
+            //sunPlantSide.setVisible(false);
+            cbFade();
+            event.consume();
+        }
+    });
+    cornBreadSide.setOnDragDone(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            //the drag and drop gesture has ended
+            //if the data was successfully moved, clear it
+            if(event.getTransferMode() == TransferMode.MOVE){
+                cornBreadSide.setVisible(false);
+            }
+            event.consume();
+        }
+    });
 
     }
 

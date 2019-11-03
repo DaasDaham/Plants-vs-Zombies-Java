@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="MainMenu.jar" size="10295487" download="eager" />
+    <jar href="MainMenu.jar" size="10301168" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="mainmenu.MainMenu"  name="MainMenu" />
   <update check="always"/>
