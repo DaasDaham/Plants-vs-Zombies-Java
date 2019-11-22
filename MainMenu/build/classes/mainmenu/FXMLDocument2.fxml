@@ -59,7 +59,7 @@
             <Image url="@Images/fin.gif" />
           </image>
         </ImageView>
-        <ImageView fx:id="pea1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <ImageView fx:id="pea1" GridPane.columnIndex="1" GridPane.rowIndex="0">
           <image>
             <Image url="@Images/ProjectilePea_1.png" />
           </image>

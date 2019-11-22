@@ -177,6 +177,9 @@ public class FXMLDocumentController2 implements Initializable {
             if(checkIntersect(pea1, z1)){
                 pea1.setOpacity(0);
             }
+            if(pea1.getTranslateX()==0){
+                pea1.setOpacity(1);
+            }
         });
 
 
@@ -187,14 +190,6 @@ public class FXMLDocumentController2 implements Initializable {
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
 
-        Runnable task3 = () -> {
-            pea1.setOpacity(1);
-        };
-
-        ScheduledExecutorService scheduler
-                = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task3, 0, 7,
-                TimeUnit.SECONDS);
         /*Runnable task2 = () -> {
             System.out.println("Sun Spawned");
             spawnSun();
