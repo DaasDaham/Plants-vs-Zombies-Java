@@ -181,12 +181,20 @@ public class FXMLDocumentController2 implements Initializable {
 
 
         tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(1));
+        tt.setDuration(Duration.seconds(7));
         tt.setToX(1000);
         tt.setNode(pea1);
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
 
+        Runnable task3 = () -> {
+            pea1.setOpacity(1);
+        };
+
+        ScheduledExecutorService scheduler
+                = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(task3, 0, 7,
+                TimeUnit.SECONDS);
         /*Runnable task2 = () -> {
             System.out.println("Sun Spawned");
             spawnSun();
@@ -273,7 +281,7 @@ public class FXMLDocumentController2 implements Initializable {
             }
         });
         tt4 = new TranslateTransition();
-        tt4.setDuration(Duration.seconds(10));
+        tt4.setDuration(Duration.seconds(30));
         tt4.setToX(-750);
         tt4.setNode(z1);
         tt4.play();
