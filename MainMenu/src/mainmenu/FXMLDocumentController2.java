@@ -191,6 +191,9 @@ public class FXMLDocumentController2 implements Initializable {
             if(pea1.getTranslateX()==0){
                 pea1.setOpacity(1);
             }
+            if(pea1.getTranslateX()==0){
+                pea1.setOpacity(1);
+            }
         });
 
 
