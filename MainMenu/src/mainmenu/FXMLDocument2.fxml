@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainmenu.FXMLDocumentController2">
+<AnchorPane id="AnchorPane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmenu.FXMLDocumentController2">
   <children>
     <AnchorPane fx:id="igm" layoutX="341.0" layoutY="47.0" opacity="1.0" prefHeight="438.0" prefWidth="582.0" style="-fx-background-size: 1200 900;&#10;-fx-background-radius: 30;&#10;-fx-border-radius: 30;&#10;-fx-border-width:5;&#10;-fx-border-color: #ccffcc;&#10;-fx-background-color: #ccffcc;">
       <children>
@@ -42,7 +37,7 @@
         <Button fx:id="igmCloseBut" layoutX="500.0" layoutY="5.0" mnemonicParsing="false" onAction="#igmclose" style="#record-sales {&#10;    -fx-padding: 8 15 15 15;&#10;    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;&#10;    -fx-background-radius: 8;&#10;    -fx-background-color: &#10;        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),&#10;        #9d4024,&#10;        #d86e3a,&#10;        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);&#10;    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );&#10;    -fx-font-weight: bold;&#10;    -fx-font-size: 1.1em;&#10;}&#10;#record-sales:hover {&#10;    -fx-background-color: &#10;        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),&#10;        #9d4024,&#10;        #d86e3a,&#10;        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);&#10;}" text="Close" />
       </children>
     </AnchorPane>
-    <ImageView fitHeight="598.0" fitWidth="1108.5846810014098" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <ImageView fx:id="lawn" fitHeight="598.0" fitWidth="1108.5846810014098" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
         <Image url="@Images/backyard.jpg" />
       </image>
@@ -59,7 +54,7 @@
             <Image url="@Images/fin.gif" />
           </image>
         </ImageView>
-        <ImageView fx:id="pea1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <ImageView fx:id="pea1" GridPane.columnIndex="1" GridPane.rowIndex="0">
           <image>
             <Image url="@Images/ProjectilePea_1.png" />
           </image>
@@ -80,16 +75,11 @@
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="89.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="154.0" minHeight="0.0" prefHeight="88.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="99.60001373291016" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="101.80000000000001" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="116.19999999999999" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="106.00001220703126" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="113.5999633789063" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
     <ImageView fx:id="lm1" fitHeight="94.5" fitWidth="126.0" layoutX="185.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">

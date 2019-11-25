@@ -50,7 +50,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
-
+import javafx.scene.layout.HBox;
 /**
  *
  * @author saad
@@ -70,11 +70,15 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private ImageView pea1;
     @FXML
+    private ImageView lawn;
+    @FXML
     private ImageView lm1;
     @FXML
     private ImageView sun;
     @FXML
     private ImageView lm2;
+    @FXML
+    private ImageView imageView;
     @FXML
     private ImageView lm3;
     @FXML
@@ -85,6 +89,8 @@ public class FXMLDocumentController2 implements Initializable {
     private Button pauseButton;
     @FXML
     private AnchorPane igm;
+    @FXML
+    private GridPane mainGrid;
     @FXML
     private double x;
     @FXML
@@ -171,11 +177,19 @@ public class FXMLDocumentController2 implements Initializable {
         timer = new Timer(); 
         //TimerTask task = new Helper(); 	
 	  //  timer.schedule(task, 0, 1000);
-        
+        ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Images/ProjectilePea_1.png")));
+        mainGrid.getChildren().add(image);
+        GridPane.setConstraints(image, 3, 4 );
+        //pic.toFront();
+        //hb.toFront();
    
         pea1.translateXProperty().addListener((Observable observable) -> {
             if(checkIntersect(pea1, z1)){
                 pea1.setOpacity(0);
+                GridPane.setConstraints(pea1, 3, 0);
+            }
+            if(pea1.getTranslateX()==0){
+                pea1.setOpacity(1);
             }
         });
 
@@ -187,14 +201,6 @@ public class FXMLDocumentController2 implements Initializable {
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
 
-        Runnable task3 = () -> {
-            pea1.setOpacity(1);
-        };
-
-        ScheduledExecutorService scheduler
-                = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task3, 0, 7,
-                TimeUnit.SECONDS);
         /*Runnable task2 = () -> {
             System.out.println("Sun Spawned");
             spawnSun();
