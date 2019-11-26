@@ -51,6 +51,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 /**
  *
  * @author saad
@@ -78,8 +79,6 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private ImageView lm2;
     @FXML
-    private ImageView imageView;
-    @FXML
     private ImageView lm3;
     @FXML
     private ImageView lm4;
@@ -91,10 +90,6 @@ public class FXMLDocumentController2 implements Initializable {
     private AnchorPane igm;
     @FXML
     private GridPane mainGrid;
-    @FXML
-    private double x;
-    @FXML
-    private double y;
 
     @FXML
     private Button igmExitButton;
@@ -110,8 +105,6 @@ public class FXMLDocumentController2 implements Initializable {
     private Color x2;
     @FXML
     private Font x1;
-    @FXML
-    private Timeline translateAnimation;
 
     private Timer timer;
     @FXML
@@ -122,7 +115,6 @@ public class FXMLDocumentController2 implements Initializable {
         igm.toBack();
     }
     
-    @FXML
     private void ssFade() {
         FadeTransition fade = new FadeTransition();  
         fade.setDuration(Duration.millis(10000)); 
@@ -132,7 +124,6 @@ public class FXMLDocumentController2 implements Initializable {
         fade.play();
     }
 
-    @FXML
     private void spFade() {
         FadeTransition fade = new FadeTransition();  
         fade.setDuration(Duration.millis(10000)); 
@@ -142,7 +133,6 @@ public class FXMLDocumentController2 implements Initializable {
         fade.play();
     }
 
-    @FXML
     private void cbFade() {
         FadeTransition fade = new FadeTransition();  
         fade.setDuration(Duration.millis(10000)); 
@@ -177,9 +167,7 @@ public class FXMLDocumentController2 implements Initializable {
         timer = new Timer(); 
         //TimerTask task = new Helper(); 	
 	  //  timer.schedule(task, 0, 1000);
-        ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Images/ProjectilePea_1.png")));
-        mainGrid.getChildren().add(image);
-        GridPane.setConstraints(image, 3, 4 );
+        
         //pic.toFront();
         //hb.toFront();
    
@@ -325,6 +313,7 @@ public class FXMLDocumentController2 implements Initializable {
             Dragboard db = peaPlantSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(peaPlantSide.getImage());
+            cbContent.putUrl("Pea");
             db.setContent(cbContent);
             spFade();
             event.consume();
@@ -348,6 +337,72 @@ public class FXMLDocumentController2 implements Initializable {
     cornBreadSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
             event.consume();
+        }
+    });
+    mainGrid.setOnDragOver(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            if(event.getGestureSource() != mainGrid && event.getDragboard().hasImage()){
+                event.acceptTransferModes(TransferMode.MOVE);
+            }
+            event.consume();
+        }
+    });
+
+    mainGrid.setOnDragEntered(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            if(event.getGestureSource() != mainGrid && event.getDragboard().hasImage()){
+                mainGrid.setOpacity(0.7);
+                System.out.println("Drag entered");
+            }
+            event.consume();
+        }
+    });
+
+    mainGrid.setOnDragExited(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            mainGrid.setOpacity(1);
+
+            event.consume();
+        }
+    });
+
+    mainGrid.setOnDragDropped(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            Dragboard db = event.getDragboard();
+    boolean success = false;
+    ImageView img = new ImageView(db.getImage());
+    
+    Node node = event.getPickResult().getIntersectedNode();
+    if(node==null){
+            System.out.println("nodes null");
+
+    }
+    System.out.println(node);
+    
+    if(node != mainGrid && db.hasImage()){
+        System.out.println("nodes null");
+        Integer cIndex = GridPane.getColumnIndex(node);
+        Integer rIndex = GridPane.getRowIndex(node);
+        int x = cIndex == null ? 0 : cIndex;
+        int y = rIndex == null ? 0 : rIndex;
+        ImageView image;
+        System.out.println(db.getUrl());
+        if(db.getUrl().equals("Pea")){
+            image = new ImageView(new Image(getClass().getResourceAsStream("Images/plant_1.gif")));
+        }
+            else{
+            image = new ImageView(db.getImage());
+        }
+        image.setPreserveRatio(true);
+        image.setFitWidth(100);
+        Pane to_add = (Pane)node;
+        to_add.getChildren().add(image);
+
+        success = true;
+    }
+    event.setDropCompleted(success);
+
+    event.consume();
         }
     });
 
@@ -397,5 +452,11 @@ public class FXMLDocumentController2 implements Initializable {
             return true;
         }
         return false;
+    }
+    
+    public void bigOuf(ImageView image, int x, int y){
+        //ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Images/ProjectilePea_1.png")));
+        mainGrid.getChildren().add(image);
+        GridPane.setConstraints(image, x, y );
     }
 }
