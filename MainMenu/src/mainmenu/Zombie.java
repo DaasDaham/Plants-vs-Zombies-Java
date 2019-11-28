@@ -58,3 +58,24 @@ class NormalZombie extends Zombie{
         System.out.println("new normalzonmbie spawnde");
     }   
 }
+class FlyingZombie extends Zombie{
+    public FlyingZombie(){
+        super();
+        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/fly_zombie.gif")));
+        System.out.println("new flyingzonmbie spawnde");
+    }
+}
+class BucketZombie extends Zombie{
+    public BucketZombie(){
+        super();
+        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/bucket_zombie.gif")));
+        System.out.println("new flyingzonmbie spawnde");
+    }
+}
+class FlagZombie extends Zombie{
+    public FlagZombie(){
+        super();
+        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/flag_zombie.jfif")));
+        System.out.println("new flagzonmbie spawnde");
+    }
+}
