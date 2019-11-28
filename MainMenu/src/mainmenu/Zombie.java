@@ -26,7 +26,7 @@ public class Zombie {
     //private Plant currPlant;
     
     public Zombie(){
-        lane = randLane();
+        lane = 1;
     }
     
     public void startTranslation(){
