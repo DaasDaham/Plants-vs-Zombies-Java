@@ -49,6 +49,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -110,6 +111,7 @@ public class FXMLDocumentController2 implements Initializable {
     private Timer timer;
     @FXML
     private Button igmCloseBut;
+    public Zombie damnZombie;
 
     @FXML
     private void igmclose(ActionEvent event) {
@@ -386,19 +388,35 @@ public class FXMLDocumentController2 implements Initializable {
         Integer rIndex = GridPane.getRowIndex(node);
         int x = cIndex == null ? 0 : cIndex;
         int y = rIndex == null ? 0 : rIndex;
-        ImageView image;
+        /*ImageView image;
         System.out.println(db.getUrl());
+        Plant p;
         if(db.getUrl().equals("Pea")){
-            image = new ImageView(new Image(getClass().getResourceAsStream("Images/plant_1.gif")));
+            p = new PeaPlant();
+            image = p.getImage();
         }
             else{
-            image = new ImageView(db.getImage());
+            p = new PeaPlant();
+            image = p.getImage();
         }
         image.setPreserveRatio(true);
         image.setFitWidth(100);
-        Pane to_add = (Pane)node;
-        to_add.getChildren().add(image);
-
+        ImageView bulletImage = p.getImage();*/
+        Plant p = new PeaPlant();
+        p.setZombie(damnZombie);
+        BorderPane to_add = (BorderPane)node;
+        ImageView plantimg = p.getImage();
+        ImageView peaimg = p.getBullet();
+        plantimg.setPreserveRatio(true);
+        plantimg.setFitWidth(100);
+        peaimg.setPreserveRatio(true);
+        peaimg.setFitWidth(30);
+        //peaimg.setStyle("-fx-alignment: CENTER;");
+        //to_add.getChildren().add(pla);
+        to_add.getChildren().add(plantimg);
+        to_add.setCenter(peaimg);
+        //to_add.getChildren().add(p.getBullet());
+        p.attack();
         success = true;
     }
     event.setDropCompleted(success);
@@ -456,6 +474,7 @@ public class FXMLDocumentController2 implements Initializable {
     }
     
     public void addZombie(Zombie z){
+        damnZombie = z;
         ImageView zombImg = z.getImage();
         System.out.println("this is in c class zombe");
         zombImg.setPreserveRatio(true);
