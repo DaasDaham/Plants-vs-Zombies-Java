@@ -75,24 +75,29 @@ public class Sun {
     public void spawnSun()
     {
         Random random = new Random();
-        int ranX = random.nextInt(700); // random value from 0 to width
-        int ranY = random.nextInt(500); // random value from 0 to width
+        int ranX = random.nextInt(750); // random value from 0 to width
+        int ranY = random.nextInt(520); // random value from 0 to width
+        if(sunimage.getLayoutY()!=-200)
+        {
+            sunimage.setLayoutY(-200);
+        }
         /*tt3.setNode(sunimage);
         sunimage.setLayoutX(ranX+200);
         System.out.println(sunimage.getX() + " " + sunimage.getY());
         tt3.setDuration(Duration.seconds(2));
         tt3.setToY(ranY+300);
         tt3.play();*/
-        sunimage.setLayoutX(ranX+200);
-        sunimage.setTranslateY(ranY+200);
+        System.out.println((ranX+300)+" "+(ranY+50));
+        sunimage.setLayoutX(ranX+300);
+        sunimage.setLayoutY(ranY+50);
     }
     public void checkClick()
     {
         this.sunimage.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println("Clicked");
-                sunimage.setTranslateY(-200);
+                System.out.println("Sun Collected");
+                sunimage.setLayoutY(-200);
                 count+=25;
                 sunCount.setText(""+count);
             }
