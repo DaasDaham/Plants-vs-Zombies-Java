@@ -90,6 +90,8 @@ public class FXMLDocumentController2 implements Initializable {
     private AnchorPane igm;
     @FXML
     private GridPane mainGrid;
+    @FXML
+    private AnchorPane sunpane;
 
     @FXML
     private Button igmExitButton;
@@ -161,6 +163,7 @@ public class FXMLDocumentController2 implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        Sun s = new Sun(sunpane);
         igm.toBack();
         sunCount.setText(""+count);
         progBar.setProgress(0);
@@ -192,16 +195,15 @@ public class FXMLDocumentController2 implements Initializable {
         tt.setCycleCount( Timeline.INDEFINITE );
         tt.play();
 
-        /*Runnable task2 = () -> {
+        Runnable task2 = () -> {
             System.out.println("Sun Spawned");
-            spawnSun();
-        };*/
+            s.spawnSun();
+        };
         
-
-        /*ScheduledExecutorService scheduler
+        ScheduledExecutorService scheduler
                 = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 0, 10,
-                TimeUnit.SECONDS);*/
+        scheduler.scheduleAtFixedRate(task2, 10, 5,
+                TimeUnit.SECONDS);
 
 
         lm1.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -432,20 +434,6 @@ public class FXMLDocumentController2 implements Initializable {
         appStage1.close();*/
 
     }
-    /*private void spawnSun()
-    {
-            Random random = new Random();
-            int ranX = random.nextInt(700); // random value from 0 to width
-
-            tt3 = new TranslateTransition();
-            tt3.setNode(sun);
-            sun.setX(400);
-            System.out.println(sun.getX() + " " + sun.getY());
-            tt3.setDuration(Duration.seconds(5));
-            tt3.setToY(400);
-            tt3.play();
-    }*/   
-    
     private boolean checkIntersect(ImageView v1, ImageView v2){
         if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             System.out.println("intersection");
