@@ -57,7 +57,6 @@ import javafx.scene.layout.Pane;
  * @author saad
  */
 public class FXMLDocumentController2 implements Initializable {
-    int count=50;
     @FXML
     private Label sunCount;
     @FXML
@@ -163,9 +162,8 @@ public class FXMLDocumentController2 implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        Sun s = new Sun(sunpane);
+        Sun s = new Sun(sunpane,sunCount);
         igm.toBack();
-        sunCount.setText(""+count);
         progBar.setProgress(0);
         timer = new Timer(); 
         //TimerTask task = new Helper(); 	

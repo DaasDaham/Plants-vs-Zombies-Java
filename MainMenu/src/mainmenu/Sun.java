@@ -56,10 +56,13 @@ public class Sun {
     @FXML
     private TranslateTransition tt3;
     private ImageView sunimage;
-    public Sun(AnchorPane mainGrid)
+    private int count=0;
+    private Label sunCount;
+    public Sun(AnchorPane mainGrid, Label suncounter)
     {
         Image image = new Image(getClass().getResourceAsStream("Images/Sun_PvZ2.png"));
         this.sunimage = new  ImageView(image);
+        this.sunCount=suncounter;
         sunimage.setLayoutX(0);
         sunimage.setLayoutY(-200);
         sunimage.toFront();
@@ -90,6 +93,8 @@ public class Sun {
             public void handle(MouseEvent mouseEvent) {
                 System.out.println("Clicked");
                 sunimage.setTranslateY(-200);
+                count+=25;
+                sunCount.setText(""+count);
             }
         });
     }
