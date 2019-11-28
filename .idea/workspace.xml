@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a19bf0f-eb85-40c1-ad43-89fe15a2b451" name="Default Changelist" comment="">
+    <list default="true" id="9a19bf0f-eb85-40c1-ad43-89fe15a2b451" name="Default Changelist" comment="zombies added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/Images/clipart2740226.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/Images/kisspng-plants-vs-zombies-2-it-s-about-time-plants-vs-z-walnut-5abb307da631f0.8009952915222170856808.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocument2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocument2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$Helper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2$Helper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/FXMLDocumentController2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/Images/clipart2740226.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/Images/kisspng-plants-vs-zombies-2-it-s-about-time-plants-vs-z-walnut-5abb307da631f0.8009952915222170856808.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/Sun$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/Sun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainMenu/mainmenu/Zombie.class" afterDir="false" />
     </list>
     <list id="d4ee76d1-a28d-4bb6-8679-575b5a710d73" name="plot of parkinson" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -33,7 +62,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
+            <state relative-caret-position="627">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -46,29 +75,19 @@
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3762">
-              <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+            <state relative-caret-position="618">
+              <caret line="231" column="25" selection-start-line="231" selection-start-column="25" selection-end-line="231" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="366" column="9" lean-forward="true" selection-start-line="366" selection-start-column="9" selection-end-line="366" selection-end-column="9" />
+            <state relative-caret-position="536">
+              <caret line="472" column="26" selection-start-line="472" selection-start-column="20" selection-end-line="472" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3071#3072#0" expanded="true" />
-                <element signature="e#3099#3100#0" expanded="true" />
-                <element signature="e#8854#8855#0" expanded="true" />
-                <element signature="e#8893#8894#0" expanded="true" />
-                <element signature="e#9467#9468#0" expanded="true" />
-                <element signature="e#9506#9507#0" expanded="true" />
-                <element signature="e#10047#10048#0" expanded="true" />
-                <element signature="e#10086#10087#0" expanded="true" />
-                <element signature="e#12551#12552#0" expanded="true" />
-                <element signature="e#12580#12581#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-283">
-              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+            <state relative-caret-position="100">
+              <caret line="61" column="15" selection-start-line="61" selection-start-column="15" selection-end-line="61" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,11 +108,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1273">
-              <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#260#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="130">
+              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Plant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="160" column="33" selection-start-line="160" selection-start-column="33" selection-end-line="160" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -125,6 +150,10 @@
       <find>count</find>
       <find>zombie</find>
       <find>addZom</find>
+      <find>addzom</find>
+      <find>damn</find>
+      <find>setZom</find>
+      <find>constr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,9 +171,10 @@
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/MainMenu.java" />
-        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" />
-        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java" />
+        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" />
+        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" />
+        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Plant.java" />
       </list>
     </option>
   </component>
@@ -158,7 +188,46 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AP-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainMenu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AP-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainMenu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AP-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainMenu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mainmenu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AP-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainMenu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mainmenu" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AP-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainMenu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mainmenu" type="462c0819:PsiDirectoryNode" />
+              <item name="Plant.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -262,6 +331,8 @@
       <workItem from="1574918661856" duration="2561000" />
       <workItem from="1574931737745" duration="600000" />
       <workItem from="1574960809909" duration="1726000" />
+      <workItem from="1574967478365" duration="1922000" />
+      <workItem from="1574973955948" duration="368000" />
     </task>
     <task id="LOCAL-00001" summary="lawnmower">
       <created>1572622319511</created>
@@ -274,13 +345,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69350000" />
+    <option name="totallyTimeSpent" value="71640000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.19140625" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19140625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -387,7 +457,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lawnmower" />
-    <option name="LAST_COMMIT_MESSAGE" value="lawnmower" />
+    <MESSAGE value="zombies added" />
+    <option name="LAST_COMMIT_MESSAGE" value="zombies added" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://D:/javafx/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/application/Application.class">
@@ -450,17 +521,9 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3762">
-          <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
+        <state relative-caret-position="627">
           <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -470,41 +533,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+        <state relative-caret-position="130">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="231" column="25" selection-start-line="231" selection-start-column="25" selection-end-line="231" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="472" column="26" selection-start-line="472" selection-start-column="20" selection-end-line="472" selection-end-column="26" />
           <folding>
-            <element signature="e#0#260#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-283">
-          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+        <state relative-caret-position="100">
+          <caret line="61" column="15" selection-start-line="61" selection-start-column="15" selection-end-line="61" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java">
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Plant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="366" column="9" lean-forward="true" selection-start-line="366" selection-start-column="9" selection-end-line="366" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3071#3072#0" expanded="true" />
-            <element signature="e#3099#3100#0" expanded="true" />
-            <element signature="e#8854#8855#0" expanded="true" />
-            <element signature="e#8893#8894#0" expanded="true" />
-            <element signature="e#9467#9468#0" expanded="true" />
-            <element signature="e#9506#9507#0" expanded="true" />
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10086#10087#0" expanded="true" />
-            <element signature="e#12551#12552#0" expanded="true" />
-            <element signature="e#12580#12581#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="415">
+          <caret line="160" column="33" selection-start-line="160" selection-start-column="33" selection-end-line="160" selection-end-column="33" />
         </state>
       </provider>
     </entry>

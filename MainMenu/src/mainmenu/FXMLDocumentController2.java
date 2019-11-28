@@ -112,6 +112,7 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private Button igmCloseBut;
     public Zombie damnZombie;
+    public FlagZombie dZombie;
 
     @FXML
     private void igmclose(ActionEvent event) {
@@ -433,7 +434,6 @@ public class FXMLDocumentController2 implements Initializable {
             }
         });*/
     }
-
 
     @FXML
     private void handlePauseButton(ActionEvent event) {

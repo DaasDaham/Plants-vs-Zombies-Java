@@ -13,6 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author saad
@@ -88,6 +92,77 @@ class PeaPlant extends Plant{
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
         
+        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+            //System.out.println("intersection");
+            return true;
+        }
+        return false;
+    }
+}
+class WalnutPlant extends Plant{
+
+    public WalnutPlant(){
+        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/walnut.png")));
+        peaBullet = new ImageView(new Image(getClass().getResourceAsStream("transparent.jfif")));
+        tt = new TranslateTransition();
+    }
+    public void attack(){
+
+    }
+    private boolean checkIntersect(ImageView v1, ImageView v2){
+
+        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+            //System.out.println("intersection");
+            return true;
+        }
+        return false;
+    }
+}
+class SunFlowerPlant extends Plant{
+
+    public SunFlowerPlant(){
+        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/sunflower.png")));
+        //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
+        tt = new TranslateTransition();
+    }
+    public void attack(){
+        Sun s= new Sun(/*enter the x,y here*/);
+        Runnable task2 = () -> {
+            System.out.println("Sun Spawned");
+            s.spawnsunforflower();
+        };
+
+        ScheduledExecutorService scheduler
+                = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(task2, 0, 20,
+                TimeUnit.SECONDS);
+    }
+    private boolean checkIntersect(ImageView v1, ImageView v2){
+
+        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+            //System.out.println("intersection");
+            return true;
+        }
+        return false;
+    }
+}
+class CherryBombPlant extends Plant{
+
+    public CherryBombPlant(){
+        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/cherry_bomb.png")));
+        //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
+        tt = new TranslateTransition();
+    }
+    public void attack(){
+        /* Check of imtersect with zombie*/
+        ImageView explode = new ImageView(new Image(getClass().getResourceAsStream("Images/explosion.png")));
+        int x;
+        int y;
+        //x,y same as cherry bomb
+        GridPane.setConstraints(explode,x,y);
+    }
+    private boolean checkIntersect(ImageView v1, ImageView v2){
+
         if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
             //System.out.println("intersection");
             return true;

@@ -59,6 +59,13 @@ public class Sun {
     private int count=0;
     private Label sunCount;
     private GridPane mg;
+    public Sun(int x,int y)
+    {
+        Image image = new Image(getClass().getResourceAsStream("Images/Sun_PvZ2.png"));
+        this.sunimage = new ImageView(image);
+        sunimage.toFront();
+        GridPane.setConstraints(sunimage,x,y);
+    }
     public Sun(GridPane mainGrid, Label suncounter)
     {
         Image image = new Image(getClass().getResourceAsStream("Images/Sun_PvZ2.png"));
@@ -112,6 +119,10 @@ public class Sun {
         
         System.out.println(sunimage.getLayoutX()+" "+sunimage.getLayoutY());
         
+    }
+    public void spawnsunforflower()
+    {
+
     }
     public void checkClick()
     {
