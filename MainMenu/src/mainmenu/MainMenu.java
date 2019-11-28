@@ -23,19 +23,18 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
         Parent root = loader.load();
 
         FXMLDocumentController2 controller = loader.getController();
         Image image = new Image(getClass().getResourceAsStream("ProjectilePea_1.png"));
-        ImageView imageView = new ImageView(image);
-
+        Zombie lol1 = new NormalZombie();
         //controller.bigOuf(imageView, 2, 5);
        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         
-        
+        controller.addZombie(lol1);
         
         stage.show();
         /*primaryStage.setTitle("ImageView Experiment 1");

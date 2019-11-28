@@ -454,4 +454,14 @@ public class FXMLDocumentController2 implements Initializable {
         mainGrid.getChildren().add(image);
         GridPane.setConstraints(image, x, y );
     }
+    
+    public void addZombie(Zombie z){
+        ImageView zombImg = z.getImage();
+        System.out.println("this is in c class zombe");
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(62);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,z.getLane());
+        z.startTranslation();
+    }
 }
