@@ -106,7 +106,7 @@ public class FXMLDocumentController2 implements Initializable {
     private Color x2;
     @FXML
     private Font x1;
-
+    
     private Timer timer;
     @FXML
     private Button igmCloseBut;
@@ -162,7 +162,7 @@ public class FXMLDocumentController2 implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        Sun s = new Sun(sunpane,sunCount);
+        Sun s = new Sun(mainGrid,sunCount);
         igm.toBack();
         progBar.setProgress(0);
         timer = new Timer(); 
@@ -195,12 +195,13 @@ public class FXMLDocumentController2 implements Initializable {
 
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
+           
             s.spawnSun();
         };
         
         ScheduledExecutorService scheduler
                 = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 10, 5,
+        scheduler.scheduleAtFixedRate(task2, 10, 20,
                 TimeUnit.SECONDS);
 
 
@@ -442,7 +443,7 @@ public class FXMLDocumentController2 implements Initializable {
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
         if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
-            System.out.println("intersection");
+            //System.out.println("intersection");
             return true;
         }
         return false;

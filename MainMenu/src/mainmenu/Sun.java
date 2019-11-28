@@ -58,26 +58,32 @@ public class Sun {
     private ImageView sunimage;
     private int count=0;
     private Label sunCount;
-    public Sun(AnchorPane mainGrid, Label suncounter)
+    private GridPane mg;
+    public Sun(GridPane mainGrid, Label suncounter)
     {
         Image image = new Image(getClass().getResourceAsStream("Images/Sun_PvZ2.png"));
-        this.sunimage = new  ImageView(image);
+        this.sunimage = new ImageView(image);
         this.sunCount=suncounter;
-        sunimage.setLayoutX(0);
-        sunimage.setLayoutY(-200);
+        mg = mainGrid;
+        sunimage.setTranslateX(200);
+        sunimage.setTranslateY(0);
         sunimage.toFront();
         sunimage.setFitWidth(50);
         sunimage.setFitHeight(50);
         sunimage.setId("sooraj");
-        mainGrid.getChildren().add(sunimage);
         sunimage.setOnMouseClicked(event1 -> checkClick());
+        mainGrid.getChildren().add(sunimage);
+        sunimage.setOpacity(0);
     }
     public void spawnSun()
     {
+        sunimage.setOpacity(1);
         Random random = new Random();
-        int ranX = random.nextInt(750); // random value from 0 to width
-        int ranY = random.nextInt(520); // random value from 0 to width
-        if(sunimage.getLayoutY()!=-200)
+        int ranX = random.nextInt(7); // random value from 0 to width
+        int ranY = random.nextInt(5); // random value from 0 to width
+        GridPane.setConstraints(sunimage, ranX, ranY);
+        System.out.println(ranX+" "+ranY);
+        /*if(sunimage.getLayoutY()!=-200)
         {
             sunimage.setLayoutY(-200);
         }
@@ -86,10 +92,26 @@ public class Sun {
         System.out.println(sunimage.getX() + " " + sunimage.getY());
         tt3.setDuration(Duration.seconds(2));
         tt3.setToY(ranY+300);
-        tt3.play();*/
+        tt3.play();
         System.out.println((ranX+300)+" "+(ranY+50));
         sunimage.setLayoutX(ranX+300);
-        sunimage.setLayoutY(ranY+50);
+        sunimage.setLayoutY(ranY+50);*/
+    }
+    public void dropSun(){
+        System.out.println(sunimage.getLayoutX()+" "+sunimage.getLayoutY());
+        //sunimage.setTranslateX(500);
+        //sunimage.setTranslateY(0);
+        sunimage.translateYProperty().addListener((Observable observable) -> {
+            System.out.println(sunimage.getTranslateX()+" inside "+sunimage.getTranslateY());
+        });
+        tt3 = new TranslateTransition();
+        tt3.setDuration(Duration.seconds(20));
+        tt3.setToY(500);
+        tt3.setNode(sunimage);
+        tt3.play();
+        
+        System.out.println(sunimage.getLayoutX()+" "+sunimage.getLayoutY());
+        
     }
     public void checkClick()
     {
@@ -98,7 +120,7 @@ public class Sun {
             public void handle(MouseEvent mouseEvent) {
                 System.out.println("Sun Collected");
                 sunimage.setLayoutY(-200);
-                count+=25;
+                sunimage.setOpacity(0);
                 sunCount.setText(""+count);
             }
         });
