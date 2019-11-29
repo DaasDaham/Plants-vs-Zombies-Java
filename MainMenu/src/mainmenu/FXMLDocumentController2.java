@@ -406,9 +406,13 @@ public class FXMLDocumentController2 implements Initializable {
             peaimg.setFitWidth(30);
         //peaimg.setStyle("-fx-alignment: CENTER;");
         //to_add.getChildren().add(pla);
-            to_add.getChildren().add(plantimg);
-            to_add.setCenter(peaimg);
+            //to_add.getChildren().add(plantimg);
+            //to_add.setCenter(peaimg);
         //to_add.getChildren().add(p.getBullet());
+        mainGrid.getChildren().add(plantimg);
+        GridPane.setConstraints(plantimg, x, y);
+        mainGrid.getChildren().add(peaimg);
+        GridPane.setConstraints(peaimg, x, y);
             p.attack(mainGrid);
             success = true;
         }

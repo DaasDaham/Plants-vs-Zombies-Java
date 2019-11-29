@@ -88,9 +88,10 @@ class PeaPlant extends Plant{
     public void attack(GridPane mainGrid){
         peaBullet.translateXProperty().addListener((Observable observable) -> {
             //System.out.println(currZombie.getImage().getTranslateX());
+            
             if(currZombie!=null){
             if(checkIntersect(peaBullet, currZombie.getImage(),false)){
-                //System.out.println("intersected");
+                System.out.println("intersected");
                 currZombie.takeDamage();
                 if(currZombie.getHealth()<=0){
                     mainGrid.getChildren().remove(currZombie.getImage());
@@ -109,8 +110,9 @@ class PeaPlant extends Plant{
             }
             
         });
+        
         tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(7));
+        tt.setDuration(Duration.seconds(6));
         tt.setToX(1000);
         tt.setNode(peaBullet);
         tt.setCycleCount( Timeline.INDEFINITE );
@@ -125,7 +127,7 @@ class PeaPlant extends Plant{
             //System.out.println("this is null block");
             //System.out.println(v1.toString());
         }
-        if(checker==0 && v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+        if(checker==0 && v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             checker++;
             //System.out.println("intersection");
             return true;
@@ -145,7 +147,7 @@ class WalnutPlant extends Plant{
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
 
-        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+        if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             //System.out.println("intersection");
             return true;
         }
@@ -173,7 +175,7 @@ class SunFlowerPlant extends Plant{
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
 
-        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+        if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             //System.out.println("intersection");
             return true;
         }

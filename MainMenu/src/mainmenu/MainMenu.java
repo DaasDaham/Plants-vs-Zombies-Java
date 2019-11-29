@@ -38,9 +38,9 @@ public class MainMenu extends Application {
         stage.setScene(scene);
         
         controller.addZombie(lol1);
-        controller.addZombie(flyi);
-        controller.addZombie(flagi);
-        controller.addZombie(bucketi);
+        //controller.addZombie(flyi);
+        //controller.addZombie(flagi);
+        //controller.addZombie(bucketi);
         stage.show();
         /*primaryStage.setTitle("ImageView Experiment 1");
 
