@@ -115,8 +115,6 @@ class FlyingZombie extends Zombie{
         this.maxHealth=200;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/fly_zombie.gif")));
         System.out.println("new flyingzonmbie spawnde");
-        zImg.setScaleX(1.2);
-        zImg.setScaleY(1.3);
     }
 }
 class BucketZombie extends Zombie{
@@ -125,8 +123,6 @@ class BucketZombie extends Zombie{
         this.maxHealth=150;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/bucket_zombie.gif")));
         System.out.println("new flyingzonmbie spawnde");
-        zImg.setScaleX(1.2);
-        zImg.setScaleY(1.5);
     }
 }
 class FlagZombie extends Zombie{
@@ -134,10 +130,6 @@ class FlagZombie extends Zombie{
         super();
         this.maxHealth=125;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/flag_zombie.gif")));
-        zImg.setFitHeight(1000);
-        zImg.setFitWidth(150);
-        zImg.setScaleX(1.2);
-        zImg.setScaleY(1.2);
         System.out.println("new flagzonmbie spawnde");
     }
 }

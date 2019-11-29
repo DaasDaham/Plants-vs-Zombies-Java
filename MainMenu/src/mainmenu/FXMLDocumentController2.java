@@ -58,6 +58,7 @@ import javafx.scene.layout.Pane;
  * @author saad
  */
 public class FXMLDocumentController2 implements Initializable {
+    int i=0;
     @FXML
     private Label sunCount;
     @FXML
@@ -281,21 +282,13 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
+        mainGrid.getChildren().add(z1);
+        GridPane.setConstraints(z1,9,2);
         tt4 = new TranslateTransition();
         tt4.setDuration(Duration.seconds(30));
         tt4.setToX(-750);
         tt4.setNode(z1);
         tt4.play();
-        /*sun.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
-            @Override
-            public void handle(MouseEvent event) {
-                count+=25;
-                sunCount.setText(""+count);
-                sun.setY(-500);
-                
-            }
-        });*/
         
         sunPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
@@ -451,8 +444,15 @@ public class FXMLDocumentController2 implements Initializable {
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
         if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
+            System.out.println("intersection   "+i);
+            i++;
             //System.out.println("intersection");
             return true;
+        }
+        else
+        {
+            i=0;
+            return false;
         }
         return false;
     }
@@ -468,6 +468,8 @@ public class FXMLDocumentController2 implements Initializable {
         damnZombie = z;
         System.out.println("this is in c class zombe");
         zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
         zombImg.setFitWidth(50);
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,z.getLane());

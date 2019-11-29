@@ -132,6 +132,7 @@ public class Sun {
                 System.out.println("Sun Collected");
                 sunimage.setLayoutY(-200);
                 sunimage.setOpacity(0);
+                count+=50;
                 sunCount.setText(""+count);
             }
         });
