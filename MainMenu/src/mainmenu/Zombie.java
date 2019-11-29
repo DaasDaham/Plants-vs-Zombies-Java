@@ -7,9 +7,11 @@ package mainmenu;
 
 import java.util.Random;
 import javafx.animation.TranslateTransition;
+import javafx.beans.Observable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
 /**
@@ -17,24 +19,62 @@ import javafx.util.Duration;
  * @author saad
  */
 public class Zombie {
-    protected double max_health;
-    protected double curr_health;
+    protected double maxHealth;
+    protected double currHealth;
     protected int lane;
     protected double xPos;
     protected boolean reachHouse;
     protected ImageView zImg; 
-    //private Plant currPlant;
+    protected int checker;
+    protected Plant currPlant;
     
     public Zombie(){
         lane = 1;
+        maxHealth = 100;
+        currHealth=100;
     }
     
-    public void startTranslation(){
+    public void startTranslation(GridPane mainGrid){
+         
+        
         TranslateTransition t = new TranslateTransition();
         t.setDuration(Duration.seconds(60));
         t.setToX(-750);
         t.setNode(zImg);
         t.play();
+        
+        zImg.translateXProperty().addListener((Observable observable) -> {
+            //System.out.println(currZombie.getImage().getTranslateX());
+            if(currPlant==null){
+                System.out.println("plant null");
+            }
+            if(checkIntersect(zImg, currPlant.getImage(),false)){
+                //System.out.println("intersected");
+                t.pause();
+                
+                //currPlant.takeDamage();
+                //if(currPlant.getHealth()<=0){
+                    mainGrid.getChildren().remove(currPlant.getImage());
+                    mainGrid.getChildren().remove(currPlant.getBullet());
+                //}
+            }       
+        });
+    }
+    
+    private boolean checkIntersect(ImageView v1, ImageView v2, boolean chek){
+        if(chek){
+            checker=0;
+        }
+        if(v1.getParent() == null){
+            //System.out.println("this is null block");
+            //System.out.println(v1.toString());
+        }
+        if(checker==0 && v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+            checker++;
+            //System.out.println("intersection");
+            return true;
+        }
+        return false;
     }
     
     public int randLane(){
@@ -48,6 +88,15 @@ public class Zombie {
     
     public int getLane(){
         return lane;
+    }
+    public void takeDamage(){
+        currHealth-=20;
+    }
+    public double getHealth(){
+        return currHealth;
+    }
+    public void attack(){
+        
     }
 }
 

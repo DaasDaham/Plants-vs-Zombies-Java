@@ -356,7 +356,6 @@ public class FXMLDocumentController2 implements Initializable {
         public void handle(DragEvent event) {
             if(event.getGestureSource() != mainGrid && event.getDragboard().hasImage()){
                 mainGrid.setOpacity(0.7);
-                System.out.println("Drag entered");
             }
             event.consume();
         }
@@ -376,15 +375,10 @@ public class FXMLDocumentController2 implements Initializable {
     boolean success = false;
     ImageView img = new ImageView(db.getImage());
     
-    Node node = event.getPickResult().getIntersectedNode();
-    if(node==null){
-            System.out.println("nodes null");
-
-    }
+    Node node = (Node)event.getTarget();
     System.out.println(node);
-    
     if(node != mainGrid && db.hasImage()){
-        System.out.println("nodes null");
+        
         Integer cIndex = GridPane.getColumnIndex(node);
         Integer rIndex = GridPane.getRowIndex(node);
         int x = cIndex == null ? 0 : cIndex;
@@ -417,7 +411,7 @@ public class FXMLDocumentController2 implements Initializable {
         to_add.getChildren().add(plantimg);
         to_add.setCenter(peaimg);
         //to_add.getChildren().add(p.getBullet());
-        p.attack();
+        p.attack(mainGrid);
         success = true;
     }
     event.setDropCompleted(success);
@@ -474,13 +468,13 @@ public class FXMLDocumentController2 implements Initializable {
     }
     
     public void addZombie(Zombie z){
-        damnZombie = z;
         ImageView zombImg = z.getImage();
+        damnZombie = z;
         System.out.println("this is in c class zombe");
         zombImg.setPreserveRatio(true);
-        zombImg.setFitWidth(62);
+        zombImg.setFitWidth(50);
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,z.getLane());
-        z.startTranslation();
+        z.startTranslation(mainGrid);
     }
 }
