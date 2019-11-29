@@ -439,6 +439,9 @@ public class FXMLDocumentController2 implements Initializable {
                 System.out.println(event.getSceneY());
             }
         });*/
+       //Special trying = new Thunder(mainGrid); // special 1
+       Special trying = new Laser(mainGrid); // special 1
+
     }
     @FXML
     private void handlePauseButton(ActionEvent event) {
