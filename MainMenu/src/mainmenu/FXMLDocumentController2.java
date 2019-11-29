@@ -70,6 +70,8 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private ImageView cornBreadSide;
     @FXML
+    private ImageView cherryBombSide;
+    @FXML
     private ImageView pea1;
     @FXML
     private ImageView lawn;
@@ -114,6 +116,7 @@ public class FXMLDocumentController2 implements Initializable {
     private Button igmCloseBut;
     public Zombie damnZombie;
     public FlagZombie dZombie;
+    public int[][] allPlants = new int[5][9];
 
     @FXML
     private void igmclose(ActionEvent event) {
@@ -295,12 +298,29 @@ public class FXMLDocumentController2 implements Initializable {
             Dragboard db = sunPlantSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(sunPlantSide.getImage());
+            cbContent.putUrl("Sun");
             db.setContent(cbContent);
             ssFade();
             event.consume();
         }
     });
     sunPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
+        public void handle(DragEvent event) {
+            event.consume();
+        }
+    });
+    cherryBombSide.setOnDragDetected(new EventHandler<MouseEvent>() {
+        public void handle(MouseEvent event) {
+            Dragboard db = cherryBombSide.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent cbContent = new ClipboardContent();
+            cbContent.putImage(cherryBombSide.getImage());
+            cbContent.putUrl("Cherry");
+            db.setContent(cbContent);
+            ssFade();
+            event.consume();
+        }
+    });
+    cherryBombSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
             event.consume();
         }
@@ -326,6 +346,7 @@ public class FXMLDocumentController2 implements Initializable {
             Dragboard db = cornBreadSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(cornBreadSide.getImage());
+            cbContent.putUrl("Walnut");
             db.setContent(cbContent);
             cbFade();
             event.consume();
@@ -374,37 +395,57 @@ public class FXMLDocumentController2 implements Initializable {
             Integer rIndex = GridPane.getRowIndex(node);
             int x = cIndex == null ? 0 : cIndex;
             int y = rIndex == null ? 0 : rIndex;
-        /*ImageView image;
-        System.out.println(db.getUrl());
-        Plant p;
-        if(db.getUrl().equals("Pea")){
-            p = new PeaPlant();
-            image = p.getImage();
-        }
-            else{
-            p = new PeaPlant();
-            image = p.getImage();
-        }
-        image.setPreserveRatio(true);
-        image.setFitWidth(100);
-        ImageView bulletImage = p.getImage();*/
-            Plant p = new PeaPlant();
-            p.setZombie(damnZombie);
-            BorderPane to_add = (BorderPane)node;
-            ImageView plantimg = p.getImage();
-            ImageView peaimg = p.getBullet();
-            plantimg.setPreserveRatio(true);
-            plantimg.setFitWidth(100);
-            peaimg.setPreserveRatio(true);
-            peaimg.setFitWidth(30);
-        //peaimg.setStyle("-fx-alignment: CENTER;");
-        //to_add.getChildren().add(pla);
-            to_add.getChildren().add(plantimg);
-            to_add.setCenter(peaimg);
-        //to_add.getChildren().add(p.getBullet());
-            p.attack(mainGrid);
+            if(allPlants[y][x]!=1){
+            if(db.getUrl().equals("Pea")){
+                Plant p = new PeaPlant();
+                p.setZombie(damnZombie);  //CHANGE THIS
+                ImageView plantimg = p.getImage();
+                ImageView peaimg = p.getBullet();
+                plantimg.setPreserveRatio(true);
+                plantimg.setFitWidth(70);
+                peaimg.setPreserveRatio(true);
+                peaimg.setFitWidth(30);
+                System.out.println(x+" "+y);
+                mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, x, y);
+                System.out.println(x+" "+y);
+                allPlants[y][x]=1;
+                p.attack(mainGrid);
+            }
+            else if(db.getUrl().equals("Sun")){
+                Plant p = new SunFlowerPlant();
+                p.setZombie(damnZombie);  //CHANGE THIS
+                ImageView plantimg = p.getImage();
+                plantimg.setPreserveRatio(true);
+                plantimg.setFitWidth(70);
+                mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                allPlants[y][x]=1;
+            }
+            else if(db.getUrl().equals("Walnut")){
+                Plant p = new WalnutPlant();
+                p.setZombie(damnZombie);  //CHANGE THIS
+                ImageView plantimg = p.getImage();
+                plantimg.setPreserveRatio(true);
+                plantimg.setFitWidth(70);
+                mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                allPlants[y][x]=1;
+            }
+            else if((db.getUrl().equals("Cherry"))){
+                Plant p = new CherryBombPlant();
+                p.setZombie(damnZombie);  //CHANGE THIS
+                ImageView plantimg = p.getImage();
+                plantimg.setPreserveRatio(true);
+                plantimg.setFitWidth(100);
+                mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                allPlants[y][x]=1;
+            }
             success = true;
-        }
+        }}
         event.consume();
         }
     });

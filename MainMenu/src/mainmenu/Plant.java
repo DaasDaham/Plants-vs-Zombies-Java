@@ -81,16 +81,17 @@ class PeaPlant extends Plant{
     private int checker = 0;
     public PeaPlant(){
         super();
-        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/plant_1.gif")));
+        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/PeaShooter.gif")));
         peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));  
         tt = new TranslateTransition();
     }
     public void attack(GridPane mainGrid){
         peaBullet.translateXProperty().addListener((Observable observable) -> {
             //System.out.println(currZombie.getImage().getTranslateX());
+            
             if(currZombie!=null){
             if(checkIntersect(peaBullet, currZombie.getImage(),false)){
-                //System.out.println("intersected");
+                System.out.println("intersected");
                 currZombie.takeDamage();
                 if(currZombie.getHealth()<=0){
                     mainGrid.getChildren().remove(currZombie.getImage());
@@ -109,8 +110,9 @@ class PeaPlant extends Plant{
             }
             
         });
+        
         tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(7));
+        tt.setDuration(Duration.seconds(6));
         tt.setToX(1000);
         tt.setNode(peaBullet);
         tt.setCycleCount( Timeline.INDEFINITE );
@@ -125,7 +127,7 @@ class PeaPlant extends Plant{
             //System.out.println("this is null block");
             //System.out.println(v1.toString());
         }
-        if(checker==0 && v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+        if(checker==0 && v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             checker++;
             //System.out.println("intersection");
             return true;
@@ -137,15 +139,15 @@ class WalnutPlant extends Plant{
 
     public WalnutPlant(){
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/walnut.png")));
-        peaBullet = new ImageView(new Image(getClass().getResourceAsStream("transparent.jfif")));
+        //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("transparent.jfif")));
         tt = new TranslateTransition();
     }
     public void attack(){
-
+        System.out.println("skadgba");
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
 
-        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+        if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             //System.out.println("intersection");
             return true;
         }
@@ -155,12 +157,12 @@ class WalnutPlant extends Plant{
 class SunFlowerPlant extends Plant{
 
     public SunFlowerPlant(){
-        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/sunflower.png")));
+        pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/Sunflower.gif")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
         tt = new TranslateTransition();
     }
     public void attack(){
-        Sun s= new Sun(xPos, yPos);
+        /*Sun s= new Sun(xPos, yPos);
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
            s.spawnsunforflower();
@@ -169,11 +171,12 @@ class SunFlowerPlant extends Plant{
         ScheduledExecutorService scheduler
                = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(task2, 0, 20,
-               TimeUnit.SECONDS);
+               TimeUnit.SECONDS);*/ //UNCOMMENT THIS
+        System.out.println("heloo");
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
 
-        if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){
+        if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
             //System.out.println("intersection");
             return true;
         }
@@ -187,15 +190,15 @@ class CherryBombPlant extends Plant{
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
         tt = new TranslateTransition();
     }
-    /*public void attack(){
+    public void attack(){
         // Check of imtersect with zombie
-        ImageView explode = new ImageView(new Image(getClass().getResourceAsStream("Images/explosion.png")));
+        /*ImageView explode = new ImageView(new Image(getClass().getResourceAsStream("Images/explosion.png")));
         int x;
         int y;
         //x,y same as cherry bomb
 
         GridPane.setConstraints(explode,x,y);
-    }*/
+    */System.out.println("asfa");}
 
         //GridPane.setConstraints(explode,getX(),getY());
     //}

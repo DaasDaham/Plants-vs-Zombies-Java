@@ -31,7 +31,7 @@ public class Zombie {
     public Zombie(){
         maxHealth = 100;
         currHealth=100;
-        lane = randLane();
+        lane = 1;
 
     }
     
