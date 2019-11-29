@@ -69,8 +69,11 @@ public class Plant {
     public void setY(int yPos){
         this.yPos = yPos;
     }
-    public void attack(GridPane mainGrid){
-        //
+
+    public void attack(GridPane mainGrid){}
+
+    public void attack(){
+     //
     }
 }
 
@@ -160,13 +163,13 @@ class SunFlowerPlant extends Plant{
         Sun s= new Sun(xPos, yPos);
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
-            s.spawnsunforflower();
+           s.spawnsunforflower();
         };
 
         ScheduledExecutorService scheduler
-                = Executors.newSingleThreadScheduledExecutor();
+               = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(task2, 0, 20,
-                TimeUnit.SECONDS);
+               TimeUnit.SECONDS);
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
 
@@ -190,8 +193,13 @@ class CherryBombPlant extends Plant{
         int x;
         int y;
         //x,y same as cherry bomb
+
         GridPane.setConstraints(explode,x,y);
     }*/
+
+        //GridPane.setConstraints(explode,getX(),getY());
+    //}
+
     private boolean checkIntersect(ImageView v1, ImageView v2){
 
         if(v1.getParent().getBoundsInParent().intersects(v2.getBoundsInParent())){

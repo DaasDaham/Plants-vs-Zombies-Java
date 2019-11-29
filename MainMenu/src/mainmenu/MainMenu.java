@@ -29,13 +29,18 @@ public class MainMenu extends Application {
         FXMLDocumentController2 controller = loader.getController();
         Image image = new Image(getClass().getResourceAsStream("ProjectilePea_1.png"));
         Zombie lol1 = new NormalZombie();
+        Zombie flyi = new FlyingZombie();
+        Zombie flagi = new FlagZombie();
+        Zombie bucketi = new BucketZombie();
         //controller.bigOuf(imageView, 2, 5);
        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         
         controller.addZombie(lol1);
-        
+        controller.addZombie(flyi);
+        controller.addZombie(flagi);
+        controller.addZombie(bucketi);
         stage.show();
         /*primaryStage.setTitle("ImageView Experiment 1");
 

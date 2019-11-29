@@ -29,9 +29,10 @@ public class Zombie {
     protected Plant currPlant;
     
     public Zombie(){
-        lane = 1;
         maxHealth = 100;
         currHealth=100;
+        lane = randLane();
+
     }
     
     public void startTranslation(GridPane mainGrid){
@@ -46,9 +47,9 @@ public class Zombie {
         zImg.translateXProperty().addListener((Observable observable) -> {
             //System.out.println(currZombie.getImage().getTranslateX());
             if(currPlant==null){
-                System.out.println("plant null");
+                //System.out.println("plant null");
             }
-            if(checkIntersect(zImg, currPlant.getImage(),false)){
+            else if(checkIntersect(zImg, currPlant.getImage(),false)){
                 //System.out.println("intersected");
                 t.pause();
                 
@@ -79,7 +80,7 @@ public class Zombie {
     
     public int randLane(){
         Random r = new Random();
-        return r.nextInt(3);
+        return r.nextInt(5);
     }
     
     public ImageView getImage(){
@@ -103,6 +104,7 @@ public class Zombie {
 class NormalZombie extends Zombie{
     public NormalZombie(){
         super();
+        this.maxHealth=100;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/fin.gif")));
         System.out.println("new normalzonmbie spawnde");
     }   
@@ -110,21 +112,32 @@ class NormalZombie extends Zombie{
 class FlyingZombie extends Zombie{
     public FlyingZombie(){
         super();
+        this.maxHealth=200;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/fly_zombie.gif")));
         System.out.println("new flyingzonmbie spawnde");
+        zImg.setScaleX(1.2);
+        zImg.setScaleY(1.3);
     }
 }
 class BucketZombie extends Zombie{
     public BucketZombie(){
         super();
+        this.maxHealth=150;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/bucket_zombie.gif")));
         System.out.println("new flyingzonmbie spawnde");
+        zImg.setScaleX(1.2);
+        zImg.setScaleY(1.5);
     }
 }
 class FlagZombie extends Zombie{
     public FlagZombie(){
         super();
-        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/flag_zombie.jfif")));
+        this.maxHealth=125;
+        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/flag_zombie.gif")));
+        zImg.setFitHeight(1000);
+        zImg.setFitWidth(150);
+        zImg.setScaleX(1.2);
+        zImg.setScaleY(1.2);
         System.out.println("new flagzonmbie spawnde");
     }
 }

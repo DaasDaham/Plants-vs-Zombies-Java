@@ -372,17 +372,15 @@ public class FXMLDocumentController2 implements Initializable {
     mainGrid.setOnDragDropped(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
             Dragboard db = event.getDragboard();
-    boolean success = false;
-    ImageView img = new ImageView(db.getImage());
-    
-    Node node = (Node)event.getTarget();
-    System.out.println(node);
-    if(node != mainGrid && db.hasImage()){
-        
-        Integer cIndex = GridPane.getColumnIndex(node);
-        Integer rIndex = GridPane.getRowIndex(node);
-        int x = cIndex == null ? 0 : cIndex;
-        int y = rIndex == null ? 0 : rIndex;
+            boolean success = false;
+            ImageView img = new ImageView(db.getImage());
+            Node node = (Node)event.getTarget();
+            System.out.println(node.getParent());
+            if(node != mainGrid && db.hasImage()){
+            Integer cIndex = GridPane.getColumnIndex(node);
+            Integer rIndex = GridPane.getRowIndex(node);
+            int x = cIndex == null ? 0 : cIndex;
+            int y = rIndex == null ? 0 : rIndex;
         /*ImageView image;
         System.out.println(db.getUrl());
         Plant p;
@@ -397,26 +395,24 @@ public class FXMLDocumentController2 implements Initializable {
         image.setPreserveRatio(true);
         image.setFitWidth(100);
         ImageView bulletImage = p.getImage();*/
-        Plant p = new PeaPlant();
-        p.setZombie(damnZombie);
-        BorderPane to_add = (BorderPane)node;
-        ImageView plantimg = p.getImage();
-        ImageView peaimg = p.getBullet();
-        plantimg.setPreserveRatio(true);
-        plantimg.setFitWidth(100);
-        peaimg.setPreserveRatio(true);
-        peaimg.setFitWidth(30);
+            Plant p = new PeaPlant();
+            p.setZombie(damnZombie);
+            BorderPane to_add = (BorderPane)node;
+            ImageView plantimg = p.getImage();
+            ImageView peaimg = p.getBullet();
+            plantimg.setPreserveRatio(true);
+            plantimg.setFitWidth(100);
+            peaimg.setPreserveRatio(true);
+            peaimg.setFitWidth(30);
         //peaimg.setStyle("-fx-alignment: CENTER;");
         //to_add.getChildren().add(pla);
-        to_add.getChildren().add(plantimg);
-        to_add.setCenter(peaimg);
+            to_add.getChildren().add(plantimg);
+            to_add.setCenter(peaimg);
         //to_add.getChildren().add(p.getBullet());
-        p.attack(mainGrid);
-        success = true;
-    }
-    event.setDropCompleted(success);
-
-    event.consume();
+            p.attack(mainGrid);
+            success = true;
+        }
+        event.consume();
         }
     });
 
