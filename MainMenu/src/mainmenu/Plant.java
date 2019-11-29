@@ -33,6 +33,7 @@ public class Plant {
     protected Zombie currZombie;
     protected ImageView peaBullet;
     protected TranslateTransition tt;
+    protected ImageView grave;
     
     public Plant(){
         tempvar = 2;
@@ -81,6 +82,7 @@ class PeaPlant extends Plant{
     private int checker = 0;
     public PeaPlant(){
         super();
+        this.maxHealth=100;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/PeaShooter.gif")));
         peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));  
         tt = new TranslateTransition();
@@ -95,9 +97,19 @@ class PeaPlant extends Plant{
                 currZombie.takeDamage();
                 if(currZombie.getHealth()<=0){
                     mainGrid.getChildren().remove(currZombie.getImage());
+                    int y = GridPane.getColumnIndex(currZombie.zImg);
+                    System.out.println("dasdasdas" +y);
                     currZombie = null;
                     System.out.println("zomibie nulled");
                     peaBullet.setOpacity(0);
+                    /*grave = new ImageView(new Image(getClass().getResourceAsStream("Images/rip.jpg")));
+                    grave.toFront();
+                    grave.setFitWidth(80);
+                    grave.setFitHeight(80);
+                    System.out.println(xPos+" "+yPos);
+                    mainGrid.getChildren().add(grave);
+
+                    GridPane.setConstraints(grave,xPos,y);*/
                     tt.pause();
                 }
                 peaBullet.setOpacity(0);
@@ -138,6 +150,7 @@ class PeaPlant extends Plant{
 class WalnutPlant extends Plant{
 
     public WalnutPlant(){
+        this.maxHealth=400;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/walnut.png")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("transparent.jfif")));
         tt = new TranslateTransition();
@@ -156,22 +169,24 @@ class WalnutPlant extends Plant{
 }
 class SunFlowerPlant extends Plant{
 
-    public SunFlowerPlant(){
+    public SunFlowerPlant(GridPane mainGrid){
+        this.maxHealth=100;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/Sunflower.gif")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
         tt = new TranslateTransition();
+
     }
-    public void attack(){
-        /*Sun s= new Sun(xPos, yPos);
+    public void attack(GridPane mainGrid){
+        Sun s= new Sun(xPos, yPos,mainGrid);
         Runnable task2 = () -> {
-            System.out.println("Sun Spawned");
-           s.spawnsunforflower();
+            System.out.println("Sunflower sun Spawned");
+            s.spawnsunforflower(mainGrid,xPos,yPos);
         };
 
         ScheduledExecutorService scheduler
-               = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 0, 20,
-               TimeUnit.SECONDS);*/ //UNCOMMENT THIS
+                = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(task2, 10, 10,
+                TimeUnit.SECONDS); //UNCOMMENT THIS
         System.out.println("heloo");
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
@@ -186,19 +201,29 @@ class SunFlowerPlant extends Plant{
 class CherryBombPlant extends Plant{
 
     public CherryBombPlant(){
+        this.maxHealth=150;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/cherry_bomb.png")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
         tt = new TranslateTransition();
     }
-    public void attack(){
+    public void attack(GridPane mainGrid){
         // Check of imtersect with zombie
         /*ImageView explode = new ImageView(new Image(getClass().getResourceAsStream("Images/explosion.png")));
-        int x;
-        int y;
-        //x,y same as cherry bomb
+        ImageView boom = new ImageView(new Image(getClass().getResourceAsStream("Images/boom.png")));
+        mainGrid.getChildren().add(explode);
+        mainGrid.getChildren().add(boom);
+        explode.setFitWidth(100);
+        explode.setFitHeight(80);
+        boom.setFitWidth(90);
+        boom.setFitHeight(80);
+        explode.toFront();
+        boom.toFront();
+        GridPane.setConstraints(explode,xPos,yPos);
+        GridPane.setConstraints(boom,xPos+1,yPos);
+        System.out.println("asfa");
+        pImg.setOpacity(0.5);*/
+    }
 
-        GridPane.setConstraints(explode,x,y);
-    */System.out.println("asfa");}
 
         //GridPane.setConstraints(explode,getX(),getY());
     //}

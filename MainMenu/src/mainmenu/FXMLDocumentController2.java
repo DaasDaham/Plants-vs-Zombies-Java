@@ -172,33 +172,7 @@ public class FXMLDocumentController2 implements Initializable {
         Sun s = new Sun(mainGrid,sunCount);
         igm.toBack();
         progBar.setProgress(0);
-        timer = new Timer(); 
-        //TimerTask task = new Helper(); 	
-	  //  timer.schedule(task, 0, 1000);
-        
-        //pic.toFront();
-        //hb.toFront();
-   
-        pea1.translateXProperty().addListener((Observable observable) -> {
-            if(checkIntersect(pea1, z1)){
-                pea1.setOpacity(0);
-                GridPane.setConstraints(pea1, 3, 0);
-            }
-            if(pea1.getTranslateX()==0){
-                pea1.setOpacity(1);
-            }
-            if(pea1.getTranslateX()==0){
-                pea1.setOpacity(1);
-            }
-        });
-
-
-        tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(7));
-        tt.setToX(1000);
-        tt.setNode(pea1);
-        tt.setCycleCount( Timeline.INDEFINITE );
-        tt.play();
+        timer = new Timer();
 
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
@@ -285,8 +259,6 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
-        mainGrid.getChildren().add(z1);
-        GridPane.setConstraints(z1,9,2);
         tt4 = new TranslateTransition();
         tt4.setDuration(Duration.seconds(30));
         tt4.setToX(-750);
@@ -410,19 +382,24 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
+                p.setX(x);
+                p.setY(y);
                 System.out.println(x+" "+y);
                 allPlants[y][x]=1;
                 p.attack(mainGrid);
             }
             else if(db.getUrl().equals("Sun")){
-                Plant p = new SunFlowerPlant();
+                Plant p = new SunFlowerPlant(mainGrid);
                 p.setZombie(damnZombie);  //CHANGE THIS
                 ImageView plantimg = p.getImage();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(70);
+                p.setX(x);
+                p.setY(y);
                 mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
+                p.attack(mainGrid);
             }
             else if(db.getUrl().equals("Walnut")){
                 Plant p = new WalnutPlant();
@@ -431,6 +408,8 @@ public class FXMLDocumentController2 implements Initializable {
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(70);
                 mainGrid.getChildren().add(plantimg);
+                p.setX(x);
+                p.setY(y);
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
             }
@@ -441,8 +420,11 @@ public class FXMLDocumentController2 implements Initializable {
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(100);
                 mainGrid.getChildren().add(plantimg);
+                p.setX(x);
+                p.setY(y);
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
+                p.attack(mainGrid);
             }
             success = true;
         }}
@@ -458,7 +440,6 @@ public class FXMLDocumentController2 implements Initializable {
             }
         });*/
     }
-
     @FXML
     private void handlePauseButton(ActionEvent event) {
         igm.toFront();
@@ -495,7 +476,6 @@ public class FXMLDocumentController2 implements Initializable {
             i=0;
             return false;
         }
-        return false;
     }
     
     public void bigOuf(ImageView image, int x, int y){

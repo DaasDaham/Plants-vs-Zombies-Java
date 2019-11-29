@@ -91,7 +91,7 @@ public class Zombie {
         return lane;
     }
     public void takeDamage(){
-        currHealth-=20;
+        currHealth-=100;
     }
     public double getHealth(){
         return currHealth;
