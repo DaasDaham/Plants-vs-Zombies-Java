@@ -26,7 +26,7 @@ public class Zombie {
     //private Plant currPlant;
     
     public Zombie(){
-        lane = 1;
+        lane = randLane();
     }
     
     public void startTranslation(){
@@ -39,7 +39,7 @@ public class Zombie {
     
     public int randLane(){
         Random r = new Random();
-        return r.nextInt(3);
+        return r.nextInt(5);
     }
     
     public ImageView getImage(){
@@ -54,6 +54,7 @@ public class Zombie {
 class NormalZombie extends Zombie{
     public NormalZombie(){
         super();
+        this.max_health=100;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/fin.gif")));
         System.out.println("new normalzonmbie spawnde");
     }   
@@ -61,21 +62,32 @@ class NormalZombie extends Zombie{
 class FlyingZombie extends Zombie{
     public FlyingZombie(){
         super();
+        this.max_health=200;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/fly_zombie.gif")));
         System.out.println("new flyingzonmbie spawnde");
+        zImg.setScaleX(1.2);
+        zImg.setScaleY(1.3);
     }
 }
 class BucketZombie extends Zombie{
     public BucketZombie(){
         super();
+        this.max_health=150;
         zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/bucket_zombie.gif")));
         System.out.println("new flyingzonmbie spawnde");
+        zImg.setScaleX(1.2);
+        zImg.setScaleY(1.5);
     }
 }
 class FlagZombie extends Zombie{
     public FlagZombie(){
         super();
-        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/flag_zombie.jfif")));
+        this.max_health=125;
+        zImg = new ImageView(new Image(getClass().getResourceAsStream("Images/flag_zombie.gif")));
+        zImg.setFitHeight(1000);
+        zImg.setFitWidth(150);
+        zImg.setScaleX(1.2);
+        zImg.setScaleY(1.2);
         System.out.println("new flagzonmbie spawnde");
     }
 }
