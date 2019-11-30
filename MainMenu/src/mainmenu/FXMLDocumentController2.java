@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.animation.Timeline;
+import javafx.stage.Window;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -60,11 +61,19 @@ import javafx.scene.layout.Pane;
  *
  * @author saad
  */
+class lawncount{
+    public static int lawndone0 =0;
+    public static int lawndone1 =0;
+    public static int lawndone2 =0;
+    public static int lawndone3 =0;
+    public static int lawndone4 =0;
+}
 public class FXMLDocumentController2 implements Initializable {
     int i=0;
     public boolean end =false;
     @FXML
     private Label sunCount;
+
 
     @FXML
     private ImageView z1;
@@ -145,6 +154,7 @@ public class FXMLDocumentController2 implements Initializable {
     public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
 
+
     public int currlvl;
     public static Sun s;
 
@@ -222,11 +232,18 @@ public class FXMLDocumentController2 implements Initializable {
         Random r = new Random();	
 	public void run(){ 
             ++timerI;
-            System.out.println("currleve "+level);
+            //System.out.println("currleve "+level);
             progBar.setProgress(timerI/100.0);
-            if(timerI%10==0 && timerI>=2){
+            if(timerI%6==0 && timerI>=2){
                 Platform.runLater(() -> {
-                    addZombie(new NormalZombie());
+                    if(r.nextInt(4)==0)
+                        addZombie(new NormalZombie());
+                    else if (r.nextInt(4)==1 && level>=1)
+                        addZombie(new FlagZombie());
+                    else if (r.nextInt(4)==2 && level>=2)
+                        addZombie(new BucketZombie());
+                    else if (r.nextInt(4)==1 && level>=3)
+                        addZombie(new FlyingZombie());
                     //Special trying = new Laser(mainGrid);
                 });  
             }
@@ -278,13 +295,13 @@ public class FXMLDocumentController2 implements Initializable {
         TimerTask task = new Helper(); 
             timer.schedule(task, 2000, 1000);
         Runnable task2 = () -> {
-            System.out.println("Sun Spawned");
+            //System.out.println("Sun Spawned");
             s.spawnSun();
         };
         
         ScheduledExecutorService scheduler
                 = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 5, 20,
+        scheduler.scheduleAtFixedRate(task2, 5, 5,
                 TimeUnit.SECONDS);
         
          
@@ -323,7 +340,7 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
-        
+
         lm3.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -371,41 +388,44 @@ public class FXMLDocumentController2 implements Initializable {
         
         sunPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            if(level>=2){
+            if(level>=2 && timerI>=sunTimer){
             Dragboard db = sunPlantSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(sunPlantSide.getImage());
             cbContent.putUrl("Sun");
             db.setContent(cbContent);
-            ssFade();
             event.consume();}
         }
     });
     sunPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
+            ssFade();
+            sunTimer = timerI+5;
             event.consume();
         }
     });
     cherryBombSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            if(level>=4){
+            if(level>=4 && timerI>=cbTimer){
             Dragboard db = cherryBombSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(cherryBombSide.getImage());
             cbContent.putUrl("Cherry");
             db.setContent(cbContent);
-            ssFade();
+            
             event.consume();}
         }
     });
     cherryBombSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
+            chbFade();
+            cbTimer = timerI+5;
             event.consume();
         }
     });
     peaPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            System.out.println(timerI+" lock "+peaTimer);
+            //System.out.println(timerI+" lock "+peaTimer);
             if(timerI>=peaTimer){
             Dragboard db = peaPlantSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
@@ -425,18 +445,20 @@ public class FXMLDocumentController2 implements Initializable {
     });
     cornBreadSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-            if(level>=3){
+            if(level>=3 && timerI>=walnutTimer){
             Dragboard db = cornBreadSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(cornBreadSide.getImage());
             cbContent.putUrl("Walnut");
             db.setContent(cbContent);
-            cbFade();
+            
             event.consume();}
         }
     });
     cornBreadSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
+            cbFade();
+            walnutTimer = timerI+5;
             event.consume();
         }
     });
@@ -499,8 +521,10 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==1 && level >=2){
-                    allPlants[y][x]=1;
+
+                }else if(y==1 && level >=2&& s.getcount()>=50){
+                    s.changecounter(50);
+            allPlants[y][x]=1;
                 plantTypes[y][x]=1;
                     plane1[x] = p;
                     p.attack(mainGrid, lane1);
@@ -508,27 +532,36 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==2 && level>=1){
-                    allPlants[y][x]=1;
-                plantTypes[y][x]=1;
+
+                }else if(y==2 && level>=1&& s.getcount()>=50){
+             allPlants[y][x]=1;
+                plantTypes[y][x]=1;        
+            s.changecounter(50);
+
                     plane2[x] = p;
                     p.attack(mainGrid, lane2);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==3 && level>=2){
+
+                }else if(y==3 && level>=2&& s.getcount()>=50){
                     allPlants[y][x]=1;
                 plantTypes[y][x]=1;
+            s.changecounter(50);
+
                     plane3[x] = p;
                     p.attack(mainGrid, lane3);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==4 && level>=3){
-                    allPlants[y][x]=1;
+
+                }else if(y==4 && level>=3&& s.getcount()>=50){
+                    s.changecounter(50);
+            allPlants[y][x]=1;
                 plantTypes[y][x]=1;
+
                     plane4[x] = p;
                     p.attack(mainGrid, lane4);
                     mainGrid.getChildren().add(plantimg);
@@ -547,35 +580,42 @@ public class FXMLDocumentController2 implements Initializable {
                 plantimg.setFitWidth(70);
                 p.setX(x);
                 p.setY(y);
-                if(y==0&& s.getcount()>=50){
+    
+                if(y==0&& s.getcount()>=50&& s.getcount()>=50){
                     allPlants[y][x]=1;
+            allPlants[y][x]=1;
                 plantTypes[y][x]=2;
-                    s.changecounter(50);
+            s.changecounter(50);
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==1 && level >=2){
-                    allPlants[y][x]=1;
+                }else if(y==1 && level >=2&& s.getcount()>=50){
+                    s.changecounter(50);                   
+        allPlants[y][x]=1;
                 plantTypes[y][x]=2;
-                    plane1[x] = p;
+                plane1[x] = p;
                     p.attack(mainGrid, lane1);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==2 && level>=1){
+                }else if(y==2 && level>=1&& s.getcount()>=50){
+                    s.changecounter(50);
+
                     allPlants[y][x]=1;
                 plantTypes[y][x]=2;
                     plane2[x] = p;
                     p.attack(mainGrid, lane2);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==3 && level>=2){
+               }else if(y==3 && level>=2&& s.getcount()>=50){
+                    s.changecounter(50);
                     allPlants[y][x]=1;
                 plantTypes[y][x]=2;
                     plane3[x] = p;
                     p.attack(mainGrid, lane3);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==4 && level>=3){
+                }else if(y==4 && level>=3&& s.getcount()>=50){
+
                     allPlants[y][x]=1;
                 plantTypes[y][x]=2;
                     plane4[x] = p;
@@ -600,27 +640,32 @@ public class FXMLDocumentController2 implements Initializable {
                     plane0[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==1 && level>=2){
+                }else if(y==1 && level>=2&& s.getcount()>=100){
+                    s.changecounter(100);
                     allPlants[y][x]=1;
                 plantTypes[y][x]=3;
                     plane1[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==2 && level>=1){
+                }else if(y==2 && level>=1&& s.getcount()>=100){
+                    s.changecounter(100);
                     allPlants[y][x]=1;
                 plantTypes[y][x]=3;
                     plane2[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==3 && level>=2){
+                }else if(y==3 && level>=2&& s.getcount()>=100){
+                    s.changecounter(100);
                     allPlants[y][x]=1;
                 plantTypes[y][x]=3;
                     plane3[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==4 && level >=3){
+                }else if(y==4 && level >=3&& s.getcount()>=100){
+                    s.changecounter(100);
                     allPlants[y][x]=1;
                 plantTypes[y][x]=3;
+
                     plane4[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
@@ -642,29 +687,37 @@ public class FXMLDocumentController2 implements Initializable {
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==1 && level >=2){
-                    allPlants[y][x]=1;
+
+                }else if(y==1 && level >=2&& s.getcount()>=25){
+                    s.changecounter(25);
+        allPlants[y][x]=1;
                 plantTypes[y][x]=4;
                     plane1[x] = p;
                     p.attack(mainGrid, lane1);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==2 && level>=1){
-                    allPlants[y][x]=1;
+                }else if(y==2 && level>=1&& s.getcount()>=25){
+                    s.changecounter(25);
+
+        allPlants[y][x]=1;
                 plantTypes[y][x]=4;
                     plane2[x] = p;
                     p.attack(mainGrid, lane2);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==3 && level>=2){
-                    allPlants[y][x]=1;
+                }else if(y==3 && level>=2&& s.getcount()>=25){
+                    s.changecounter(25);
+
+        allPlants[y][x]=1;
                 plantTypes[y][x]=4;
                     plane3[x] = p;
                     p.attack(mainGrid, lane3);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==4 && level>=3){
-                    allPlants[y][x]=1;
+                }else if(y==4 && level>=3&& s.getcount()>=25){
+                    s.changecounter(25);
+
+                            allPlants[y][x]=1;
                 plantTypes[y][x]=4;
                     plane4[x] = p;
                     p.attack(mainGrid, lane4);
@@ -716,12 +769,20 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private void ThunderButtonPress(MouseEvent event) {
 
-        power = new Thunder(mainGrid);
+        if(Counter.count>=200)
+        {
+            power = new Thunder(mainGrid);
+            Counter.count-=200;
+        }
     }
     @FXML
     private void LaserButtonPress(MouseEvent event) {
 
-        power = new Laser(mainGrid);
+        if(Counter.count>=100)
+        {
+            power = new Laser(mainGrid);
+            Counter.count-=100;
+        }
     }
     @FXML
     private void SunPlantCostEnter(MouseEvent event) {
@@ -858,7 +919,7 @@ public class FXMLDocumentController2 implements Initializable {
         zombImg.setPreserveRatio(true);
         zombImg.setFitWidth(100);
         zombImg.setFitHeight(100);
-        zombImg.setFitWidth(50);
+        zombImg.setFitWidth(80);
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,zombLane);
         z.startTranslation(mainGrid, plane0, allPlants, plantTypes);
@@ -940,6 +1001,86 @@ public class FXMLDocumentController2 implements Initializable {
         }finally{
             out.close();
         }
+    }
+    public void lawnmove(int x)
+    {
+
+        tt2 = new TranslateTransition();
+        tt2.setDuration(Duration.seconds(2));
+        tt2.setToX(1000);
+        if(x==0)
+        {
+            tt2.setNode(lm1);
+            for(Zombie z:lane0)
+            {
+                z.zImg.setOpacity(0);
+                lane0.poll();
+            }
+            if(lawncount.lawndone0>=1)
+                {
+                Platform.exit();
+            }
+            lawncount.lawndone0++;
+        }
+        else if(x==1)
+        {
+            tt2.setNode(lm2);
+            for(Zombie z:lane1)
+            {
+                z.zImg.setOpacity(0);
+                lane1.poll();
+            }
+            if(lawncount.lawndone1>=1)
+            {
+                Platform.exit();
+            }
+            lawncount.lawndone1++;
+        }
+        else if(x==2)
+        {
+            tt2.setNode(lm3);
+            tt2.setToX(1000);
+            for(Zombie z:lane2)
+            {
+                z.zImg.setOpacity(0);
+                lane2.poll();
+            }
+            if(lawncount.lawndone2>=1)
+            {
+                Platform.exit();
+            }
+            tt2.play();
+            lawncount.lawndone2++;
+        }
+        else if(x==3)
+        {
+            tt2.setNode(lm4);
+            for(Zombie z:lane3)
+            {
+                z.zImg.setOpacity(0);
+                lane3.poll();
+            }
+            if(lawncount.lawndone3>=1)
+            {
+                Platform.exit();
+            }
+            lawncount.lawndone3++;
+        }
+        else
+        {
+            tt2.setNode(lm5);
+            for(Zombie z:lane4)
+            {
+                z.zImg.setOpacity(0);
+                lane4.poll();
+            }
+            if(lawncount.lawndone4>=1)
+            {
+                Platform.exit();
+            }
+            lawncount.lawndone4++;
+        }
+        tt2.play();
     }
 }
 

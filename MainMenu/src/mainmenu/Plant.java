@@ -117,7 +117,7 @@ class PeaPlant extends Plant{
                 if(currZombie!=null){
                     if(checkIntersect(peaBullet, currZombie.getImage(),false)){
                         peaBullet.setOpacity(0);
-                        currZombie.takeDamage(50,mainGrid,laneq);
+                        currZombie.takeDamage(25,mainGrid,laneq);
                     }
                 }
             }            

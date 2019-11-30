@@ -14,18 +14,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Iterator;
+import com.sun.media.jfxmedia.events.PlayerTimeListener;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
-
+import javafx.event.ActionEvent;
 /**
  *
  * @author saad
@@ -34,7 +37,7 @@ public class Zombie {
     protected double maxHealth;
     protected double currHealth;
     protected int lane;
-    protected double xPos;
+    protected double xPos;protected double yPos;
     protected boolean reachHouse;
     protected ImageView zImg;
     protected int checker;
@@ -44,7 +47,6 @@ public class Zombie {
     public Timer timer;
     public TimerTask task;
     public Plant[] lape;
-        
 
     public double getCurrHealth() {
         return currHealth;
@@ -123,7 +125,67 @@ public class Zombie {
         t.setToX(-800);
         t.setNode(zImg);
         t.play();
+        t.setOnFinished(new EventHandler<ActionEvent>() {
 
+            @Override
+            public void handle(ActionEvent event) {
+                if(lane==0)
+                {
+                    Platform.runLater(()->
+                    {FXMLDocumentController2 x = new FXMLDocumentController2();
+                    x.lawnmove(0);});
+                    //Iterator<Zombie> iterator = FXMLDocumentController2.lane0.iterator();
+                    //while(iterator.hasNext()){
+                    //    Zombie c = iterator.next();
+                    //    c.takeDamage(1000,mainGrid,FXMLDocumentController2.lane0);
+                    //}
+                }
+                else if(lane==1)
+                {
+                    Platform.runLater(()->
+                    {FXMLDocumentController2 x = new FXMLDocumentController2();
+                        x.lawnmove(1);});
+                  //  Iterator<Zombie> iterator = FXMLDocumentController2.lane1.iterator();
+                   // while(iterator.hasNext()){
+                   //     Zombie c = iterator.next();
+                  //      c.takeDamage(1000,mainGrid,FXMLDocumentController2.lane1);
+                    //}
+                }
+                else if(lane==2)
+                {
+                    Platform.runLater(()->
+                    {FXMLDocumentController2 x = new FXMLDocumentController2();
+                        x.lawnmove(2);});
+                  //  Iterator<Zombie> iterator = FXMLDocumentController2.lane2.iterator();
+                   // while(iterator.hasNext()){
+                     //   Zombie c = iterator.next();
+                     //   c.takeDamage(1000,mainGrid,FXMLDocumentController2.lane2);
+                      //  }
+                    }
+                else if(lane==3)
+                {
+                    Platform.runLater(()->
+                    {FXMLDocumentController2 x = new FXMLDocumentController2();
+                        x.lawnmove(3);});
+                  //  Iterator<Zombie> iterator = FXMLDocumentController2.lane3.iterator();
+                   // while(iterator.hasNext()){
+                    //    Zombie c = iterator.next();
+                    //    c.takeDamage(1000,mainGrid,FXMLDocumentController2.lane3);
+                    //}
+                }else if(lane==4)
+                {
+                    Platform.runLater(()->
+                    {FXMLDocumentController2 x = new FXMLDocumentController2();
+                        x.lawnmove(4);});
+                   // Iterator<Zombie> iterator = FXMLDocumentController2.lane4.iterator();
+                    //while(iterator.hasNext()){
+                    //    Zombie c = iterator.next();
+                   //     c.takeDamage(1000,mainGrid,FXMLDocumentController2.lane4);
+                   // }
+                }
+
+            }
+        });
         zImg.translateXProperty().addListener((Observable observable) -> {
             //System.out.println("i am alive");
             //System.out.println(Arrays.toString(plane));
