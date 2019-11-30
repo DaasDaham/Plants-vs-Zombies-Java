@@ -5,6 +5,7 @@
  */
 package mainmenu;
 
+import java.util.Queue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.beans.Observable;
@@ -28,21 +29,27 @@ public class Plant {
     //protected ImageView bullet; //Replace with Bullet class
     protected int xPos;
     protected int yPos;
+
     protected int tempvar;
     protected ImageView pImg;
+    protected int lane;
     protected int pType;
     protected Zombie currZombie;
     protected ImageView peaBullet;
     protected TranslateTransition tt;
+    protected ImageView grave;
     
     public Plant(){
         tempvar = 2;
         maxHealth = 100;
         currHealth = 100;
+    } 
+    public int getLane(){
+        return lane;
     }
     
     public void takeDamage(){
-        currHealth-=10;
+        currHealth-=50;
     }
     
     public void setZombie(Zombie z){
@@ -71,7 +78,7 @@ public class Plant {
         this.yPos = yPos;
     }
 
-    public void attack(GridPane mainGrid){}
+    public void attack(GridPane mainGrid, Queue<Zombie> laneq){}
 
     public void attack(){
      //
@@ -82,46 +89,44 @@ class PeaPlant extends Plant{
     private int checker = 0;
     public PeaPlant(){
         super();
+        this.maxHealth=100;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/PeaShooter.gif")));
         peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));  
         tt = new TranslateTransition();
     }
-    public void attack(GridPane mainGrid){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
-        FXMLDocumentController2 controller = loader.getController();
-        peaBullet.translateXProperty().addListener((Observable observable) -> {
-            //System.out.println(currZombie.getImage().getTranslateX());
-            if(controller.lane1.size()>0){
-            currZombie = controller.lane1.peek();
-            if(currZombie!=null){
-            if(checkIntersect(peaBullet, currZombie.getImage(),false)){
-                System.out.println("intersected");
-                currZombie.takeDamage();
-                if(currZombie.getHealth()<=0){
-                    mainGrid.getChildren().remove(currZombie.getImage());
-                    currZombie = null;
-                    System.out.println("zomibie nulled");
-                    peaBullet.setOpacity(0);
-                    tt.pause();
-                }
-                peaBullet.setOpacity(0);
-                //GridPane.setConstraints(pea1, 3, 0);
-            }
-            if(peaBullet.getTranslateX()==0){
-                peaBullet.setOpacity(1);
-                checkIntersect(peaBullet, currZombie.getImage(), true);
-            }
-            }}
-            
-        });
-        
+    public void attack(GridPane mainGrid, Queue<Zombie> laneq){
         tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(6));
+        tt.setDuration(Duration.seconds(4));
         tt.setToX(1000);
         tt.setNode(peaBullet);
         tt.setCycleCount( Timeline.INDEFINITE );
         //System.out.println("intersection");
         tt.play();
+        
+        peaBullet.translateXProperty().addListener((Observable observable) -> {
+            //System.out.println(laneq.size()+" lolol");
+            if(laneq.size()==0){
+                peaBullet.setOpacity(0);
+            }
+            else{
+                currZombie = laneq.peek();
+                if(peaBullet.getTranslateX()==0){
+                    peaBullet.setOpacity(1);
+                    checkIntersect(peaBullet, currZombie.getImage(), true);
+                }
+                if(currZombie!=null){
+                    if(checkIntersect(peaBullet, currZombie.getImage(),false)){
+                        peaBullet.setOpacity(0);
+                        currZombie.takeDamage();
+                        if(currZombie.getHealth()<=0){
+                            mainGrid.getChildren().remove(currZombie.getImage());
+                            laneq.poll();
+                            currZombie = laneq.peek();
+                        }
+                    }
+                }
+            }            
+        });
     }
     private boolean checkIntersect(ImageView v1, ImageView v2, boolean chek){
         if(chek){
@@ -142,6 +147,7 @@ class PeaPlant extends Plant{
 class WalnutPlant extends Plant{
 
     public WalnutPlant(){
+        this.maxHealth=400;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/walnut.png")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("transparent.jfif")));
         tt = new TranslateTransition();
@@ -160,22 +166,24 @@ class WalnutPlant extends Plant{
 }
 class SunFlowerPlant extends Plant{
 
-    public SunFlowerPlant(){
+    public SunFlowerPlant(GridPane mainGrid){
+        this.maxHealth=100;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/Sunflower.gif")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
         tt = new TranslateTransition();
+
     }
-    public void attack(){
-        /*Sun s= new Sun(xPos, yPos);
+    public void attack(GridPane mainGrid, Queue<Zombie> laneq){
+        Sun s= new Sun(xPos, yPos,mainGrid);
         Runnable task2 = () -> {
-            System.out.println("Sun Spawned");
-           s.spawnsunforflower();
+            System.out.println("Sunflower sun Spawned");
+            s.spawnsunforflower(mainGrid,xPos,yPos);
         };
 
         ScheduledExecutorService scheduler
-               = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 0, 20,
-               TimeUnit.SECONDS);*/ //UNCOMMENT THIS
+                = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(task2, 10, 10,
+                TimeUnit.SECONDS); //UNCOMMENT THIS
         System.out.println("heloo");
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
@@ -190,19 +198,29 @@ class SunFlowerPlant extends Plant{
 class CherryBombPlant extends Plant{
 
     public CherryBombPlant(){
+        this.maxHealth=150;
         pImg = new ImageView(new Image(getClass().getResourceAsStream("Images/cherry_bomb.png")));
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("ProjectilePea_1.png")));
         tt = new TranslateTransition();
     }
-    public void attack(){
+    public void attack(GridPane mainGrid, Queue<Zombie> laneq){
         // Check of imtersect with zombie
         /*ImageView explode = new ImageView(new Image(getClass().getResourceAsStream("Images/explosion.png")));
-        int x;
-        int y;
-        //x,y same as cherry bomb
+        ImageView boom = new ImageView(new Image(getClass().getResourceAsStream("Images/boom.png")));
+        mainGrid.getChildren().add(explode);
+        mainGrid.getChildren().add(boom);
+        explode.setFitWidth(100);
+        explode.setFitHeight(80);
+        boom.setFitWidth(90);
+        boom.setFitHeight(80);
+        explode.toFront();
+        boom.toFront();
+        GridPane.setConstraints(explode,xPos,yPos);
+        GridPane.setConstraints(boom,xPos+1,yPos);
+        System.out.println("asfa");
+        pImg.setOpacity(0.5);*/
+    }
 
-        GridPane.setConstraints(explode,x,y);
-    */System.out.println("asfa");}
 
         //GridPane.setConstraints(explode,getX(),getY());
     //}

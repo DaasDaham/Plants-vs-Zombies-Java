@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="sunpane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainmenu.FXMLDocumentController2">
+<AnchorPane id="AnchorPane" fx:id="sunpane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmenu.FXMLDocumentController2">
   <children>
     <AnchorPane fx:id="igm" layoutX="341.0" layoutY="47.0" opacity="1.0" prefHeight="438.0" prefWidth="582.0" style="-fx-background-size: 1200 900;&#10;-fx-background-radius: 30;&#10;-fx-border-radius: 30;&#10;-fx-border-width:5;&#10;-fx-border-color: #ccffcc;&#10;-fx-background-color: #ccffcc;">
       <children>
@@ -53,24 +48,9 @@
         <Image url="@Images/Lawn_mower_2.PNG.png" />
       </image>
     </ImageView>
-    <ImageView id="zimg" fx:id="z11" fitHeight="73.0" fitWidth="62.0" layoutX="523.0" layoutY="258.0" pickOnBounds="true" preserveRatio="false" scaleX="1.5" scaleY="1.5" translateX="10.0">
-      <image>
-        <Image url="@Images/plant_1.gif" />
-      </image>
-    </ImageView>
     <ImageView fx:id="lm2" fitHeight="94.5" fitWidth="126.0" layoutX="185.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@Images/Lawn_mower_2.PNG.png" />
-      </image>
-    </ImageView>
-    <ImageView fx:id="pea1" layoutX="540.0" layoutY="281.0">
-      <image>
-        <Image url="@Images/ProjectilePea_1.png" />
-      </image>
-    </ImageView>
-    <ImageView id="zimg" fx:id="z1" fitHeight="73.0" fitWidth="62.0" layoutX="523.0" layoutY="258.0" pickOnBounds="true" preserveRatio="false" scaleX="1.2" scaleY="1.4" translateX="0.0" translateY="-10.0">
-      <image>
-        <Image url="@Images/fin.gif" />
       </image>
     </ImageView>
     <ImageView fx:id="lm3" fitHeight="94.5" fitWidth="126.0" layoutX="177.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
@@ -90,7 +70,6 @@
     </ImageView>
     <GridPane fx:id="mainGrid" layoutX="293.0" layoutY="36.0" prefHeight="541.0" prefWidth="794.0">
       <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
@@ -107,6 +86,7 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -177,14 +157,19 @@
                 <Image url="@Images/clipart247691.png" />
               </image>
             </ImageView>
-            <ImageView fx:id="cornBreadSide" fitHeight="84.94913916350649" fitWidth="74.39990234375" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="5">
-              <image>
-                <Image url="@Images/clipart2740226.png" />
-              </image>
-            </ImageView>
             <ImageView fx:id="sunPlantSide" fitHeight="81.7330093383789" fitWidth="81.00000762939453" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="1">
               <image>
-                <Image url="@Images/kisspng-plants-vs-zombies-2-it-s-about-time-plants-vs-z-walnut-5abb307da631f0.8009952915222170856808.png" />
+                <Image url="@Images/sunflower.png" />
+              </image>
+            </ImageView>
+            <ImageView fx:id="cornBreadSide" fitHeight="84.94913916350649" fitWidth="74.39990234375" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="5">
+              <image>
+                <Image url="@Images/walnut.png" />
+              </image>
+            </ImageView>
+            <ImageView fx:id="cherryBombSide" fitHeight="84.9490966796875" fitWidth="87.99999237060547" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="7">
+              <image>
+                <Image url="@Images/cherry_bomb.png" />
               </image>
             </ImageView>
           </children>
@@ -196,6 +181,7 @@
             <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="91.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="94.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="94.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="104.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="181.0" minHeight="0.0" prefHeight="106.0" vgrow="SOMETIMES" />

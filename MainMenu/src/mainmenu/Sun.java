@@ -51,26 +51,32 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-
+class Counter {
+    public static int count=0;
+    public static Label sunCount;
+}
 public class Sun {
     @FXML
     private TranslateTransition tt3;
     private ImageView sunimage;
-    private int count=0;
-    private Label sunCount;
     private GridPane mg;
-    public Sun(int x,int y)
+    public Sun(int x,int y, GridPane mainGrid)
     {
         Image image = new Image(getClass().getResourceAsStream("Images/Sun_PvZ2.png"));
         this.sunimage = new ImageView(image);
         sunimage.toFront();
-        GridPane.setConstraints(sunimage,x,y);
+        mainGrid.getChildren().add(sunimage);
+        System.out.println("new flower "+x+" "+y);
+        GridPane.setConstraints(sunimage,x+1,y);
+        sunimage.setFitWidth(60);
+        sunimage.setFitHeight(60);
+        sunimage.setOnMouseClicked(event1 -> checkClick());
     }
     public Sun(GridPane mainGrid, Label suncounter)
     {
         Image image = new Image(getClass().getResourceAsStream("Images/Sun_PvZ2.png"));
         this.sunimage = new ImageView(image);
-        this.sunCount=suncounter;
+        Counter.sunCount=suncounter;
         mg = mainGrid;
         sunimage.setTranslateX(200);
         sunimage.setTranslateY(0);
@@ -120,9 +126,12 @@ public class Sun {
         System.out.println(sunimage.getLayoutX()+" "+sunimage.getLayoutY());
         
     }
-    public void spawnsunforflower()
+    public void spawnsunforflower(GridPane mainGrid,int x,int y)
     {
-
+        sunimage.setOpacity(1);
+        GridPane.setConstraints(sunimage,x+1,y);
+        sunimage.setFitWidth(60);
+        sunimage.setFitHeight(60);
     }
     public void checkClick()
     {
@@ -130,9 +139,9 @@ public class Sun {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 System.out.println("Sun Collected");
-                sunimage.setLayoutY(-200);
                 sunimage.setOpacity(0);
-                sunCount.setText(""+count);
+                Counter.count+=50;
+                Counter.sunCount.setText(""+Counter.count);
             }
         });
     }

@@ -30,15 +30,7 @@ public class MainMenu extends Application {
         Parent root = loader.load();
 
         FXMLDocumentController2 controller = loader.getController();
-        Runnable task3 = () -> {
-            System.out.println("zombie Spawned");
-            Zombie z = new NormalZombie();
-            controller.addZombie(z);
-        };  
-        ScheduledExecutorService scheduler
-                = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task3, 4, 5,
-                TimeUnit.SECONDS);
+        
         /*Zombie lol1 = new NormalZombie();
         Zombie flyi = new FlyingZombie();
         Zombie flagi = new FlagZombie();
@@ -53,16 +45,7 @@ public class MainMenu extends Application {
         //controller.addZombie(flagi);
         //controller.addZombie(bucketi);
         stage.show();
-        /*primaryStage.setTitle("ImageView Experiment 1");
 
-        Image image = new Image(getClass().getResourceAsStream("ProjectilePea_1.png"));
-        ImageView imageView = new ImageView(image);
-
-        HBox hbox = new HBox(imageView);
-
-        Scene scene = new Scene(hbox, 200, 100);
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
     }
 
     /**
