@@ -25,10 +25,10 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent root = loader.load();
 
-        FXMLDocumentController2 controller = loader.getController();
+        FXMLDocumentController controller = loader.getController();
         
         /*Zombie lol1 = new NormalZombie();
         Zombie flyi = new FlyingZombie();

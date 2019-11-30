@@ -147,7 +147,7 @@ class WalnutPlant extends Plant{
         //peaBullet = new ImageView(new Image(getClass().getResourceAsStream("transparent.jfif")));
         tt = new TranslateTransition();
     }
-    public void attack(){
+    public void attack(GridPane mainGrid, Queue<Zombie> laneq){
         System.out.println("skadgba");
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){

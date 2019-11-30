@@ -70,6 +70,7 @@ public class Zombie {
         maxHealth = 100;
         currHealth=100;
     }
+    
 
     public void setCurrPlant(Plant p) {
         currPlant = p;
@@ -116,7 +117,7 @@ public class Zombie {
         lape[p] = null;
     }
 
-    public void startTranslation(GridPane mainGrid, Plant[] plane, int numPlants) {
+    public void startTranslation(GridPane mainGrid, Plant[] plane, int[][] numPlants, int[][] plantTypes) {
         TranslateTransition t = new TranslateTransition();
         t.setDuration(Duration.seconds(50));
         t.setToX(-800);
@@ -135,6 +136,8 @@ public class Zombie {
                 mainGrid.getChildren().remove(plane[x].getImage());
                     mainGrid.getChildren().remove(plane[x].getBullet());
                     plane[x] = null;
+                    numPlants[lane][x]=0;
+                    plantTypes[lane][x]=0;
             }}}
             
             /*for(int x=0;x<9;x++){

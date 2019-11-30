@@ -156,6 +156,9 @@ public class Sun {
         Counter.count=50;
         Counter.sunCount.setText(""+Counter.count);
     }
+    public void setSunCount(int s){
+        Counter.count = s;
+    }
     public int getcount()
     {
         return Counter.count;

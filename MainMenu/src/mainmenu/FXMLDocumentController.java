@@ -47,7 +47,7 @@ public class FXMLDocumentController implements Initializable {
     private void handleResumeGame(ActionEvent event) throws IOException {
         try {
 
-            Parent startPageParent1 = FXMLLoader.load(getClass().getResource("FXMLDocument2.fxml"));
+            Parent startPageParent1 = FXMLLoader.load(getClass().getResource("FXMLDocument3.fxml"));
             Scene startPageScene1 = new Scene(startPageParent1);
             Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage1.setScene(startPageScene1);

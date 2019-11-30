@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" minHeight="343.0" prefHeight="343.0" prefWidth="686.22216796875" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmenu.FXMLDocumentController3">
-   <children>
-      <ImageView fitHeight="354.0" fitWidth="696.0" layoutX="-5.0" layoutY="-11.0">
-         <image>
-            <Image url="@Images/choose_level.jpg" />
-         </image>
-      </ImageView>
-      <Label fx:id="Level1" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 1" />
-      <Label fx:id="Level2" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="296.0" prefHeight="46.0" prefWidth="114.0" text="Level 2" />
-      <Label fx:id="Level4" alignment="CENTER" contentDisplay="CENTER" layoutX="397.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 4" />
-      <Label fx:id="Level5" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 5" textFill="#f5f2f2" />
-      <Label fx:id="Level3" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 3" />
-   </children>
+<AnchorPane id="AnchorPane" minHeight="343.0" prefHeight="343.0" prefWidth="686.22216796875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainmenu.FXMLDocumentController3">
+  <children>
+    <ImageView fitHeight="354.0" fitWidth="696.0" layoutX="-5.0" layoutY="-11.0">
+      <image>
+        <Image url="@Images/choose_level.jpg" />
+      </image>
+    </ImageView>
+    <Label fx:id="Level1" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Save 1" />
+    <Label fx:id="Level2" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="296.0" prefHeight="46.0" prefWidth="114.0" text="Save 2" />
+    <Label fx:id="Level4" alignment="CENTER" contentDisplay="CENTER" layoutX="397.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Save 4" />
+    <Label fx:id="Level5" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Save 5" textFill="#f5f2f2" />
+    <Label fx:id="Level3" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Save 3" />
+    <Button fx:id="save1" layoutX="34.0" layoutY="296.0" mnemonicParsing="false" onAction="#handlesave1" opacity="0.0" prefHeight="45.999900000002526" prefWidth="110.0" text="Button" />
+    <Button fx:id="save2" layoutX="149.0" layoutY="295.0" mnemonicParsing="false" onAction="#handlesave2" opacity="0.0" prefHeight="47.0" prefWidth="123.0" text="Button" />
+    <Button fx:id="save3" layoutX="274.0" layoutY="296.0" mnemonicParsing="false" onAction="#handlesave3" opacity="0.0" prefHeight="46.0" prefWidth="123.0" text="Button" />
+    <Button fx:id="save4" layoutX="397.0" layoutY="296.0" mnemonicParsing="false" onAction="#handlesave4" opacity="0.0" prefHeight="46.0" prefWidth="124.0" text="Button" />
+    <Button fx:id="save5" layoutX="531.0" layoutY="296.0" mnemonicParsing="false" onAction="#handlesave5" opacity="0.0" prefHeight="46.0" prefWidth="123.0" text="Button" />
+  </children>
 </AnchorPane>
