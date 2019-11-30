@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="sunpane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mainmenu.FXMLDocumentController2">
+<AnchorPane id="AnchorPane" fx:id="sunpane" minHeight="589.0" prefHeight="589.0" prefWidth="1108.584775390625" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmenu.FXMLDocumentController2">
   <children>
     <AnchorPane fx:id="igm" layoutX="341.0" layoutY="47.0" opacity="1.0" prefHeight="438.0" prefWidth="582.0" style="-fx-background-size: 1200 900;&#10;-fx-background-radius: 30;&#10;-fx-border-radius: 30;&#10;-fx-border-width:5;&#10;-fx-border-color: #ccffcc;&#10;-fx-background-color: #ccffcc;">
       <children>
@@ -251,8 +244,8 @@
         </AnchorPane>
       </children>
     </AnchorPane>
-    <TextField fx:id="special_Thunder_text" layoutX="100.0" layoutY="516.0" opacity="0.0" prefHeight="27.0" prefWidth="506.0" text="Thunder Strike- The Lawn is struck by a chain of thunder strikes. Cost = 100 Gold. Damage = 50." />
-    <TextField fx:id="special_Laser_text" layoutX="100.0" layoutY="516.0" opacity="0.0" prefHeight="27.0" prefWidth="506.0" text="Laser Field- The Lawn is covered by a powerful laser breams. Cost = 200 Gold. Damage = 100." />
+    <TextField fx:id="special_Thunder_text" layoutX="100.0" layoutY="516.0" opacity="0.0" prefHeight="27.0" prefWidth="519.0" text="Thunder Strike- The Lawn is struck by a chain of thunder strikes. Cost = 200 Gold. Damage = 1000." />
+    <TextField fx:id="special_Laser_text" layoutX="100.0" layoutY="516.0" opacity="0.0" prefHeight="27.0" prefWidth="506.0" text="Laser Field- The Lawn is covered by a powerful laser breams. Cost = 100 Gold. Damage = 100" />
     <TextField fx:id="sunCost" layoutX="97.0" layoutY="109.0" opacity="0.0" prefHeight="27.0" prefWidth="70.0" text="Cost = 50" />
     <TextField fx:id="peaCost" layoutX="97.0" layoutY="222.0" opacity="0.0" prefHeight="27.0" prefWidth="70.0" text="Cost = 50" />
     <TextField fx:id="nutCost" layoutX="97.0" layoutY="349.0" opacity="0.0" prefHeight="27.0" prefWidth="74.0" text="Cost = 100" />

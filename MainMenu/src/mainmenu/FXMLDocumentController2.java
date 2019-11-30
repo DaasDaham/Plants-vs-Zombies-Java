@@ -64,6 +64,7 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private Label sunCount;
 
+
     @FXML
     private ImageView z1;
     @FXML
@@ -141,6 +142,11 @@ public class FXMLDocumentController2 implements Initializable {
     public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
 
+    public boolean lawndone0 =false;
+    public boolean lawndone1 =false;
+    public boolean lawndone2 =false;
+    public boolean lawndone3 =false;
+    public boolean lawndone4 =false;
     public int currlvl;
 
     public boolean peablock=false;
@@ -213,7 +219,14 @@ public class FXMLDocumentController2 implements Initializable {
             progBar.setProgress(timerI/10.0);
             if(timerI%10==0 && timerI>=2){
                 Platform.runLater(() -> {
-                    addZombie(new NormalZombie());
+                    if(r.nextInt(4)==0)
+                        addZombie(new NormalZombie());
+                    else if (r.nextInt(4)==1 && level>=1)
+                        addZombie(new FlagZombie());
+                    else if (r.nextInt(4)==2 && level>=2)
+                        addZombie(new BucketZombie());
+                    else if (r.nextInt(4)==1 && level>=3)
+                        addZombie(new FlyingZombie());
                     //Special trying = new Laser(mainGrid);
                 });  
             }
@@ -326,6 +339,8 @@ public class FXMLDocumentController2 implements Initializable {
                 tt3.play();
             }
         });
+
+
         lm3.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -706,12 +721,20 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private void ThunderButtonPress(MouseEvent event) {
 
-        power = new Thunder(mainGrid);
+        if(Counter.count>=200)
+        {
+            power = new Thunder(mainGrid);
+            Counter.count-=200;
+        }
     }
     @FXML
     private void LaserButtonPress(MouseEvent event) {
 
-        power = new Laser(mainGrid);
+        if(Counter.count>=100)
+        {
+            power = new Laser(mainGrid);
+            Counter.count-=100;
+        }
     }
     @FXML
     private void SunPlantCostEnter(MouseEvent event) {
@@ -848,6 +871,90 @@ public class FXMLDocumentController2 implements Initializable {
         GridPane.setConstraints(zombImg,9,zombLane);
         z.startTranslation(mainGrid, plane4, numPlants);
         }
+    }
+    public void lawnmove(int x)
+    {
+
+        tt2 = new TranslateTransition();
+        tt2.setDuration(Duration.seconds(2));
+        tt2.setToX(1000);
+        if(x==0)
+        {
+            tt2.setNode(lm1);
+            for(Zombie z:lane0)
+            {
+                z.zImg.setOpacity(0);
+                lane0.poll();
+            }
+            if(lawndone0==true)
+            {
+                Stage curr = (Stage) igm.getScene().getWindow();
+                curr.close();
+            }
+            lawndone0=true;
+        }
+        else if(x==1)
+        {
+            tt2.setNode(lm2);
+            for(Zombie z:lane1)
+            {
+                z.zImg.setOpacity(0);
+                lane1.poll();
+            }
+            if(lawndone1==true)
+            {
+                Stage curr = (Stage) igm.getScene().getWindow();
+                curr.close();
+            }
+            lawndone1=true;
+        }
+        else if(x==2)
+        {
+            tt2.setNode(lm3);
+            lane2.poll();
+            for(Zombie z:lane2)
+            {
+                z.zImg.setOpacity(0);
+                lane2.poll();
+            }
+            if(lawndone2==true)
+            {
+                Stage curr = (Stage) igm.getScene().getWindow();
+                curr.close();
+            }
+            lawndone2=true;
+        }
+        else if(x==3)
+        {
+            tt2.setNode(lm4);
+            for(Zombie z:lane3)
+            {
+                z.zImg.setOpacity(0);
+                lane3.poll();
+            }
+            if(lawndone3==true)
+            {
+                Stage curr = (Stage) igm.getScene().getWindow();
+                curr.close();
+            }
+            lawndone3=true;
+        }
+        else
+        {
+            tt2.setNode(lm5);
+            for(Zombie z:lane4)
+            {
+                z.zImg.setOpacity(0);
+                lane4.poll();
+            }
+            if(lawndone4==true)
+            {
+                Stage curr = (Stage) igm.getScene().getWindow();
+                curr.close();
+            }
+            lawndone4=true;
+        }
+        tt2.play();
     }
 }
 
