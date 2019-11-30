@@ -1002,7 +1002,7 @@ public class FXMLDocumentController2 implements Initializable {
             out.close();
         }
     }
-    public void lawnmove(int x)
+    /*public void lawnmove(int x)
     {
 
         tt2 = new TranslateTransition();
@@ -1081,7 +1081,7 @@ public class FXMLDocumentController2 implements Initializable {
             lawncount.lawndone4++;
         }
         tt2.play();
-    }
+    }*/
 }
 
 class Srz implements Serializable{
