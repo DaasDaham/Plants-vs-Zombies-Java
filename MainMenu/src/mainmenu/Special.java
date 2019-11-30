@@ -1,5 +1,6 @@
 package mainmenu;
 
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
@@ -10,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.net.URL;
-
+import java.util.concurrent.TimeUnit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.animation.TranslateTransition;
@@ -52,16 +53,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 public class Special {
+    ImageView specialimg;
+    LinkedList<ImageView> list=new LinkedList<>();
 }
 class Thunder extends Special
 {
-
+    ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
     public Thunder(GridPane mainGrid)
     {
         for(int i=0;i<10;i++)
             for(int j=0;j<6;j++)
-        {   ImageView specialimg;
+        {
             specialimg = new ImageView(new Image(getClass().getResourceAsStream("Images/thunder.gif")));
+            list.add(specialimg);
             specialimg.toFront();
             specialimg.setScaleZ(5);
             mainGrid.getChildren().add(specialimg);
@@ -88,19 +92,31 @@ class Thunder extends Special
             }
             specialimg.setFitWidth(100);
             specialimg.setFitHeight(200);
+
+        }
+        ScheduledFuture<?> countdown = scheduler.schedule(new Runnable() {
+            @Override
+            public void run() {
+                // do the thing
+                Platform.runLater(() -> {
+                    for(ImageView img : list) {
+                        img.setOpacity(0);
+                    }
+                });
+            }}, 3000, TimeUnit.MILLISECONDS);
         }
 
-    }
 }
 class Laser extends Special
 {
+    ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
     public Laser(GridPane mainGrid)
     {
         for(int i=0;i<5;i++)
         {
-            ImageView specialimg;
             specialimg = new ImageView(new Image(getClass().getResourceAsStream("Images/laser_beam.gif")));
             specialimg.toFront();
+            list.add(specialimg);
             mainGrid.getChildren().add(specialimg);
             specialimg.setScaleX(5);
             specialimg.setScaleY(3);
@@ -127,6 +143,40 @@ class Laser extends Special
             }
             //specialimg.setFitWidth(100);
             //specialimg.setFitHeight(200);
+
         }
-    }
+        ScheduledFuture<?> countdown = scheduler.schedule(new Runnable() {
+            @Override
+            public void run() {
+                // do the thing
+                Platform.runLater(() -> {
+                    for(ImageView img : list) {
+                        img.setOpacity(0);
+                    }
+                });
+            }}, 1000, TimeUnit.MILLISECONDS);
+          /*  Platform.runLater(() -> { for(ImageView img : list) {
+            System.out.println("bla");
+            mainGrid.getChildren().remove(img);
+            list.remove(img );
+            }});
+
+        for(ImageView img : list) {
+            System.out.println("bla remove");
+        }*/
+        /*ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        ScheduledFuture<?> countdown = scheduler.schedule(new Runnable() {
+            @Override
+            public void run() {
+                // do the thing
+                Platform.runLater(() -> {
+                            for(ImageView img : list) {
+                             System.out.println("bla");
+                               mainGrid.getChildren().remove(img);
+                          list.remove(img );
+                              img = null;
+                       }
+                     });
+            }}, 50, TimeUnit.MILLISECONDS);*/
+}
 }

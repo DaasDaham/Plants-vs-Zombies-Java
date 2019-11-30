@@ -16,10 +16,9 @@ import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.animation.Timeline;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -35,8 +34,6 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import java.util.concurrent.TimeUnit;
@@ -109,7 +106,13 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private ProgressBar progBar;
     @FXML
-    private ImageView z11;
+    private ImageView special_Thunder;
+    @FXML
+    private ImageView special_Laser;
+    @FXML
+    private TextField special_Thunder_text;
+    @FXML
+    private TextField special_Laser_text;
     @FXML
     private Color x2;
     @FXML
@@ -147,7 +150,7 @@ public class FXMLDocumentController2 implements Initializable {
     public Plant[] plane4 = new Plant[9];
     
     public int numPlants= 0;
-    
+    public Special power;
 
     @FXML
     private void igmclose(ActionEvent event) {
@@ -242,6 +245,7 @@ public class FXMLDocumentController2 implements Initializable {
             }); }
 	} 
     }
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -369,7 +373,6 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
-
         /*sun.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -505,6 +508,7 @@ public class FXMLDocumentController2 implements Initializable {
                 
                 p.setX(x);
                 p.setY(y);
+                s.changecounter(50); //buying
                 allPlants[y][x]=1;
                 if(y==0 && level >=3){
                     plane0[x] = p;
@@ -554,8 +558,8 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
-                    plane0[x] = p;
+                s.changecounter(50);
+                if(y==0){
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
@@ -590,7 +594,9 @@ public class FXMLDocumentController2 implements Initializable {
                 
                 p.setX(x);
                 p.setY(y);
-                
+
+                s.changecounter(100);
+
                 allPlants[y][x]=1;
                 if(y==0 && level >=3){
                     plane0[x] = p;
@@ -622,6 +628,9 @@ public class FXMLDocumentController2 implements Initializable {
                 plantimg.setFitWidth(100);
                 p.setX(x);
                 p.setY(y);
+
+                s.changecounter(150);
+
                 allPlants[y][x]=1;
                 if(y==0 && level >=3){
                     plane0[x] = p;
@@ -671,7 +680,36 @@ public class FXMLDocumentController2 implements Initializable {
     private void handlePauseButton(ActionEvent event) {
         igm.toFront();
     }
+    @FXML
+    private void LaserButtonEnter(MouseEvent event) {
 
+            special_Laser_text.setOpacity(1);
+    }
+    @FXML
+    private void ThunderButtonEnter(MouseEvent event) {
+
+        special_Thunder_text.setOpacity(1);
+    }
+    @FXML
+    private void LaserButtonExit(MouseEvent event) {
+
+        special_Laser_text.setOpacity(0);
+    }
+    @FXML
+    private void ThunderButtonEExit(MouseEvent event) {
+
+        special_Thunder_text.setOpacity(0);
+    }
+    @FXML
+    private void ThunderButtonPress(MouseEvent event) {
+
+        power = new Thunder(mainGrid);
+    }
+    @FXML
+    private void LaserButtonPress(MouseEvent event) {
+
+        power = new Laser(mainGrid);
+    }
     @FXML
     private void handleIgmExit(ActionEvent event) {
         try {
