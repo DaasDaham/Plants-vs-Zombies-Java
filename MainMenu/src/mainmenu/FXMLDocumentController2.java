@@ -124,7 +124,12 @@ public class FXMLDocumentController2 implements Initializable {
     public Queue<Zombie> lane2 = new LinkedList<Zombie>();
     public Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public Queue<Zombie> lane4 = new LinkedList<Zombie>();
+    public Plant[] plane0 = new Plant[9];
     public Plant[] plane1 = new Plant[9];
+    public Plant[] plane2 = new Plant[9];
+    public Plant[] plane3 = new Plant[9];
+    public Plant[] plane4 = new Plant[9];
+    
     public int numPlants= 0;
     
 
@@ -186,7 +191,11 @@ public class FXMLDocumentController2 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         for(int kk=0;kk<9;kk++){
-            plane1[kk] = null;
+            plane0[kk] = null;
+            plane1[kk]=null;
+            plane2[kk]=null;
+            plane3[kk]=null;
+            plane4[kk]=null;
         }
         Sun s = new Sun(mainGrid,sunCount);
         igm.toBack();
@@ -427,16 +436,19 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setY(y);
                 allPlants[y][x]=1;
                 if(y==0){
+                    plane0[x] = p;
                     p.attack(mainGrid, lane0);
                 }else if(y==1){
                     plane1[x] = p;
-                    numPlants++;
                     p.attack(mainGrid, lane1);
                 }else if(y==2){
+                    plane2[x] = p;
                     p.attack(mainGrid, lane2);
                 }else if(y==3){
+                    plane3[x] = p;
                     p.attack(mainGrid, lane3);
                 }else if(y==4){
+                    plane4[x] = p;
                     p.attack(mainGrid, lane4);
                 }
                 
@@ -454,14 +466,19 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
                 if(y==0){
+                    plane0[x] = p;
                     p.attack(mainGrid, lane0);
                 }else if(y==1){
+                    plane1[x] = p;
                     p.attack(mainGrid, lane1);
                 }else if(y==2){
+                    plane2[x] = p;
                     p.attack(mainGrid, lane2);
                 }else if(y==3){
+                    plane3[x] = p;
                     p.attack(mainGrid, lane3);
                 }else if(y==4){
+                    plane4[x] = p;
                     p.attack(mainGrid, lane4);
                 }
             }
@@ -476,6 +493,17 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setY(y);
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
+                if(y==0){
+                    plane0[x] = p;
+                }else if(y==1){
+                    plane1[x] = p;
+                }else if(y==2){
+                    plane2[x] = p;
+                }else if(y==3){
+                    plane3[x] = p;
+                }else if(y==4){
+                    plane4[x] = p;
+                }
             }
             else if((db.getUrl().equals("Cherry"))){
                 Plant p = new CherryBombPlant();
@@ -489,14 +517,19 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
                 if(y==0){
+                    plane0[x] = p;
                     p.attack(mainGrid, lane0);
                 }else if(y==1){
+                    plane1[x] = p;
                     p.attack(mainGrid, lane1);
                 }else if(y==2){
+                    plane2[x] = p;
                     p.attack(mainGrid, lane2);
                 }else if(y==3){
+                    plane3[x] = p;
                     p.attack(mainGrid, lane3);
                 }else if(y==4){
+                    plane4[x] = p;
                     p.attack(mainGrid, lane4);
                 }
             }
@@ -564,18 +597,17 @@ public class FXMLDocumentController2 implements Initializable {
         //System.out.println(zombLane+" zomb addded to lan");
         if(zombLane==0){
             lane0.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane0, numPlants);
         }else if(zombLane==1){
-            //System.out.println();
             lane1.add(z);
-        }else if(zombLane==2){
-            lane2.add(z);
-        }else if(zombLane==3){
-            lane3.add(z);
-        }else if(zombLane==4){
-            lane4.add(z);
-        }
-        ImageView zombImg = z.getImage();
-        //System.out.println(lane1.size());
+            ImageView zombImg = z.getImage();
         zombImg.setPreserveRatio(true);
         zombImg.setFitWidth(100);
         zombImg.setFitHeight(100);
@@ -583,5 +615,36 @@ public class FXMLDocumentController2 implements Initializable {
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,zombLane);
         z.startTranslation(mainGrid, plane1, numPlants);
+        }else if(zombLane==2){
+            lane2.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane2, numPlants);
+        }else if(zombLane==3){
+            lane3.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane3, numPlants);
+        }else if(zombLane==4){
+            lane4.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane4, numPlants);
+        }
     }
 }

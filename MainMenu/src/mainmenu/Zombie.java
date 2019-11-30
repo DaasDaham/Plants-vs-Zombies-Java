@@ -32,7 +32,7 @@ public class Zombie {
     public Zombie(){
         maxHealth = 100;
         currHealth=100;
-        lane = 1;
+        lane = randLane();
     }
     
     public void setCurrPlant(Plant p){
@@ -41,31 +41,81 @@ public class Zombie {
     
     public void startTranslation(GridPane mainGrid, Plant[] plane, int numPlants){
         TranslateTransition t = new TranslateTransition();
-        t.setDuration(Duration.seconds(20));
-        t.setToX(-750);
+        t.setDuration(Duration.seconds(50));
+        t.setToX(-800);
         t.setNode(zImg);
         t.play();
         
         zImg.translateXProperty().addListener((Observable observable) -> {
-            if(numPlants>0){
-            for(int x=0;x<9;x++){
+            //System.out.println("i am alive");
+            if(currHealth<=0){t.stop();}
+            else{
+            if(this!=null){
+            int x = checkPlant(zImg,plane);
+            if(x!=-1){
+                mainGrid.getChildren().remove(plane[x].getImage());
+                mainGrid.getChildren().remove(plane[x].getBullet());
+                plane[x] = null;
+            }}}
+            
+            /*for(int x=0;x<9;x++){
                 if(plane[x]!=null){
                 if(checkIntersect(zImg, plane[x].getImage(),true)){
                 System.out.println("plant NOT null");
                 //System.out.println("intersected");
                 //currPlant.takeDamage();
                 //if(currPlant.getHealth()<=0){
-                mainGrid.getChildren().remove(plane[x].getImage());
-                mainGrid.getChildren().remove(plane[x].getBullet());
+                
                 //checkIntersect(zImg, plane[x].getImage(),true);
                 //plane.pop();
                 plane[x] = null;}
                 //}
             }
-            }
+            }*/
             
-            }
         });
+    }
+    
+    private int checkPlant(ImageView zImg, Plant[] parr){
+        double pos = zImg.getTranslateX();
+        if(pos<0 && pos>-89){
+            if(parr[8]!=null){
+                return 8;
+            }
+        }else if(pos<-89 && pos>-178){
+            if(parr[7]!=null){
+                return 7;
+            }
+        }else if(pos<-178 && pos>-267){
+            if(parr[6]!=null){
+                return 6;
+            }
+        }else if(pos<-267 && pos>-356){
+            if(parr[5]!=null){
+                return 5;
+            }
+        }else if(pos<-356 && pos>-445){
+            if(parr[4]!=null){
+                return 4;
+            }
+        }else if(pos<-445 && pos>-534){
+            if(parr[3]!=null){
+                return 3;
+            }
+        }else if(pos<-534 && pos>-623){
+            if(parr[2]!=null){
+                return 2;
+            }
+        }else if(pos<-623 && pos>-712){
+            if(parr[1]!=null){
+                return 1;
+            }
+        }else if(pos<-712 && pos>-800){
+            if(parr[0]!=null){
+                return 0;
+            }
+        }
+        return -1;
     }
     
     private boolean checkIntersect(ImageView v1, ImageView v2, boolean chek){
@@ -97,7 +147,7 @@ public class Zombie {
         return lane;
     }
     public void takeDamage(){
-        currHealth-=5;
+        currHealth-=20;
     }
     public double getHealth(){
         return currHealth;
