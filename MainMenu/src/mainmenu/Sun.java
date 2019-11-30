@@ -145,4 +145,9 @@ public class Sun {
             }
         });
     }
+    public void changecounter(int x)
+    {
+        Counter.count-=x;
+        Counter.sunCount.setText(""+Counter.count);
+    }
 }

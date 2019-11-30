@@ -16,10 +16,9 @@ import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.animation.Timeline;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -35,8 +34,6 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import java.util.concurrent.TimeUnit;
@@ -107,7 +104,13 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private ProgressBar progBar;
     @FXML
-    private ImageView z11;
+    private ImageView special_Thunder;
+    @FXML
+    private ImageView special_Laser;
+    @FXML
+    private TextField special_Thunder_text;
+    @FXML
+    private TextField special_Laser_text;
     @FXML
     private Color x2;
     @FXML
@@ -126,7 +129,7 @@ public class FXMLDocumentController2 implements Initializable {
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
     public Plant[] plane1 = new Plant[9];
     public int numPlants= 0;
-    
+    public Special power;
 
     @FXML
     private void igmclose(ActionEvent event) {
@@ -160,12 +163,12 @@ public class FXMLDocumentController2 implements Initializable {
         fade.play();
     }
     
-    class Helper extends TimerTask 
-    { 
+    class Helper extends TimerTask
+    {
         Random r = new Random();
-	public int i = 0; 
-	public void run() 
-	{ 
+	public int i = 0;
+	public void run()
+	{
             ++i;
             if(i<=5){
                 peaPlantSide.setOpacity(i/5.0);
@@ -175,12 +178,23 @@ public class FXMLDocumentController2 implements Initializable {
             int prob = r.nextInt(10);
             if(i%2==0){
                 Platform.runLater(() -> {
+
                      addZombie(new NormalZombie());
-                    Special trying = new Laser(mainGrid);
                 });
-                
+
             }
-	} 
+           // if(i%3==0)
+            //{
+           //     Platform.runLater(() -> {
+            //        for(ImageView img : power.list) {
+               //         System.out.println("bla");
+             //           mainGrid.getChildren().remove(img);
+                 //      power.list.remove(img );
+              //          img = null;
+                //    }
+               // });
+         //   }
+	}
     }
     
     @Override
@@ -293,7 +307,6 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
-
         /*sun.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -425,6 +438,7 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(peaimg, x, y);
                 p.setX(x);
                 p.setY(y);
+                s.changecounter(50); //buying
                 allPlants[y][x]=1;
                 if(y==0){
                     p.attack(mainGrid, lane0);
@@ -453,6 +467,7 @@ public class FXMLDocumentController2 implements Initializable {
                 mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
+                s.changecounter(50);
                 if(y==0){
                     p.attack(mainGrid, lane0);
                 }else if(y==1){
@@ -475,6 +490,7 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
                 GridPane.setConstraints(plantimg, x, y);
+                s.changecounter(100);
                 allPlants[y][x]=1;
             }
             else if((db.getUrl().equals("Cherry"))){
@@ -487,6 +503,7 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
                 GridPane.setConstraints(plantimg, x, y);
+                s.changecounter(150);
                 allPlants[y][x]=1;
                 if(y==0){
                     p.attack(mainGrid, lane0);
@@ -521,7 +538,36 @@ public class FXMLDocumentController2 implements Initializable {
     private void handlePauseButton(ActionEvent event) {
         igm.toFront();
     }
+    @FXML
+    private void LaserButtonEnter(MouseEvent event) {
 
+            special_Laser_text.setOpacity(1);
+    }
+    @FXML
+    private void ThunderButtonEnter(MouseEvent event) {
+
+        special_Thunder_text.setOpacity(1);
+    }
+    @FXML
+    private void LaserButtonExit(MouseEvent event) {
+
+        special_Laser_text.setOpacity(0);
+    }
+    @FXML
+    private void ThunderButtonEExit(MouseEvent event) {
+
+        special_Thunder_text.setOpacity(0);
+    }
+    @FXML
+    private void ThunderButtonPress(MouseEvent event) {
+
+        power = new Thunder(mainGrid);
+    }
+    @FXML
+    private void LaserButtonPress(MouseEvent event) {
+
+        power = new Laser(mainGrid);
+    }
     @FXML
     private void handleIgmExit(ActionEvent event) {
         try {
