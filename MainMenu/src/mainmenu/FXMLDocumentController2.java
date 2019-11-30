@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.FileInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.Timer; 
@@ -96,8 +97,7 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private GridPane mainGrid;
     @FXML
-    private AnchorPane sunpane;
-
+    public AnchorPane sunpane;
     @FXML
     private Button igmExitButton;
     private TranslateTransition tt;
@@ -152,7 +152,6 @@ public class FXMLDocumentController2 implements Initializable {
     public int walnutTimer=1;
     public int cbTimer=1;
     public int timerI = 0; 
-    
 
     public Plant[] plane0 = new Plant[9];
     public Plant[] plane1 = new Plant[9];
@@ -207,12 +206,9 @@ public class FXMLDocumentController2 implements Initializable {
     
     class Helper extends TimerTask 
     { 
-        Random r = new Random();
-	
-	public void run() 
-	{ 
+        Random r = new Random();	
+	public void run(){ 
             ++timerI;
-            
             //System.out.println("val i+ "+i);
             progBar.setProgress(timerI/10.0);
             if(timerI%10==0 && timerI>=2){
@@ -222,44 +218,24 @@ public class FXMLDocumentController2 implements Initializable {
                 });  
             }
             if(progBar.getProgress()>=1){
-                level++;
-                Platform.runLater(() -> {
-                ObservableList<Node> childrens = mainGrid.getChildren();
-                for(Node node : childrens) {
-                 if(node instanceof ImageView) {
-                    ImageView imageView=(ImageView)node; // use what you want to remove
-                    mainGrid.getChildren().remove(imageView);
-                    break;
-                }
-                }
-                lane0 = new LinkedList<Zombie>();
-                lane1 = new LinkedList<Zombie>();
-                lane2 = new LinkedList<Zombie>();
-                lane3 = new LinkedList<Zombie>();
-                lane4 = new LinkedList<Zombie>();
-                plane0 = new Plant[9];
-                plane1 = new Plant[9];
-                plane2 = new Plant[9];
-                plane3 = new Plant[9];
-                plane4 = new Plant[9];
-                for(int kk=0;kk<9;kk++){
-                plane0[kk] = null;
-                plane1[kk]=null;
-                plane2[kk]=null;
-                plane3[kk]=null;
-                plane4[kk]=null;
-                }
-                allPlants = new int[5][9];
-                peaTimer=1;
-                timerI=0;
-                progBar.setProgress(0);
-                end=true;
-                System.out.println("Entered next level");
-            }); }
-	} 
-    }
-
-    
+               timerI=0;
+               level++;
+               progBar.setProgress(1);
+               peaTimer=0;
+               sunTimer=0;
+               walnutTimer=0;
+               cbTimer=0;
+               if(level==2){
+                   sunPlantSide.setOpacity(1);
+               }else if(level==3){
+                   cornBreadSide.setOpacity(1);
+               }else if(level>=4){
+                   cherryBombSide.setOpacity(1);
+               }
+            }
+        }
+    } 
+  
     @Override
     public void initialize(URL url, ResourceBundle rb){
         if(level==1){
@@ -286,9 +262,7 @@ public class FXMLDocumentController2 implements Initializable {
         progBar.setProgress(0);
         timer = new Timer();
         TimerTask task = new Helper(); 
-          
-        timer.schedule(task, 2000, 1000);
-
+            timer.schedule(task, 2000, 1000);
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
             s.spawnSun();
@@ -345,7 +319,6 @@ public class FXMLDocumentController2 implements Initializable {
             }
         });
         igmCloseBut.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
             @Override
             public void handle(MouseEvent event) {
                 tt.play();
@@ -877,3 +850,4 @@ public class FXMLDocumentController2 implements Initializable {
         }
     }
 }
+
