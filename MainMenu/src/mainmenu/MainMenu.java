@@ -5,6 +5,9 @@
  */
 package mainmenu;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,21 +26,29 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
         Parent root = loader.load();
 
         FXMLDocumentController2 controller = loader.getController();
-        Image image = new Image(getClass().getResourceAsStream("ProjectilePea_1.png"));
-        Zombie lol1 = new NormalZombie();
+        Runnable task3 = () -> {
+            System.out.println("zombie Spawned");
+            Zombie z = new NormalZombie();
+            controller.addZombie(z);
+        };  
+        ScheduledExecutorService scheduler
+                = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(task3, 4, 5,
+                TimeUnit.SECONDS);
+        /*Zombie lol1 = new NormalZombie();
         Zombie flyi = new FlyingZombie();
         Zombie flagi = new FlagZombie();
-        Zombie bucketi = new BucketZombie();
+        Zombie bucketi = new BucketZombie();*/
         //controller.bigOuf(imageView, 2, 5);
        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         
-        controller.addZombie(lol1);
+        
         //controller.addZombie(flyi);
         //controller.addZombie(flagi);
         //controller.addZombie(bucketi);

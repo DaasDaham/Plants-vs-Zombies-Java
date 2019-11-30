@@ -45,18 +45,18 @@ public class Zombie {
         t.play();
         
         zImg.translateXProperty().addListener((Observable observable) -> {
-            //System.out.println(currZombie.getImage().getTranslateX());
+            //System.out.println("Im still alive");
             if(currPlant==null){
                 //System.out.println("plant null");
             }
             else if(checkIntersect(zImg, currPlant.getImage(),false)){
                 //System.out.println("intersected");
                 t.pause();
-                
                 //currPlant.takeDamage();
                 //if(currPlant.getHealth()<=0){
-                    mainGrid.getChildren().remove(currPlant.getImage());
-                    mainGrid.getChildren().remove(currPlant.getBullet());
+                mainGrid.getChildren().remove(currPlant.getImage());
+                mainGrid.getChildren().remove(currPlant.getBullet());
+                currPlant = null;
                 //}
             }       
         });

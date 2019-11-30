@@ -16,6 +16,7 @@ import javafx.util.Duration;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javafx.fxml.FXMLLoader;
 
 /**
  *
@@ -86,9 +87,12 @@ class PeaPlant extends Plant{
         tt = new TranslateTransition();
     }
     public void attack(GridPane mainGrid){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument2.fxml"));
+        FXMLDocumentController2 controller = loader.getController();
         peaBullet.translateXProperty().addListener((Observable observable) -> {
             //System.out.println(currZombie.getImage().getTranslateX());
-            
+            if(controller.lane1.size()>0){
+            currZombie = controller.lane1.peek();
             if(currZombie!=null){
             if(checkIntersect(peaBullet, currZombie.getImage(),false)){
                 System.out.println("intersected");
@@ -107,7 +111,7 @@ class PeaPlant extends Plant{
                 peaBullet.setOpacity(1);
                 checkIntersect(peaBullet, currZombie.getImage(), true);
             }
-            }
+            }}
             
         });
         

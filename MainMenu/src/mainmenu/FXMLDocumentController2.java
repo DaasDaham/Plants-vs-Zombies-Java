@@ -7,7 +7,7 @@ package mainmenu;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Random;
+import java.util.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.Timer; 
 import java.util.TimerTask; 
@@ -116,6 +117,12 @@ public class FXMLDocumentController2 implements Initializable {
     public Zombie damnZombie;
     public FlagZombie dZombie;
     public int[][] allPlants = new int[5][9];
+    public Queue<Zombie> lane0 = new LinkedList<Zombie>();
+    public Queue<Zombie> lane1 = new LinkedList<Zombie>();
+    public Queue<Zombie> lane2 = new LinkedList<Zombie>();
+    public Queue<Zombie> lane3 = new LinkedList<Zombie>();
+    public Queue<Zombie> lane4 = new LinkedList<Zombie>();
+    
 
     @FXML
     private void igmclose(ActionEvent event) {
@@ -284,11 +291,6 @@ public class FXMLDocumentController2 implements Initializable {
                 tt2.play();
             }
         });
-        tt4 = new TranslateTransition();
-        tt4.setDuration(Duration.seconds(30));
-        tt4.setToX(-750);
-        tt4.setNode(z1);
-        tt4.play();
         /*sun.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -405,7 +407,7 @@ public class FXMLDocumentController2 implements Initializable {
             if(allPlants[y][x]!=1){
             if(db.getUrl().equals("Pea")){
                 Plant p = new PeaPlant();
-                p.setZombie(damnZombie);  //CHANGE THIS
+                //p.setZombie(lane1.peek());  //CHANGE THIS
                 ImageView plantimg = p.getImage();
                 ImageView peaimg = p.getBullet();
                 plantimg.setPreserveRatio(true);
@@ -423,7 +425,7 @@ public class FXMLDocumentController2 implements Initializable {
             }
             else if(db.getUrl().equals("Sun")){
                 Plant p = new SunFlowerPlant();
-                p.setZombie(damnZombie);  //CHANGE THIS
+                p.setZombie(lane1.peek());  //CHANGE THIS
                 ImageView plantimg = p.getImage();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(70);
@@ -433,7 +435,7 @@ public class FXMLDocumentController2 implements Initializable {
             }
             else if(db.getUrl().equals("Walnut")){
                 Plant p = new WalnutPlant();
-                p.setZombie(damnZombie);  //CHANGE THIS
+                p.setZombie(lane1.peek());  //CHANGE THIS
                 ImageView plantimg = p.getImage();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(70);
@@ -443,7 +445,7 @@ public class FXMLDocumentController2 implements Initializable {
             }
             else if((db.getUrl().equals("Cherry"))){
                 Plant p = new CherryBombPlant();
-                p.setZombie(damnZombie);  //CHANGE THIS
+                p.setZombie(lane1.peek());  //CHANGE THIS
                 ImageView plantimg = p.getImage();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(100);
@@ -492,26 +494,25 @@ public class FXMLDocumentController2 implements Initializable {
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
         if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
-            //System.out.println("intersection");
             return true;
         }
         return false;
     }
     
     public void bigOuf(ImageView image, int x, int y){
-        //ImageView image = new ImageView(new Image(getClass().getResourceAsStream("Images/ProjectilePea_1.png")));
         mainGrid.getChildren().add(image);
         GridPane.setConstraints(image, x, y );
     }
     
     public void addZombie(Zombie z){
+        lane1.add(z);
         ImageView zombImg = z.getImage();
-        damnZombie = z;
-        System.out.println("this is in c class zombe");
+        System.out.println(lane1.size());
         zombImg.setPreserveRatio(true);
-        zombImg.setFitWidth(50);
+        zombImg.setFitWidth(57);
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,z.getLane());
+        zombImg.toFront();
         z.startTranslation(mainGrid);
     }
 }
