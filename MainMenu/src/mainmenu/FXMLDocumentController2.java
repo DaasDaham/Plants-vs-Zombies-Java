@@ -112,6 +112,14 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private TextField special_Laser_text;
     @FXML
+    private TextField sunCost;
+    @FXML
+    private TextField peaCost;
+    @FXML
+    private TextField bombCost;
+    @FXML
+    private TextField nutCost;
+    @FXML
     private Color x2;
     @FXML
     private Font x1;
@@ -567,6 +575,46 @@ public class FXMLDocumentController2 implements Initializable {
     private void LaserButtonPress(MouseEvent event) {
 
         power = new Laser(mainGrid);
+    }
+    @FXML
+    private void SunPlantCostEnter(MouseEvent event) {
+
+        sunCost.setOpacity(1);
+    }
+    @FXML
+    private void SunPlantCostExit(MouseEvent event) {
+
+        sunCost.setOpacity(0);
+    }
+    @FXML
+    private void PeaPlantCostEnter(MouseEvent event) {
+
+        peaCost.setOpacity(1);
+    }
+    @FXML
+    private void peaPlantCostExit(MouseEvent event) {
+
+        peaCost.setOpacity(0);
+    }
+    @FXML
+    private void NutPlantCostEnter(MouseEvent event) {
+
+        nutCost.setOpacity(1);
+    }
+    @FXML
+    private void NutPlantCostExit(MouseEvent event) {
+
+        nutCost.setOpacity(0);
+    }
+    @FXML
+    private void BombPlantCostEnter(MouseEvent event) {
+
+        bombCost.setOpacity(1);
+    }
+    @FXML
+    private void BombPlantCostExit(MouseEvent event) {
+
+        bombCost.setOpacity(0);
     }
     @FXML
     private void handleIgmExit(ActionEvent event) {
