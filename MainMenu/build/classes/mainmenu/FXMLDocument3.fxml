@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" minHeight="343.0" prefHeight="343.0" prefWidth="686.22216796875" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainmenu.FXMLDocumentController3">
+   <children>
+      <ImageView fitHeight="354.0" fitWidth="696.0" layoutX="-5.0" layoutY="-11.0">
+         <image>
+            <Image url="@Images/choose_level.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="Level1" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 1" />
+      <Label fx:id="Level2" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="296.0" prefHeight="46.0" prefWidth="114.0" text="Level 2" />
+      <Label fx:id="Level4" alignment="CENTER" contentDisplay="CENTER" layoutX="397.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 4" />
+      <Label fx:id="Level5" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 5" textFill="#f5f2f2" />
+      <Label fx:id="Level3" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="296.0" prefHeight="46.0" prefWidth="124.0" text="Level 3" />
+   </children>
+</AnchorPane>

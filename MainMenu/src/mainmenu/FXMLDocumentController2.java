@@ -143,6 +143,7 @@ public class FXMLDocumentController2 implements Initializable {
     public int timerI = 0; 
     
 
+
     public Plant[] plane0 = new Plant[9];
     public Plant[] plane1 = new Plant[9];
     public Plant[] plane2 = new Plant[9];
@@ -198,10 +199,8 @@ public class FXMLDocumentController2 implements Initializable {
     { 
         Random r = new Random();
 	
-	public void run() 
-	{ 
+	public void run(){ 
             ++timerI;
-            
             //System.out.println("val i+ "+i);
             progBar.setProgress(timerI/10.0);
             if(timerI%10==0 && timerI>=2){
@@ -211,38 +210,8 @@ public class FXMLDocumentController2 implements Initializable {
                 });  
             }
             if(progBar.getProgress()>=1){
-                level++;
-                Platform.runLater(() -> {
-                ObservableList<Node> childrens = mainGrid.getChildren();
-                for(Node node : childrens) {
-                 if(node instanceof ImageView) {
-                    ImageView imageView=(ImageView)node; // use what you want to remove
-                    mainGrid.getChildren().remove(imageView);
-                    break;
-                }
-                }
-                lane0 = new LinkedList<Zombie>();
-                lane1 = new LinkedList<Zombie>();
-                lane2 = new LinkedList<Zombie>();
-                lane3 = new LinkedList<Zombie>();
-                lane4 = new LinkedList<Zombie>();
-                plane0 = new Plant[9];
-                plane1 = new Plant[9];
-                plane2 = new Plant[9];
-                plane3 = new Plant[9];
-                plane4 = new Plant[9];
-                for(int kk=0;kk<9;kk++){
-                plane0[kk] = null;
-                plane1[kk]=null;
-                plane2[kk]=null;
-                plane3[kk]=null;
-                plane4[kk]=null;
-                }
-                allPlants = new int[5][9];
-                timerI=0;
-                progBar.setProgress(0);
-                System.out.println("Entered next level");
-            }); }
+               // 
+            }
 	} 
     }
 
@@ -274,7 +243,9 @@ public class FXMLDocumentController2 implements Initializable {
         timer = new Timer();
         TimerTask task = new Helper(); 
           
-        timer.schedule(task, 2000, 1000);
+
+            timer.schedule(task, 2000, 1000);
+ 
 
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
