@@ -296,7 +296,7 @@ public class FXMLDocumentController2 implements Initializable {
         
         ScheduledExecutorService scheduler
                 = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 5, 20,
+        scheduler.scheduleAtFixedRate(task2, 5, 5,
                 TimeUnit.SECONDS);
         
          
@@ -530,28 +530,32 @@ public class FXMLDocumentController2 implements Initializable {
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==1 && level >=2){
+                }else if(y==1 && level >=2&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane1[x] = p;
                     p.attack(mainGrid, lane1);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==2 && level==1){
+                }else if(y==2 && level==1&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane2[x] = p;
                     p.attack(mainGrid, lane2);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==3 && level>=2){
+                }else if(y==3 && level>=2&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane3[x] = p;
                     p.attack(mainGrid, lane3);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
                 mainGrid.getChildren().add(peaimg);
                 GridPane.setConstraints(peaimg, x, y);
-                }else if(y==4 && level>=3){
+                }else if(y==4 && level>=3&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane4[x] = p;
                     p.attack(mainGrid, lane4);
                     mainGrid.getChildren().add(plantimg);
@@ -571,27 +575,30 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
                 allPlants[y][x]=1;
-                if(y==0&& s.getcount()>=50){
+                if(y==0&& s.getcount()>=50&& s.getcount()>=50){
                     s.changecounter(50);
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==1 && level >=2){
+                }else if(y==1 && level >=2&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane1[x] = p;
                     p.attack(mainGrid, lane1);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==2 && level==1){
+                }else if(y==2 && level==1&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane2[x] = p;
                     p.attack(mainGrid, lane2);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==3 && level>=2){
+                }else if(y==3 && level>=2&& s.getcount()>=50){
+                    s.changecounter(50);
                     plane3[x] = p;
                     p.attack(mainGrid, lane3);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==4 && level>=3){
+                }else if(y==4 && level>=3&& s.getcount()>=50){
                     plane4[x] = p;
                     p.attack(mainGrid, lane4);
                     mainGrid.getChildren().add(plantimg);
@@ -616,19 +623,23 @@ public class FXMLDocumentController2 implements Initializable {
                     plane0[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==1 && level>=2){
+                }else if(y==1 && level>=2&& s.getcount()>=100){
+                    s.changecounter(100);
                     plane1[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==2 && level==1){
+                }else if(y==2 && level==1&& s.getcount()>=100){
+                    s.changecounter(100);
                     plane2[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==3 && level>=2){
+                }else if(y==3 && level>=2&& s.getcount()>=100){
+                    s.changecounter(100);
                     plane3[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
-                }else if(y==4 && level >=3){
+                }else if(y==4 && level >=3&& s.getcount()>=100){
+                    s.changecounter(100);
                     plane4[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
@@ -652,22 +663,26 @@ public class FXMLDocumentController2 implements Initializable {
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==1 && level >=2){
+                }else if(y==1 && level >=2&& s.getcount()>=25){
+                    s.changecounter(25);
                     plane1[x] = p;
                     p.attack(mainGrid, lane1);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==2 && level==1){
+                }else if(y==2 && level==1&& s.getcount()>=25){
+                    s.changecounter(25);
                     plane2[x] = p;
                     p.attack(mainGrid, lane2);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==3 && level>=2){
+                }else if(y==3 && level>=2&& s.getcount()>=25){
+                    s.changecounter(25);
                     plane3[x] = p;
                     p.attack(mainGrid, lane3);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
-                }else if(y==4 && level>=3){
+                }else if(y==4 && level>=3&& s.getcount()>=25){
+                    s.changecounter(25);
                     plane4[x] = p;
                     p.attack(mainGrid, lane4);
                     mainGrid.getChildren().add(plantimg);

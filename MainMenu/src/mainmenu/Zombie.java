@@ -34,7 +34,7 @@ public class Zombie {
     protected double maxHealth;
     protected double currHealth;
     protected int lane;
-    protected double xPos;
+    protected double xPos;protected double yPos;
     protected boolean reachHouse;
     protected ImageView zImg;
     protected int checker;
