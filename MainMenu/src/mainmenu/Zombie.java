@@ -5,12 +5,21 @@
  */
 package mainmenu;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.beans.Observable;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,33 +39,167 @@ public class Zombie {
     protected ImageView zImg;
     protected int checker;
     protected Plant currPlant;
+    public int checkTimer=0;
+    public int closeit;
+    public Timer timer;
+    public TimerTask task;
+    public Plant[] lape;
+        
 
     public double getCurrHealth() {
         return currHealth;
+    }
+    class Helper2 extends TimerTask 
+    { 
+	public int i = 0; 
+	public void run() 
+	{
+            ++i;
+            if(i==3){
+                timer.cancel();
+                System.out.println("timer cancelled");
+            }
+	} 
     }
 
     public void setCurrHealth(double currHealth) {
         this.currHealth = currHealth;
     }
 
-    public Zombie() {
+    public Zombie(){
         maxHealth = 100;
-        currHealth = 100;
-        lane = 1;
+        currHealth=100;
     }
 
     public void setCurrPlant(Plant p) {
         currPlant = p;
     }
+    public void setLane(int level){
+        
+        if(level ==1){
+            this.lane=2;
+        }else if(level==2){
+            lane = rand2();
+        }else if(level >=3){
+            lane = randLane();
+        }
+        
+    }
+    
+    public void delayedEat(GridPane mg, Plant p, TranslateTransition t){
+        //System.out.println("call times");
+        if(checkTimer==0){
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    checkTimer++;
+                    t.pause();
+                    Thread.sleep(5000);
+                    
+                } catch (InterruptedException e) {
+                }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                    System.out.println("nailed it");
+                
+            }
+        });
+        new Thread(sleeper).start();}
+    }
+    
+    public void nuller(int p){
+        lape[p] = null;
+    }
 
     public void startTranslation(GridPane mainGrid, Plant[] plane, int numPlants) {
         TranslateTransition t = new TranslateTransition();
-        t.setDuration(Duration.seconds(20));
-        t.setToX(-750);
+        t.setDuration(Duration.seconds(50));
+        t.setToX(-800);
         t.setNode(zImg);
         t.play();
 
         zImg.translateXProperty().addListener((Observable observable) -> {
+            //System.out.println("i am alive");
+            //System.out.println(Arrays.toString(plane));
+            if(currHealth<=0){t.stop();}
+            else{
+                //System.out.println(Arrays.toString(plane));
+            if(this!=null){
+            int x = checkPlant(zImg,plane);
+            if(x!=-1){
+                mainGrid.getChildren().remove(plane[x].getImage());
+                    mainGrid.getChildren().remove(plane[x].getBullet());
+                    plane[x] = null;
+            }}}
+            
+            /*for(int x=0;x<9;x++){
+                if(plane[x]!=null){
+                if(checkIntersect(zImg, plane[x].getImage(),true)){
+                System.out.println("plant NOT null");
+                //System.out.println("intersected");
+                //currPlant.takeDamage();
+                //if(currPlant.getHealth()<=0){
+                
+                //checkIntersect(zImg, plane[x].getImage(),true);
+                //plane.pop();
+                plane[x] = null;}
+                //}
+            }
+            }*/
+            
+        });
+    }
+    
+    private int checkPlant(ImageView zImg, Plant[] parr){
+        double pos = zImg.getTranslateX();
+        if(pos<0 && pos>-89){
+            if(parr[8]!=null){
+                return 8;
+            }
+        }else if(pos<-89 && pos>-178){
+            if(parr[7]!=null){
+                return 7;
+            }
+        }else if(pos<-178 && pos>-267){
+            if(parr[6]!=null){
+                return 6;
+            }
+        }else if(pos<-267 && pos>-356){
+            if(parr[5]!=null){
+                return 5;
+            }
+        }else if(pos<-356 && pos>-445){
+            if(parr[4]!=null){
+                return 4;
+            }
+        }else if(pos<-445 && pos>-534){
+            if(parr[3]!=null){
+                return 3;
+            }
+        }else if(pos<-534 && pos>-623){
+            if(parr[2]!=null){
+                return 2;
+            }
+        }else if(pos<-623 && pos>-712){
+            if(parr[1]!=null){
+                return 1;
+            }
+        }else if(pos<-712 && pos>-800){
+            if(parr[0]!=null){
+                return 0;
+            }
+        }
+        return -1;
+    }
+    
+    /*private boolean checkIntersect(ImageView v1, ImageView v2, boolean chek){
+        if(chek){
+            checker=0;
             if (numPlants > 0) {
                 for (int x = 0; x < 9; x++) {
                     if (plane[x] != null) {
@@ -79,9 +222,10 @@ public class Zombie {
         });
     }
 
-    private boolean checkIntersect(ImageView v1, ImageView v2, boolean chek) {
+    /*private boolean checkIntersect(ImageView v1, ImageView v2, boolean chek) {
         if (chek) {
             checker = 0;
+
         }
         if (v1.getParent() == null) {
             //System.out.println("this is null block");
@@ -93,11 +237,15 @@ public class Zombie {
             return true;
         }
         return false;
-    }
+    }*/
 
     public int randLane() {
         Random r = new Random();
         return r.nextInt(5);
+    }
+    public int rand2(){
+        Random r = new Random();
+        return 1+r.nextInt(3);
     }
 
     public ImageView getImage() {

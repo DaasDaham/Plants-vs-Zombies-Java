@@ -160,6 +160,7 @@ class WalnutPlant extends Plant{
     }
 }
 class SunFlowerPlant extends Plant{
+    public ScheduledExecutorService scheduler;
 
     public SunFlowerPlant(GridPane mainGrid){
         this.maxHealth=100;
@@ -168,10 +169,11 @@ class SunFlowerPlant extends Plant{
         tt = new TranslateTransition();
 
     }
+
     public void attack(GridPane mainGrid, Queue<Zombie> laneq){
         Sun s= new Sun(xPos, yPos,mainGrid);
         Runnable task2 = () -> {
-            System.out.println("Sunflower sun Spawned");
+            //System.out.println("Sunflower sun Spawned");
             s.spawnsunforflower(mainGrid,xPos,yPos);
         };
 

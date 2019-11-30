@@ -43,6 +43,7 @@ import java.util.concurrent.ScheduledFuture;
 import javafx.animation.KeyFrame;
 import javafx.application.Platform;
 import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -60,6 +61,7 @@ public class FXMLDocumentController2 implements Initializable {
     int i=0;
     @FXML
     private Label sunCount;
+
     @FXML
     private ImageView z1;
     @FXML
@@ -130,12 +132,31 @@ public class FXMLDocumentController2 implements Initializable {
     public Zombie damnZombie;
     public FlagZombie dZombie;
     public int[][] allPlants = new int[5][9];
+    public int level = 1;
+
     public static Queue<Zombie> lane0 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane1 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane2 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
+    
+    public boolean peablock=false;
+    public boolean sunblock=false;
+    public boolean walnutblock=false;
+    public boolean cbblock=false;
+    public int peaTimer=1;
+    public int sunTimer=1;
+    public int walnutTimer=1;
+    public int cbTimer=1;
+    public int timerI = 0; 
+    
+
+    public Plant[] plane0 = new Plant[9];
     public Plant[] plane1 = new Plant[9];
+    public Plant[] plane2 = new Plant[9];
+    public Plant[] plane3 = new Plant[9];
+    public Plant[] plane4 = new Plant[9];
+    
     public int numPlants= 0;
     public Special power;
 
@@ -146,77 +167,122 @@ public class FXMLDocumentController2 implements Initializable {
     
     private void ssFade() {
         FadeTransition fade = new FadeTransition();  
-        fade.setDuration(Duration.millis(10000)); 
+        fade.setDuration(Duration.millis(5000)); 
         fade.setFromValue(0.1);  
-        fade.setToValue(10);
+        fade.setToValue(1);
         fade.setNode(sunPlantSide);
         fade.play();
     }
 
     private void spFade() {
         FadeTransition fade = new FadeTransition();  
-        fade.setDuration(Duration.millis(10000)); 
+        fade.setDuration(Duration.millis(5000)); 
         fade.setFromValue(0.1);  
-        fade.setToValue(10);
+        fade.setToValue(1);
         fade.setNode(peaPlantSide);
         fade.play();
+        
     }
 
     private void cbFade() {
         FadeTransition fade = new FadeTransition();  
-        fade.setDuration(Duration.millis(10000)); 
+        fade.setDuration(Duration.millis(5000)); 
         fade.setFromValue(0.1);  
-        fade.setToValue(10);
+        fade.setToValue(1);
         fade.setNode(cornBreadSide);
         fade.play();
     }
     
-    class Helper extends TimerTask
-    {
-        Random r = new Random();
-	public int i = 0;
-	public void run()
-	{
-            ++i;
-            if(i<=5){
-                peaPlantSide.setOpacity(i/5.0);
-                cornBreadSide.setOpacity(i/5.0);
-            }
-            progBar.setProgress(i/500.0);
-            int prob = r.nextInt(10);
-            if(i%2==0){
-                Platform.runLater(() -> {
-
-                     addZombie(new NormalZombie());
-                });
-
-            }
-           // if(i%3==0)
-            //{
-           //     Platform.runLater(() -> {
-            //        for(ImageView img : power.list) {
-               //         System.out.println("bla");
-             //           mainGrid.getChildren().remove(img);
-                 //      power.list.remove(img );
-              //          img = null;
-                //    }
-               // });
-         //   }
-	}
+    private void chbFade() {
+        FadeTransition fade = new FadeTransition();  
+        fade.setDuration(Duration.millis(5000)); 
+        fade.setFromValue(0.1);  
+        fade.setToValue(1);
+        fade.setNode(cherryBombSide);
+        fade.play();
     }
+    
+    class Helper extends TimerTask 
+    { 
+        Random r = new Random();
+	
+	public void run() 
+	{ 
+            ++timerI;
+            
+            //System.out.println("val i+ "+i);
+            progBar.setProgress(timerI/10.0);
+            if(timerI%10==0 && timerI>=2){
+                Platform.runLater(() -> {
+                    addZombie(new NormalZombie());
+                    //Special trying = new Laser(mainGrid);
+                });  
+            }
+            if(progBar.getProgress()>=1){
+                level++;
+                Platform.runLater(() -> {
+                ObservableList<Node> childrens = mainGrid.getChildren();
+                for(Node node : childrens) {
+                 if(node instanceof ImageView) {
+                    ImageView imageView=(ImageView)node; // use what you want to remove
+                    mainGrid.getChildren().remove(imageView);
+                    break;
+                }
+                }
+                lane0 = new LinkedList<Zombie>();
+                lane1 = new LinkedList<Zombie>();
+                lane2 = new LinkedList<Zombie>();
+                lane3 = new LinkedList<Zombie>();
+                lane4 = new LinkedList<Zombie>();
+                plane0 = new Plant[9];
+                plane1 = new Plant[9];
+                plane2 = new Plant[9];
+                plane3 = new Plant[9];
+                plane4 = new Plant[9];
+                for(int kk=0;kk<9;kk++){
+                plane0[kk] = null;
+                plane1[kk]=null;
+                plane2[kk]=null;
+                plane3[kk]=null;
+                plane4[kk]=null;
+                }
+                allPlants = new int[5][9];
+                timerI=0;
+                progBar.setProgress(0);
+                System.out.println("Entered next level");
+            }); }
+	} 
+    }
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        for(int kk=0;kk<9;kk++){
-            plane1[kk] = null;
+        if(level==1){
+            sunPlantSide.setOpacity(0);
+            cornBreadSide.setOpacity(0);
+            cherryBombSide.setOpacity(0);
+        }else if(level==2){
+            cornBreadSide.setOpacity(0);
+            cherryBombSide.setOpacity(0);
+        }else if(level==3){
+            cherryBombSide.setOpacity(0);
         }
+        for(int kk=0;kk<9;kk++){
+            plane0[kk] = null;
+            plane1[kk]=null;
+            plane2[kk]=null;
+            plane3[kk]=null;
+            plane4[kk]=null;
+        }
+        addZombie(new NormalZombie());
+
         Sun s = new Sun(mainGrid,sunCount);
         igm.toBack();
         progBar.setProgress(0);
         timer = new Timer();
         TimerTask task = new Helper(); 
           
-        timer.schedule(task, 2000, 5000);
+        timer.schedule(task, 2000, 1000);
 
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
@@ -329,13 +395,14 @@ public class FXMLDocumentController2 implements Initializable {
         
         sunPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
+            if(level>=2){
             Dragboard db = sunPlantSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(sunPlantSide.getImage());
             cbContent.putUrl("Sun");
             db.setContent(cbContent);
             ssFade();
-            event.consume();
+            event.consume();}
         }
     });
     sunPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
@@ -345,13 +412,14 @@ public class FXMLDocumentController2 implements Initializable {
     });
     cherryBombSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
+            if(level>=4){
             Dragboard db = cherryBombSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(cherryBombSide.getImage());
             cbContent.putUrl("Cherry");
             db.setContent(cbContent);
             ssFade();
-            event.consume();
+            event.consume();}
         }
     });
     cherryBombSide.setOnDragDone(new EventHandler<DragEvent>() {
@@ -361,29 +429,34 @@ public class FXMLDocumentController2 implements Initializable {
     });
     peaPlantSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
+            System.out.println(timerI+" lock "+peaTimer);
+            if(timerI>=peaTimer){
             Dragboard db = peaPlantSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(peaPlantSide.getImage());
             cbContent.putUrl("Pea");
             db.setContent(cbContent);
-            spFade();
             event.consume();
+            }
         }
     });
     peaPlantSide.setOnDragDone(new EventHandler<DragEvent>() {
         public void handle(DragEvent event) {
+            spFade();
+            peaTimer = timerI+5;
             event.consume();
         }
     });
     cornBreadSide.setOnDragDetected(new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
+            if(level>=3){
             Dragboard db = cornBreadSide.startDragAndDrop(TransferMode.ANY);
             ClipboardContent cbContent = new ClipboardContent();
             cbContent.putImage(cornBreadSide.getImage());
             cbContent.putUrl("Walnut");
             db.setContent(cbContent);
             cbFade();
-            event.consume();
+            event.consume();}
         }
     });
     cornBreadSide.setOnDragDone(new EventHandler<DragEvent>() {
@@ -440,26 +513,46 @@ public class FXMLDocumentController2 implements Initializable {
                 peaimg.setPreserveRatio(true);
                 peaimg.setFitWidth(30);
                 
-                mainGrid.getChildren().add(plantimg);
-                GridPane.setConstraints(plantimg, x, y);
-                mainGrid.getChildren().add(peaimg);
-                GridPane.setConstraints(peaimg, x, y);
+                
                 p.setX(x);
                 p.setY(y);
                 s.changecounter(50); //buying
                 allPlants[y][x]=1;
-                if(y==0){
+                if(y==0 && level >=3){
+                    plane0[x] = p;
                     p.attack(mainGrid, lane0);
-                }else if(y==1){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, x, y);
+                }else if(y==1 && level >=2){
                     plane1[x] = p;
-                    numPlants++;
                     p.attack(mainGrid, lane1);
-                }else if(y==2){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, x, y);
+                }else if(y==2 && level==1){
+                    plane2[x] = p;
                     p.attack(mainGrid, lane2);
-                }else if(y==3){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, x, y);
+                }else if(y==3 && level>=2){
+                    plane3[x] = p;
                     p.attack(mainGrid, lane3);
-                }else if(y==4){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, x, y);
+                }else if(y==4 && level>=3){
+                    plane4[x] = p;
                     p.attack(mainGrid, lane4);
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, x, y);
                 }
                 
             }
@@ -472,20 +565,32 @@ public class FXMLDocumentController2 implements Initializable {
                 plantimg.setFitWidth(70);
                 p.setX(x);
                 p.setY(y);
-                mainGrid.getChildren().add(plantimg);
-                GridPane.setConstraints(plantimg, x, y);
                 allPlants[y][x]=1;
                 s.changecounter(50);
                 if(y==0){
                     p.attack(mainGrid, lane0);
-                }else if(y==1){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==1 && level >=2){
+                    plane1[x] = p;
                     p.attack(mainGrid, lane1);
-                }else if(y==2){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==2 && level==1){
+                    plane2[x] = p;
                     p.attack(mainGrid, lane2);
-                }else if(y==3){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==3 && level>=2){
+                    plane3[x] = p;
                     p.attack(mainGrid, lane3);
-                }else if(y==4){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==4 && level>=3){
+                    plane4[x] = p;
                     p.attack(mainGrid, lane4);
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
                 }
             }
             else if(db.getUrl().equals("Walnut")){
@@ -494,12 +599,34 @@ public class FXMLDocumentController2 implements Initializable {
                 ImageView plantimg = p.getImage();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(70);
-                mainGrid.getChildren().add(plantimg);
+                
                 p.setX(x);
                 p.setY(y);
-                GridPane.setConstraints(plantimg, x, y);
+
                 s.changecounter(100);
+
                 allPlants[y][x]=1;
+                if(y==0 && level >=3){
+                    plane0[x] = p;
+                    mainGrid.getChildren().add(plantimg);
+                    GridPane.setConstraints(plantimg, x, y);
+                }else if(y==1 && level>=2){
+                    plane1[x] = p;
+                    mainGrid.getChildren().add(plantimg);
+                    GridPane.setConstraints(plantimg, x, y);
+                }else if(y==2 && level==1){
+                    plane2[x] = p;
+                    mainGrid.getChildren().add(plantimg);
+                    GridPane.setConstraints(plantimg, x, y);
+                }else if(y==3 && level>=2){
+                    plane3[x] = p;
+                    mainGrid.getChildren().add(plantimg);
+                    GridPane.setConstraints(plantimg, x, y);
+                }else if(y==4 && level >=3){
+                    plane4[x] = p;
+                    mainGrid.getChildren().add(plantimg);
+                    GridPane.setConstraints(plantimg, x, y);
+                }
             }
             else if((db.getUrl().equals("Cherry"))){
                 Plant p = new CherryBombPlant();
@@ -507,22 +634,37 @@ public class FXMLDocumentController2 implements Initializable {
                 ImageView plantimg = p.getImage();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(100);
-                mainGrid.getChildren().add(plantimg);
                 p.setX(x);
                 p.setY(y);
-                GridPane.setConstraints(plantimg, x, y);
+
                 s.changecounter(150);
+
                 allPlants[y][x]=1;
-                if(y==0){
+                if(y==0 && level >=3){
+                    plane0[x] = p;
                     p.attack(mainGrid, lane0);
-                }else if(y==1){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==1 && level >=2){
+                    plane1[x] = p;
                     p.attack(mainGrid, lane1);
-                }else if(y==2){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==2 && level==1){
+                    plane2[x] = p;
                     p.attack(mainGrid, lane2);
-                }else if(y==3){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==3 && level>=2){
+                    plane3[x] = p;
                     p.attack(mainGrid, lane3);
-                }else if(y==4){
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
+                }else if(y==4 && level>=3){
+                    plane4[x] = p;
                     p.attack(mainGrid, lane4);
+                    mainGrid.getChildren().add(plantimg);
+                GridPane.setConstraints(plantimg, x, y);
                 }
             }
             success = true;
@@ -654,22 +796,22 @@ public class FXMLDocumentController2 implements Initializable {
     }
     
     public void addZombie(Zombie z){
+        z.setLane(level);
         int zombLane = z.getLane();
         //System.out.println(zombLane+" zomb addded to lan");
         if(zombLane==0){
             lane0.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane0, numPlants);
         }else if(zombLane==1){
-            //System.out.println();
             lane1.add(z);
-        }else if(zombLane==2){
-            lane2.add(z);
-        }else if(zombLane==3){
-            lane3.add(z);
-        }else if(zombLane==4){
-            lane4.add(z);
-        }
-        ImageView zombImg = z.getImage();
-        //System.out.println(lane1.size());
+            ImageView zombImg = z.getImage();
         zombImg.setPreserveRatio(true);
         zombImg.setFitWidth(100);
         zombImg.setFitHeight(100);
@@ -677,5 +819,36 @@ public class FXMLDocumentController2 implements Initializable {
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,zombLane);
         z.startTranslation(mainGrid, plane1, numPlants);
+        }else if(zombLane==2){
+            lane2.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane2, numPlants);
+        }else if(zombLane==3){
+            lane3.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane3, numPlants);
+        }else if(zombLane==4){
+            lane4.add(z);
+            ImageView zombImg = z.getImage();
+        zombImg.setPreserveRatio(true);
+        zombImg.setFitWidth(100);
+        zombImg.setFitHeight(100);
+        zombImg.setFitWidth(50);
+        mainGrid.getChildren().add(zombImg);
+        GridPane.setConstraints(zombImg,9,zombLane);
+        z.startTranslation(mainGrid, plane4, numPlants);
+        }
     }
 }
