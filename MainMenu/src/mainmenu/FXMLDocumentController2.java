@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.animation.Timeline;
+import javafx.stage.Window;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -58,6 +59,13 @@ import javafx.scene.layout.Pane;
  *
  * @author saad
  */
+class lawncount{
+    public static int lawndone0 =0;
+    public static int lawndone1 =0;
+    public static int lawndone2 =0;
+    public static int lawndone3 =0;
+    public static int lawndone4 =0;
+}
 public class FXMLDocumentController2 implements Initializable {
     int i=0;
     public boolean end =false;
@@ -142,11 +150,7 @@ public class FXMLDocumentController2 implements Initializable {
     public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
 
-    public boolean lawndone0 =false;
-    public boolean lawndone1 =false;
-    public boolean lawndone2 =false;
-    public boolean lawndone3 =false;
-    public boolean lawndone4 =false;
+
     public int currlvl;
 
     public boolean peablock=false;
@@ -826,7 +830,7 @@ public class FXMLDocumentController2 implements Initializable {
         zombImg.setPreserveRatio(true);
         zombImg.setFitWidth(100);
         zombImg.setFitHeight(100);
-        zombImg.setFitWidth(50);
+        zombImg.setFitWidth(80);
         mainGrid.getChildren().add(zombImg);
         GridPane.setConstraints(zombImg,9,zombLane);
         z.startTranslation(mainGrid, plane0, numPlants);
@@ -886,12 +890,11 @@ public class FXMLDocumentController2 implements Initializable {
                 z.zImg.setOpacity(0);
                 lane0.poll();
             }
-            if(lawndone0==true)
-            {
-                Stage curr = (Stage) igm.getScene().getWindow();
-                curr.close();
+            if(lawncount.lawndone0>=1)
+                {
+                Platform.exit();
             }
-            lawndone0=true;
+            lawncount.lawndone0++;
         }
         else if(x==1)
         {
@@ -901,28 +904,27 @@ public class FXMLDocumentController2 implements Initializable {
                 z.zImg.setOpacity(0);
                 lane1.poll();
             }
-            if(lawndone1==true)
+            if(lawncount.lawndone1>=1)
             {
-                Stage curr = (Stage) igm.getScene().getWindow();
-                curr.close();
+                Platform.exit();
             }
-            lawndone1=true;
+            lawncount.lawndone1++;
         }
         else if(x==2)
         {
             tt2.setNode(lm3);
-            lane2.poll();
+            tt2.setToX(1000);
             for(Zombie z:lane2)
             {
                 z.zImg.setOpacity(0);
                 lane2.poll();
             }
-            if(lawndone2==true)
+            if(lawncount.lawndone2>=1)
             {
-                Stage curr = (Stage) igm.getScene().getWindow();
-                curr.close();
+                Platform.exit();
             }
-            lawndone2=true;
+            tt2.play();
+            lawncount.lawndone2++;
         }
         else if(x==3)
         {
@@ -932,12 +934,11 @@ public class FXMLDocumentController2 implements Initializable {
                 z.zImg.setOpacity(0);
                 lane3.poll();
             }
-            if(lawndone3==true)
+            if(lawncount.lawndone3>=1)
             {
-                Stage curr = (Stage) igm.getScene().getWindow();
-                curr.close();
+                Platform.exit();
             }
-            lawndone3=true;
+            lawncount.lawndone3++;
         }
         else
         {
@@ -947,12 +948,11 @@ public class FXMLDocumentController2 implements Initializable {
                 z.zImg.setOpacity(0);
                 lane4.poll();
             }
-            if(lawndone4==true)
+            if(lawncount.lawndone4>=1)
             {
-                Stage curr = (Stage) igm.getScene().getWindow();
-                curr.close();
+                Platform.exit();
             }
-            lawndone4=true;
+            lawncount.lawndone4++;
         }
         tt2.play();
     }
