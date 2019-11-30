@@ -8,9 +8,9 @@ import javafx.scene.image.ImageView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Random;
+import java.util.*;
 import java.net.URL;
-import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.animation.TranslateTransition;
@@ -28,8 +28,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.util.logging.Level;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
@@ -68,6 +66,26 @@ class Thunder extends Special
             specialimg.setScaleZ(5);
             mainGrid.getChildren().add(specialimg);
             GridPane.setConstraints(specialimg,i,j);
+            for(Zombie zom: FXMLDocumentController2.lane0)
+            {
+                zom.takeDamage(50,mainGrid,FXMLDocumentController2.lane0);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane1)
+            {
+                zom.takeDamage(50,mainGrid,FXMLDocumentController2.lane0);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane2)
+            {
+                zom.takeDamage(50,mainGrid,FXMLDocumentController2.lane0);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane3)
+            {
+                zom.takeDamage(50,mainGrid,FXMLDocumentController2.lane0);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane4)
+            {
+                zom.takeDamage(50,mainGrid,FXMLDocumentController2.lane0);
+            }
             specialimg.setFitWidth(100);
             specialimg.setFitHeight(200);
         }
@@ -87,6 +105,26 @@ class Laser extends Special
             specialimg.setScaleX(5);
             specialimg.setScaleY(3);
             GridPane.setConstraints(specialimg,4,i);
+            for(Zombie zom: FXMLDocumentController2.lane0)
+            {
+                zom.takeDamage(100,mainGrid,FXMLDocumentController2.lane0);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane1)
+            {
+                zom.takeDamage(100,mainGrid,FXMLDocumentController2.lane1);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane2)
+            {
+                zom.takeDamage(100,mainGrid,FXMLDocumentController2.lane2);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane3)
+            {
+                zom.takeDamage(100,mainGrid,FXMLDocumentController2.lane3);
+            }
+            for(Zombie zom: FXMLDocumentController2.lane4)
+            {
+                zom.takeDamage(100,mainGrid,FXMLDocumentController2.lane4);
+            }
             //specialimg.setFitWidth(100);
             //specialimg.setFitHeight(200);
         }

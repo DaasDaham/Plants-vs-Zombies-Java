@@ -119,11 +119,11 @@ public class FXMLDocumentController2 implements Initializable {
     public Zombie damnZombie;
     public FlagZombie dZombie;
     public int[][] allPlants = new int[5][9];
-    public Queue<Zombie> lane0 = new LinkedList<Zombie>();
-    public Queue<Zombie> lane1 = new LinkedList<Zombie>();
-    public Queue<Zombie> lane2 = new LinkedList<Zombie>();
-    public Queue<Zombie> lane3 = new LinkedList<Zombie>();
-    public Queue<Zombie> lane4 = new LinkedList<Zombie>();
+    public static Queue<Zombie> lane0 = new LinkedList<Zombie>();
+    public static Queue<Zombie> lane1 = new LinkedList<Zombie>();
+    public static Queue<Zombie> lane2 = new LinkedList<Zombie>();
+    public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
+    public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
     public Plant[] plane1 = new Plant[9];
     public int numPlants= 0;
     
@@ -176,10 +176,10 @@ public class FXMLDocumentController2 implements Initializable {
             if(i%2==0){
                 Platform.runLater(() -> {
                      addZombie(new NormalZombie());
+                    Special trying = new Laser(mainGrid);
                 });
                 
             }
-
 	} 
     }
     
@@ -197,13 +197,13 @@ public class FXMLDocumentController2 implements Initializable {
         timer.schedule(task, 2000, 5000);
 
         Runnable task2 = () -> {
-            //System.out.println("Sun Spawned");
+            System.out.println("Sun Spawned");
             s.spawnSun();
         };
         
         ScheduledExecutorService scheduler
                 = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(task2, 10, 20,
+        scheduler.scheduleAtFixedRate(task2, 5, 20,
                 TimeUnit.SECONDS);
         
          
