@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.FileInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.Timer; 
@@ -59,6 +60,7 @@ import javafx.scene.layout.Pane;
  */
 public class FXMLDocumentController2 implements Initializable {
     int i=0;
+    public boolean end =false;
     @FXML
     private Label sunCount;
 
@@ -95,8 +97,7 @@ public class FXMLDocumentController2 implements Initializable {
     @FXML
     private GridPane mainGrid;
     @FXML
-    private AnchorPane sunpane;
-
+    public AnchorPane sunpane;
     @FXML
     private Button igmExitButton;
     private TranslateTransition tt;
@@ -113,6 +114,14 @@ public class FXMLDocumentController2 implements Initializable {
     private TextField special_Thunder_text;
     @FXML
     private TextField special_Laser_text;
+    @FXML
+    private TextField sunCost;
+    @FXML
+    private TextField peaCost;
+    @FXML
+    private TextField bombCost;
+    @FXML
+    private TextField nutCost;
     @FXML
     private Color x2;
     @FXML
@@ -131,7 +140,9 @@ public class FXMLDocumentController2 implements Initializable {
     public static Queue<Zombie> lane2 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
-    
+
+    public int currlvl;
+
     public boolean peablock=false;
     public boolean sunblock=false;
     public boolean walnutblock=false;
@@ -141,8 +152,6 @@ public class FXMLDocumentController2 implements Initializable {
     public int walnutTimer=1;
     public int cbTimer=1;
     public int timerI = 0; 
-    
-
 
     public Plant[] plane0 = new Plant[9];
     public Plant[] plane1 = new Plant[9];
@@ -197,8 +206,7 @@ public class FXMLDocumentController2 implements Initializable {
     
     class Helper extends TimerTask 
     { 
-        Random r = new Random();
-	
+        Random r = new Random();	
 	public void run(){ 
             ++timerI;
             //System.out.println("val i+ "+i);
@@ -210,12 +218,24 @@ public class FXMLDocumentController2 implements Initializable {
                 });  
             }
             if(progBar.getProgress()>=1){
-               // 
+               timerI=0;
+               level++;
+               progBar.setProgress(1);
+               peaTimer=0;
+               sunTimer=0;
+               walnutTimer=0;
+               cbTimer=0;
+               if(level==2){
+                   sunPlantSide.setOpacity(1);
+               }else if(level==3){
+                   cornBreadSide.setOpacity(1);
+               }else if(level>=4){
+                   cherryBombSide.setOpacity(1);
+               }
             }
-	} 
-    }
-
-    
+        }
+    } 
+  
     @Override
     public void initialize(URL url, ResourceBundle rb){
         if(level==1){
@@ -242,11 +262,7 @@ public class FXMLDocumentController2 implements Initializable {
         progBar.setProgress(0);
         timer = new Timer();
         TimerTask task = new Helper(); 
-          
-
             timer.schedule(task, 2000, 1000);
- 
-
         Runnable task2 = () -> {
             System.out.println("Sun Spawned");
             s.spawnSun();
@@ -303,7 +319,6 @@ public class FXMLDocumentController2 implements Initializable {
             }
         });
         igmCloseBut.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
             @Override
             public void handle(MouseEvent event) {
                 tt.play();
@@ -478,10 +493,10 @@ public class FXMLDocumentController2 implements Initializable {
                 
                 
                 p.setX(x);
-                p.setY(y);
-                s.changecounter(50); //buying
+                p.setY(y);//buying
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
+                if(y==0 && level >=3 && s.getcount()>=50){
+                    s.changecounter(50);
                     plane0[x] = p;
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
@@ -529,8 +544,8 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
                 allPlants[y][x]=1;
-                s.changecounter(50);
-                if(y==0){
+                if(y==0&& s.getcount()>=50){
+                    s.changecounter(50);
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
@@ -566,10 +581,11 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
 
-                s.changecounter(100);
+
 
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
+                if(y==0 && level >=3&& s.getcount()>=100){
+                    s.changecounter(100);
                     plane0[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
@@ -600,10 +616,11 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
 
-                s.changecounter(150);
+
 
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
+                if(y==0 && level >=3&& s.getcount()>=25){
+                    s.changecounter(25);
                     plane0[x] = p;
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
@@ -682,6 +699,46 @@ public class FXMLDocumentController2 implements Initializable {
         power = new Laser(mainGrid);
     }
     @FXML
+    private void SunPlantCostEnter(MouseEvent event) {
+
+        sunCost.setOpacity(1);
+    }
+    @FXML
+    private void SunPlantCostExit(MouseEvent event) {
+
+        sunCost.setOpacity(0);
+    }
+    @FXML
+    private void PeaPlantCostEnter(MouseEvent event) {
+
+        peaCost.setOpacity(1);
+    }
+    @FXML
+    private void peaPlantCostExit(MouseEvent event) {
+
+        peaCost.setOpacity(0);
+    }
+    @FXML
+    private void NutPlantCostEnter(MouseEvent event) {
+
+        nutCost.setOpacity(1);
+    }
+    @FXML
+    private void NutPlantCostExit(MouseEvent event) {
+
+        nutCost.setOpacity(0);
+    }
+    @FXML
+    private void BombPlantCostEnter(MouseEvent event) {
+
+        bombCost.setOpacity(1);
+    }
+    @FXML
+    private void BombPlantCostExit(MouseEvent event) {
+
+        bombCost.setOpacity(0);
+    }
+    @FXML
     private void handleIgmExit(ActionEvent event) {
         try {
 
@@ -698,7 +755,6 @@ public class FXMLDocumentController2 implements Initializable {
         /*igm.toBack();
         Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage1.close();*/
-
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
         if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
@@ -711,6 +767,10 @@ public class FXMLDocumentController2 implements Initializable {
             i=0;
             return false;
         }
+    }
+    public void setLevel(int x)
+    {
+        currlvl=x;
     }
     
     public void bigOuf(ImageView image, int x, int y){
@@ -775,3 +835,4 @@ public class FXMLDocumentController2 implements Initializable {
         }
     }
 }
+

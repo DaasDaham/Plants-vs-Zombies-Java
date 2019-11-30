@@ -154,22 +154,22 @@
         </Label>
         <GridPane layoutX="12.0" layoutY="0.0" prefHeight="598.0" prefWidth="81.0">
           <children>
-            <ImageView fx:id="peaPlantSide" fitHeight="81.73304209181276" fitWidth="81.00000762939453" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <ImageView fx:id="peaPlantSide" fitHeight="81.73304209181276" fitWidth="81.00000762939453" onMouseEntered="#PeaPlantCostEnter" onMouseExited="#peaPlantCostExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
               <image>
                 <Image url="@Images/clipart247691.png" />
               </image>
             </ImageView>
-            <ImageView fx:id="sunPlantSide" fitHeight="81.7330093383789" fitWidth="81.00000762939453" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <ImageView fx:id="sunPlantSide" fitHeight="81.7330093383789" fitWidth="81.00000762939453" onMouseEntered="#SunPlantCostEnter" onMouseExited="#SunPlantCostExit" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="1">
               <image>
                 <Image url="@Images/sunflower.png" />
               </image>
             </ImageView>
-            <ImageView fx:id="cornBreadSide" fitHeight="84.94913916350649" fitWidth="74.39990234375" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <ImageView fx:id="cornBreadSide" fitHeight="84.94913916350649" fitWidth="74.39990234375" onMouseEntered="#NutPlantCostEnter" onMouseExited="#NutPlantCostExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="5">
               <image>
                 <Image url="@Images/walnut.png" />
               </image>
             </ImageView>
-            <ImageView fx:id="cherryBombSide" fitHeight="84.9490966796875" fitWidth="87.99999237060547" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="7">
+            <ImageView fx:id="cherryBombSide" fitHeight="84.9490966796875" fitWidth="87.99999237060547" onMouseEntered="#BombPlantCostEnter" onMouseExited="#BombPlantCostExit" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="7">
               <image>
                 <Image url="@Images/cherry_bomb.png" />
               </image>
@@ -250,5 +250,9 @@
       </AnchorPane>
       <TextField fx:id="special_Thunder_text" layoutX="100.0" layoutY="516.0" opacity="0.0" prefHeight="27.0" prefWidth="506.0" text="Thunder Strike- The Lawn is struck by a chain of thunder strikes. Cost = 100 Gold. Damage = 50." />
       <TextField fx:id="special_Laser_text" layoutX="100.0" layoutY="516.0" opacity="0.0" prefHeight="27.0" prefWidth="506.0" text="Laser Field- The Lawn is covered by a powerful laser breams. Cost = 200 Gold. Damage = 100." />
+      <TextField fx:id="sunCost" layoutX="97.0" layoutY="109.0" opacity="0.0" prefHeight="27.0" prefWidth="70.0" text="Cost = 50" />
+      <TextField fx:id="peaCost" layoutX="97.0" layoutY="222.0" opacity="0.0" prefHeight="27.0" prefWidth="70.0" text="Cost = 50" />
+      <TextField fx:id="nutCost" layoutX="97.0" layoutY="349.0" opacity="0.0" prefHeight="27.0" prefWidth="74.0" text="Cost = 100" />
+      <TextField fx:id="bombCost" layoutX="91.0" layoutY="475.0" opacity="0.0" prefHeight="27.0" prefWidth="70.0" text="Cost = 25" />
   </children>
 </AnchorPane>
