@@ -138,10 +138,11 @@ public class Sun {
         this.sunimage.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println("Sun Collected");
+                //System.out.println("Sun Collected");
                 sunimage.setOpacity(0);
-                Counter.count+=50;
+                Counter.count+=25;
                 Counter.sunCount.setText(""+Counter.count);
+                
             }
         });
     }
