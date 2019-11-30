@@ -59,6 +59,7 @@ import javafx.scene.layout.Pane;
  */
 public class FXMLDocumentController2 implements Initializable {
     int i=0;
+    public boolean end =false;
     @FXML
     private Label sunCount;
 
@@ -139,7 +140,9 @@ public class FXMLDocumentController2 implements Initializable {
     public static Queue<Zombie> lane2 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane3 = new LinkedList<Zombie>();
     public static Queue<Zombie> lane4 = new LinkedList<Zombie>();
-    
+
+    public int currlvl;
+
     public boolean peablock=false;
     public boolean sunblock=false;
     public boolean walnutblock=false;
@@ -247,8 +250,10 @@ public class FXMLDocumentController2 implements Initializable {
                 plane4[kk]=null;
                 }
                 allPlants = new int[5][9];
+                peaTimer=1;
                 timerI=0;
                 progBar.setProgress(0);
+                end=true;
                 System.out.println("Entered next level");
             }); }
 	} 
@@ -515,10 +520,10 @@ public class FXMLDocumentController2 implements Initializable {
                 
                 
                 p.setX(x);
-                p.setY(y);
-                s.changecounter(50); //buying
+                p.setY(y);//buying
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
+                if(y==0 && level >=3 && s.getcount()>=50){
+                    s.changecounter(50);
                     plane0[x] = p;
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
@@ -566,8 +571,8 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
                 allPlants[y][x]=1;
-                s.changecounter(50);
-                if(y==0){
+                if(y==0&& s.getcount()>=50){
+                    s.changecounter(50);
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, x, y);
@@ -603,10 +608,11 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
 
-                s.changecounter(100);
+
 
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
+                if(y==0 && level >=3&& s.getcount()>=100){
+                    s.changecounter(100);
                     plane0[x] = p;
                     mainGrid.getChildren().add(plantimg);
                     GridPane.setConstraints(plantimg, x, y);
@@ -637,10 +643,11 @@ public class FXMLDocumentController2 implements Initializable {
                 p.setX(x);
                 p.setY(y);
 
-                s.changecounter(150);
+
 
                 allPlants[y][x]=1;
-                if(y==0 && level >=3){
+                if(y==0 && level >=3&& s.getcount()>=25){
+                    s.changecounter(25);
                     plane0[x] = p;
                     p.attack(mainGrid, lane0);
                     mainGrid.getChildren().add(plantimg);
@@ -775,7 +782,6 @@ public class FXMLDocumentController2 implements Initializable {
         /*igm.toBack();
         Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage1.close();*/
-
     }
     private boolean checkIntersect(ImageView v1, ImageView v2){
         if(v1.getBoundsInParent().intersects(v2.getBoundsInParent())){
@@ -788,6 +794,10 @@ public class FXMLDocumentController2 implements Initializable {
             i=0;
             return false;
         }
+    }
+    public void setLevel(int x)
+    {
+        currlvl=x;
     }
     
     public void bigOuf(ImageView image, int x, int y){

@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a19bf0f-eb85-40c1-ad43-89fe15a2b451" name="Default Changelist" comment="zombies added">
-      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" afterDir="false" />
     </list>
     <list id="d4ee76d1-a28d-4bb6-8679-575b5a710d73" name="plot of parkinson" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+            <state relative-caret-position="1083">
+              <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
               <folding>
                 <element signature="e#0#2199#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -61,30 +62,53 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="609" column="35" selection-start-line="609" selection-start-column="17" selection-end-line="609" selection-end-column="35" />
+            <state relative-caret-position="230">
+              <caret line="175" column="35" lean-forward="true" selection-start-line="175" selection-start-column="35" selection-end-line="175" selection-end-column="35" />
               <folding>
-                <element signature="e#9939#9940#0" expanded="true" />
-                <element signature="e#9978#9979#0" expanded="true" />
-                <element signature="e#10563#10564#0" expanded="true" />
-                <element signature="e#10602#10603#0" expanded="true" />
-                <element signature="e#11176#11177#0" expanded="true" />
-                <element signature="e#11215#11216#0" expanded="true" />
-                <element signature="e#11796#11797#0" expanded="true" />
-                <element signature="e#11835#11836#0" expanded="true" />
+                <element signature="e#3612#3620#0" expanded="true" />
+                <element signature="e#3678#3686#0" expanded="true" />
+                <element signature="e#3744#3752#0" expanded="true" />
+                <element signature="e#3810#3818#0" expanded="true" />
+                <element signature="e#3876#3884#0" expanded="true" />
+                <element signature="e#4505#4506#0" expanded="true" />
+                <element signature="e#4533#4534#0" expanded="true" />
+                <element signature="e#12164#12165#0" expanded="true" />
+                <element signature="e#12203#12204#0" expanded="true" />
+                <element signature="e#12815#12816#0" expanded="true" />
+                <element signature="e#12854#12855#0" expanded="true" />
+                <element signature="e#14214#14215#0" expanded="true" />
+                <element signature="e#14253#14254#0" expanded="true" />
+                <element signature="e#23359#23360#0" expanded="true" />
+                <element signature="e#23388#23389#0" expanded="true" />
+                <element signature="e#26001#26002#0" expanded="true" />
+                <element signature="e#26023#26024#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="160" column="29" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5429#5430#0" expanded="true" />
+                <element signature="e#5458#5459#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="171">
+              <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -95,21 +119,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
               <caret line="241" column="148" selection-start-line="241" selection-start-column="148" selection-end-line="241" selection-end-column="148" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1995">
-              <caret line="131" column="39" selection-start-line="131" selection-start-column="39" selection-end-line="131" selection-end-column="39" />
-              <folding>
-                <element signature="e#873#874#0" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#3404#3405#0" expanded="true" />
-                <element signature="e#3437#3438#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -147,8 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ImageView</find>
-      <find>to_add</find>
       <find>mainGrid</find>
       <find>sun</find>
       <find>system</find>
@@ -177,6 +184,8 @@
       <find>han</find>
       <find>handlePauseButton</find>
       <find>handle</find>
+      <find>peatimer</find>
+      <find>setSce</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,22 +202,22 @@
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Plant.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java" />
-        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument2.fxml" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Special.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController3.fxml" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument3.fxml" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController3.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController.java" />
-        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" />
+        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java" />
         <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/MainMenu.java" />
+        <option value="$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="950" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="766" />
+    <option name="width" value="1147" />
+    <option name="height" value="1054" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -235,6 +244,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="mainmenu" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="AP-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainMenu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mainmenu" type="462c0819:PsiDirectoryNode" />
+              <item name="Sun.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -245,7 +261,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575129934273" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575133939851" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -355,7 +371,7 @@
       <workItem from="1575095211853" duration="543000" />
       <workItem from="1575103545616" duration="2344000" />
       <workItem from="1575109567307" duration="9657000" />
-      <workItem from="1575125536306" duration="3840000" />
+      <workItem from="1575125536306" duration="7602000" />
     </task>
     <task id="LOCAL-00001" summary="lawnmower">
       <created>1572622319511</created>
@@ -368,13 +384,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104801000" />
+    <option name="totallyTimeSpent" value="108563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1608073" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.01953125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -383,7 +399,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49934897" visible="true" weight="0.28806585" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.28806585" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3978052" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -393,7 +409,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50065106" side_tool="true" weight="0.17558299" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32784638" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32784638" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -534,23 +550,11 @@
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Images/Sun_PvZ2.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1501">
-          <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Zombie.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1995">
-          <caret line="131" column="39" selection-start-line="131" selection-start-column="39" selection-end-line="131" selection-end-column="39" />
+          <caret line="279" column="39" selection-start-line="279" selection-start-column="39" selection-end-line="279" selection-end-column="39" />
           <folding>
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
             <element signature="e#3404#3405#0" expanded="true" />
             <element signature="e#3437#3438#0" expanded="true" />
           </folding>
@@ -582,11 +586,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument.fxml">
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument3.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="247">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -600,18 +604,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument3.fxml">
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocument.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        <state relative-caret-position="209">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+        <state relative-caret-position="1083">
+          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
           <folding>
             <element signature="e#0#2199#0" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -627,27 +631,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java">
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/Sun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="609" column="35" selection-start-line="609" selection-start-column="17" selection-end-line="609" selection-end-column="35" />
+        <state relative-caret-position="367">
+          <caret line="160" column="29" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="29" />
           <folding>
-            <element signature="e#9939#9940#0" expanded="true" />
-            <element signature="e#9978#9979#0" expanded="true" />
-            <element signature="e#10563#10564#0" expanded="true" />
-            <element signature="e#10602#10603#0" expanded="true" />
-            <element signature="e#11176#11177#0" expanded="true" />
-            <element signature="e#11215#11216#0" expanded="true" />
-            <element signature="e#11796#11797#0" expanded="true" />
-            <element signature="e#11835#11836#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#5429#5430#0" expanded="true" />
+            <element signature="e#5458#5459#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        <state relative-caret-position="171">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainMenu/src/mainmenu/FXMLDocumentController2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="175" column="35" lean-forward="true" selection-start-line="175" selection-start-column="35" selection-end-line="175" selection-end-column="35" />
+          <folding>
+            <element signature="e#3612#3620#0" expanded="true" />
+            <element signature="e#3678#3686#0" expanded="true" />
+            <element signature="e#3744#3752#0" expanded="true" />
+            <element signature="e#3810#3818#0" expanded="true" />
+            <element signature="e#3876#3884#0" expanded="true" />
+            <element signature="e#4505#4506#0" expanded="true" />
+            <element signature="e#4533#4534#0" expanded="true" />
+            <element signature="e#12164#12165#0" expanded="true" />
+            <element signature="e#12203#12204#0" expanded="true" />
+            <element signature="e#12815#12816#0" expanded="true" />
+            <element signature="e#12854#12855#0" expanded="true" />
+            <element signature="e#14214#14215#0" expanded="true" />
+            <element signature="e#14253#14254#0" expanded="true" />
+            <element signature="e#23359#23360#0" expanded="true" />
+            <element signature="e#23388#23389#0" expanded="true" />
+            <element signature="e#26001#26002#0" expanded="true" />
+            <element signature="e#26023#26024#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

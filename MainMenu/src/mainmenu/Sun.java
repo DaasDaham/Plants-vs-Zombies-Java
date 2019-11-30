@@ -52,7 +52,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 class Counter {
-    public static int count=0;
+    public static int count=50;
     public static Label sunCount;
 }
 public class Sun {
@@ -150,5 +150,14 @@ public class Sun {
     {
         Counter.count-=x;
         Counter.sunCount.setText(""+Counter.count);
+    }
+    public void setNormal()
+    {
+        Counter.count=50;
+        Counter.sunCount.setText(""+Counter.count);
+    }
+    public int getcount()
+    {
+        return Counter.count;
     }
 }
