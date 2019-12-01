@@ -125,7 +125,7 @@ public class Zombie {
         t.setToX(-800);
         t.setNode(zImg);
         t.play();
-        /*t.setOnFinished(new EventHandler<ActionEvent>() {
+        t.setOnFinished(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
@@ -185,7 +185,7 @@ public class Zombie {
                 }
 
             }
-        });*/
+        });
         zImg.translateXProperty().addListener((Observable observable) -> {
             //System.out.println("i am alive");
             //System.out.println(Arrays.toString(plane));
