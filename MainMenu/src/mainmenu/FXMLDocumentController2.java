@@ -853,18 +853,17 @@ public class FXMLDocumentController2 implements Initializable {
         Plant p;
         if(type==1){p = new PeaPlant();}else if(type==2){p = new SunFlowerPlant(mainGrid);}else if(type==3){p = new WalnutPlant();}else{p = new CherryBombPlant();}
                 ImageView plantimg = p.getImage();
-                ImageView peaimg = p.getBullet();
                 plantimg.setPreserveRatio(true);
                 plantimg.setFitWidth(70);
-                peaimg.setPreserveRatio(true);
-                peaimg.setFitWidth(30);
                 p.setX(j);
                 p.setY(i);//buying
                 mainGrid.getChildren().add(plantimg);
                 GridPane.setConstraints(plantimg, j, i);
-                if(type==1){
-                mainGrid.getChildren().add(peaimg);
-                GridPane.setConstraints(peaimg, j, i);}
+                if(type==1){ImageView peaimg = p.getBullet();
+                peaimg.setPreserveRatio(true);
+                peaimg.setFitWidth(30);mainGrid.getChildren().add(peaimg);
+                GridPane.setConstraints(peaimg, j, i);
+                }
                 if(i==0){
                     plane0[j] = p;
                 p.attack(mainGrid, lane0);
@@ -968,6 +967,7 @@ public class FXMLDocumentController2 implements Initializable {
     public static void serialize() throws IOException{
         ObjectOutputStream out = null;
         try{
+            System.out.println("numserial "+numSerialize);
             if(numSerialize==1){
             out = new ObjectOutputStream(
                         new FileOutputStream("firstSave.txt"));

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.image.Image;
@@ -43,7 +44,7 @@ public class FXMLDocumentController3 {
         FXMLDocumentController2 controller = loader.getController();
 
             Scene startPageScene1 = new Scene(root);
-            Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage appStage1 = new Stage();
             appStage1.setScene(startPageScene1);
             controller.setLevel(nn.level);
             controller.setCounter(nn.suncount);
@@ -53,12 +54,14 @@ public class FXMLDocumentController3 {
             appStage1.show();
             for(int i=0;i<5;i++){
                 for(int j=0;j<9;j++){
+                    System.out.print(nn.plantTypes[i][j]+" ");
                     if(nn.allPlants[i][j]==1){
                         controller.startPLant(i, j, nn.plantTypes[i][j]);
 
                     }
                     
                 }
+                System.out.println();
             }
             
         } catch (IOException ex) {
@@ -75,7 +78,7 @@ public class FXMLDocumentController3 {
         FXMLDocumentController2 controller = loader.getController();
 
             Scene startPageScene1 = new Scene(root);
-            Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage appStage1 = new Stage();
             appStage1.setScene(startPageScene1);
             controller.setLevel(nn.level);
             controller.setCounter(nn.suncount);
@@ -85,12 +88,14 @@ public class FXMLDocumentController3 {
             appStage1.show();
             for(int i=0;i<5;i++){
                 for(int j=0;j<9;j++){
+                    System.out.print(nn.plantTypes[i][j]+" ");
                     if(nn.allPlants[i][j]==1){
                         controller.startPLant(i, j, nn.plantTypes[i][j]);
 
                     }
                     
                 }
+                System.out.println();
             }
             
         } catch (IOException ex) {
@@ -107,7 +112,7 @@ public class FXMLDocumentController3 {
         FXMLDocumentController2 controller = loader.getController();
 
             Scene startPageScene1 = new Scene(root);
-            Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage appStage1 = new Stage();
             appStage1.setScene(startPageScene1);
             controller.setLevel(nn.level);
             controller.setCounter(nn.suncount);
@@ -139,7 +144,7 @@ public class FXMLDocumentController3 {
         FXMLDocumentController2 controller = loader.getController();
 
             Scene startPageScene1 = new Scene(root);
-            Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage appStage1 = new Stage();
             appStage1.setScene(startPageScene1);
             controller.setLevel(nn.level);
             controller.setCounter(nn.suncount);
@@ -171,7 +176,7 @@ public class FXMLDocumentController3 {
         FXMLDocumentController2 controller = loader.getController();
 
             Scene startPageScene1 = new Scene(root);
-            Stage appStage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage appStage1 = new Stage();
             appStage1.setScene(startPageScene1);
             controller.setLevel(nn.level);
             controller.setCounter(nn.suncount);
